@@ -25,10 +25,11 @@ namespace e_commerce_backend.Controllers
         }
 
         [HttpGet("GetProducts")]
-        public async Task<List<Product>> GetProducts()
+        public async Task<List<ProductModel>> GetProducts()
         {
             var products = await _productService.GetAllAsync();
-            return products.ToList();
+            var productModels = _mapper.Map<List<ProductModel>>(products);
+            return productModels;
         }
 
         [HttpPost("AddProduct")]

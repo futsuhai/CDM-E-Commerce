@@ -8,6 +8,6 @@ namespace e_commerce_backend.Models.Backend
         public required string Title { get; set; } = string.Empty;
         public int Rating { get; set; } = 0;
         public required string Country { get; set; } = string.Empty;
-        public required string Base64Image { get; set; } = string.Empty;
+        public required byte[] ImageBytes { get; set; }
     }
 }
