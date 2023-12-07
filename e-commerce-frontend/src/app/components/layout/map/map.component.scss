@@ -1,0 +1,35 @@
+.map {
+    &__map-frame{
+        width: 100%;
+        height: var(--map-frame-height);
+    }
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__name {
+        font-size: var(--text-size-xl);
+        font-weight: 700;
+        color: var(--surface);
+    }
+}
+
+.location {
+    display: flex;
+    gap: 24px;
+
+    &__button {
+        color: var(--surface);
+        background: var(--grayscale-lightest);
+        font-size: var(--text-size-xs);
+
+        &_active {
+            background: var(--green);
+            border: 1px solid var(--green);
+            color: var(--white);
+        }
+    }
+}

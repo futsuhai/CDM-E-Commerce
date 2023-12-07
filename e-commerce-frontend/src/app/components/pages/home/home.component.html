@@ -1,0 +1,35 @@
+<app-banner class="home__banner"></app-banner>
+<div class="content-wrapper home__content-wrapper">
+    <div class="row">
+        <div class="title">
+            <h2 class="title__name">Акции</h2>
+            <button class="title__more button_base">
+                Все акции
+                <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
+            </button>
+        </div>
+        <app-product-list [products$]="products$"></app-product-list>
+    </div>
+    <div class="row">
+        <div class="title">
+            <h2 class="title__name">Новинки</h2>
+            <button class="title__more button_base">
+                Все новинки
+                <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
+            </button>
+        </div>
+        <app-product-list [products$]="products$"></app-product-list>
+    </div>
+    <app-special></app-special>
+    <app-map></app-map>
+    <div class="row">
+        <div class="title">
+            <h2 class="title__name">Статьи</h2>
+            <button class="title__more button_base">
+                Все статьи
+                <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
+            </button>
+        </div>
+        <app-acticle-list></app-acticle-list>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+:root {
+    // fonts
+    --base-font-family: 'Rubick';
+
+    // text-sizes
+    --text-size-xs: 0.75rem;
+    --text-size-s: 1rem;
+    --text-size-m: 1.125rem;
+    --text-size-xm: 1.25rem;
+    --text-size-l: 1.5rem;
+    --text-size-xl: 2.25rem;
+    --text-size-xxl: 3rem;
+
+    // colors
+    --white: #FFF;
+    --green: #70C05B;
+    --green-light: #E5FFDE;
+    --main-bg: #FBF8EC;
+    --surface: #414141;
+    --grayscale-hardest: #606060;
+    --grayscale-hard: #8F8F8F;
+    --grayscale-light: #BFBFBF;
+    --grayscale-lightest: #F3F2F1;
+    --rating-orange: #FF6633;
+    --main-orange: #F63;
+    --orange-dark: #FCD5BA;
+
+    // sizes 
+    // common
+    --content-width: 1208px;
+    --button-height: 40px;
+    // header
+    --header-height: 72px;
+    --header-catalog-btn-width: 140px;
+    --header-item-height: 40px;
+    // footer
+    --footer-height: 102px;
+    // product-card
+    --product-card-width: 272px;
+    --product-card-height: 350px;
+    // map
+    --map-frame-height: 360px;
+    // article
+    --article-button-width: 150px;
+
+}

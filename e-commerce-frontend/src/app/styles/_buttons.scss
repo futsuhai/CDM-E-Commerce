@@ -1,0 +1,31 @@
+.button {
+
+    &_base {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: var(--text-size-s);
+        background-color: inherit;
+        border: none;
+    }
+
+
+    &_green {
+        background: var(--green);
+        border: 1px solid var(--green);
+        color: var(--white);
+    }
+
+    &_product-card {
+        border: 1px solid var(--green);
+        color: var(--green);
+    }
+
+    &_product-card:hover {
+        background: var(--main-orange);
+        border: 1px solid var(--main-orange);
+        color: var(--white);
+    }
+}

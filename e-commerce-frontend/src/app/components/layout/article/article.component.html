@@ -1,0 +1,15 @@
+<img [src]="article.base64Image" alt="article-image" class="article__image">
+<div class="content">
+    <p class="content__date">
+        {{ article.date | date}}
+    </p>
+    <h5 class="content__title">
+        {{ article.title }}
+    </h5>
+    <p class="content__text">
+        {{ article.main }}
+    </p>
+    <button class="content__more button_base button_green">
+        Подробнее
+    </button>
+</div>

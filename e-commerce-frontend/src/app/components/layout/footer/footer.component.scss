@@ -1,0 +1,38 @@
+.links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    &__item {
+        color: var(--surface);
+        font-size: var(--text-size-xs);
+    }
+}
+
+.contacts {
+    display: flex;
+    gap: 40px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &__icon {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__link {
+        color: var(--surface);
+        font-size: var(--text-size-s);
+    }
+}

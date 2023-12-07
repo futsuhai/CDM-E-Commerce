@@ -1,0 +1,9 @@
+.articles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(376px, 1fr));
+    grid-gap: 40px;
+
+    &__item {
+        background: var(--white);
+    }
+}

@@ -1,0 +1,7 @@
+<div class="articles">
+<app-article
+    *ngFor="let article of articles$ | async"
+    [article]="article"
+    class="articles__item">
+</app-article>
+</div>

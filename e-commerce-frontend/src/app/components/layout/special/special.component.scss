@@ -1,0 +1,54 @@
+.specials {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-xl);
+        font-weight: 700;
+    }
+}
+
+.offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+
+    &__card-banner {
+        background: var(--orange-dark);
+        border-radius: 4px;
+        box-shadow: 0px 8px 16px 0px rgba(202, 147, 96, 0.50);
+    }
+
+    &__stock-banner {
+        background: var(--green-light);
+        border-radius: 4px;
+        box-shadow: 0px 8px 16px 0px rgba(96, 202, 122, 0.493);
+    }
+}
+
+.banner {
+    display: flex;
+
+    &__description {
+        padding: 30px 0px 44px 40px;
+    }
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-l);
+        font-weight: 700;
+    }
+
+    &__text {
+        color: var(--surface);
+        font-size: var(--text-size-s);
+    }
+}

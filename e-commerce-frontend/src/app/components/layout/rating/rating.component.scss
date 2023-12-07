@@ -1,0 +1,9 @@
+.stars {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+
+    &__item {
+        color: var(--rating-orange);
+    }
+}

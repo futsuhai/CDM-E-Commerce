@@ -1,0 +1,27 @@
+body {
+    font-family: var(--base-font-family);
+    background: var(--main-bg);
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+input, input:focus, input:hover {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+}
