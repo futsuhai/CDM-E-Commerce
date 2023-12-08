@@ -20,11 +20,10 @@ namespace e_commerce_backend.Utils.ImageUtils
         {
             byte[] imageBytes;
 
-            if (File.Exists(imagePath))
+            try
             {
                 imageBytes = File.ReadAllBytes(imagePath);
-            }
-            else
+            } catch 
             {
                 throw new FileNotFoundException($"File not found: {imagePath}");
             }
