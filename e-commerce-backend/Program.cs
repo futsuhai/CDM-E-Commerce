@@ -1,3 +1,4 @@
+using e_commerce_backend.Init;
 using e_commerce_backend.Mappers;
 using e_commerce_backend.Models.Options;
 using e_commerce_backend.Repository.ProductRepository;
@@ -44,6 +45,9 @@ app.UseCors(options =>
 });
 
 app.UseHttpsRedirection();
+
+// Init database
+DatabaseInitializer.InitializeDatabase();
 
 app.UseAuthorization();
 

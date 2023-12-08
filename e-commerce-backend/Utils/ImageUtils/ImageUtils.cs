@@ -16,5 +16,20 @@ namespace e_commerce_backend.Utils.ImageUtils
             return "data:image/png;base64," + base64String;
         }
 
+        public static byte[] SetImageFromFile(string imagePath)
+        {
+            byte[] imageBytes;
+
+            if (File.Exists(imagePath))
+            {
+                imageBytes = File.ReadAllBytes(imagePath);
+            }
+            else
+            {
+                throw new FileNotFoundException($"File not found: {imagePath}");
+            }
+
+            return imageBytes;
+        }
     }
 }
