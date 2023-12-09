@@ -1,4 +1,5 @@
 <div class="products">
+    <!-- Правильная идея (вынести элемент в отдельный компонент и итерировать его)  - молодец. -->
     <app-product-card 
         *ngFor="let product of products$ | async"
         [product]="product"

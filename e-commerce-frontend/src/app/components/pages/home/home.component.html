@@ -8,6 +8,11 @@
                 <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
             </button>
         </div>
+        <!--
+        Ты можешь передать внутрь сразу значение, вместо observable. Для этого используй https://angular.io/api/common/AsyncPipe
+        Очень популярное решение, так ты избавляешься от подписок ненужных. Вообще, передача observable в качестве пропса один из самых популярных багов в ангуляре.
+        В общем, используй синхронные данные в качестве параметров (а async пайп тебе в этом поможет)
+        -->
         <app-product-list [products$]="products$"></app-product-list>
     </div>
     <div class="row">

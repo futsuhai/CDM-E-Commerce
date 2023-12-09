@@ -3,11 +3,13 @@
         Наши магазины
     </h2>
     <div class="location">
-        <button *ngFor="let map of maps; let i = index;"
-        [ngClass]="{'location__button_active' : i === selectedMapIndex}"
-        class="location__button button_base"
-        (click)="selectMap(i)">
-        {{ map.location }}
+        <button
+            *ngFor="let map of maps; let i = index;"
+            [ngClass]="{'location__button_active' : i === selectedMapIndex}"
+            class="location__button button_base"
+            (click)="selectMap(i)"
+        >
+            {{ map.location }}
         </button>
     </div>
 </div>
