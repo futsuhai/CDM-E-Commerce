@@ -12,4 +12,7 @@ import { IArticle } from 'src/app/models/article.model';
 export class ArticleComponent {
 
   @Input() article!: IArticle;
+
+  // Вот в такой записи, ангуляр будет ругаться, если ты забудешь передать пропс внутрь компонента
+  // @Input({required: true}) article!: IArticle;
 }
