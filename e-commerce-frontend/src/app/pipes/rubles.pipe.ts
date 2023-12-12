@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'rubles'
 })
-export class RublesPipe implements PipeTransform {
+export class RublesPipe implements PipeTransform { // у ангуляра уже есть такой пайп https://angular.io/api/common/CurrencyPipe
 
   transform(value: number | undefined): string {
     if (!value) {
