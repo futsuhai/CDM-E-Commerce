@@ -1,4 +1,4 @@
-<div class="logo-wrapper">
+<div class="logo-wrapper" routerLink="/home">
     <img src="assets/header/header-logo.svg" alt="logo" class="logo-wrapper__logo">
 </div>
 <div class="controls">
@@ -9,7 +9,7 @@
         </button>
         <div class="search catalog__search">
             <input class="search__input" placeholder="Найти товар">
-            <img src="assets/common/search.svg" alt="search">
+            <img src="assets/common/search.svg" alt="search" class="search__icon">
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
         <img src="assets/common/shopping-cart.svg" alt="shopping-cart" class="link__icon">
         <p class="link__name">Корзина</p>
     </div>
-    <button class="routing__button button_base button_green">
+    <button class="routing__button button_base button_green" routerLink="/auth">
         Авторизация
     </button>
 </div>

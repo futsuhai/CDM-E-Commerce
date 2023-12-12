@@ -18,6 +18,10 @@ import { MapComponent } from './components/layout/map/map.component';
 import { ActicleListComponent } from './components/layout/acticle-list/acticle-list.component';
 import { ArticleComponent } from './components/layout/article/article.component';
 import { RublesPipe } from './pipes/rubles.pipe';
+import { AuthComponent } from './components/pages/auth/auth.component';
+import { QualityComponent } from './components/layout/quality/quality.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
 
 
 
@@ -36,6 +40,8 @@ import { RublesPipe } from './pipes/rubles.pipe';
     ActicleListComponent,
     ArticleComponent,
     RublesPipe,
+    AuthComponent,
+    QualityComponent,
 
   ],
   imports: [
@@ -45,6 +51,9 @@ import { RublesPipe } from './pipes/rubles.pipe';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
