@@ -4,6 +4,82 @@
             <div class="logo-wrapper">
                 <img src="assets/auth/auth-logo.svg" alt="auth-logo" class="logo-wrapper__logo">
             </div>
+            <ul class="switch">
+                <li class="switch__item">
+                    <button 
+                        class="switch__button" 
+                        [ngClass]="{'switch__button_active' : !active}"
+                        (click)="switchForm()">
+                        Авторизация
+                    </button>
+                </li>
+                <li class="switch__item">
+                    <button 
+                        class="switch__button" 
+                        [ngClass]="{'switch__button_active' : active}"
+                        (click)="switchForm()">
+                        Регистрация
+                    </button>
+                </li>
+            </ul>
+            <ng-container *ngIf="!active; else RegisterTemplate">
+                <form class="form form-wrapper__form">
+                    <div class="form-group">
+                        <label for="login" class="form-group__label">Логин</label>
+                        <input type="text" id="login" class="form-group__input input_auth">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-group__label">Пароль</label>
+                        <div class="password form-group__password">
+                            <input type="password" id="password" class="password__input input_auth">
+                            <button class="password__toggle button_empty" (click)="hidePassword('password')">
+                                <img 
+                                [src]="hidden ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg'" 
+                                alt="password-toggle" 
+                                class="password__icon">
+                            </button>
+                        </div>
+                    </div>
+                    <button type="sumbit" class="form__submit button_base button_green">Войти</button>
+                </form>
+            </ng-container>
+            <ng-template #RegisterTemplate>
+                <form class="form form-wrapper__form">
+                    <div class="form-group">
+                        <label for="login" class="form-group__label">Логин</label>
+                        <input type="text" id="login" class="form-group__input input_auth">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-group__label">Электронная почта</label>
+                        <input type="email" id="email" class="form-group__input input_auth">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-group__label">Пароль</label>
+                        <div class="password form-group__password">
+                            <input type="password" id="password" class="password__input input_auth">
+                            <button class="password__toggle button_empty" (click)="hidePassword('password')">
+                                <img 
+                                [src]="hidden ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg'" 
+                                alt="password-toggle" 
+                                class="password__icon">
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password-confirm" class="form-group__label">Повторите пароль</label>
+                        <div class="password form-group__password">
+                            <input type="password" id="password-confirm" class="password__input input_auth">
+                            <button class="password__toggle button_empty" (click)="hidePassword('password')">
+                                <img 
+                                [src]="hidden ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg'" 
+                                alt="password-toggle" 
+                                class="password__icon">
+                            </button>
+                        </div>
+                    </div>
+                    <button type="sumbit" class="form__submit button_base button_green">Зарегистрироваться</button>
+                </form>
+            </ng-template>
         </div>
         <div class="about">
             <h2 class="about__title">

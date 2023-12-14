@@ -1,0 +1,15 @@
+.not-found {
+    &__wrapper {
+        height: 80vh;
+    }
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__title {
+        color: var(--surface);
+    }
+}

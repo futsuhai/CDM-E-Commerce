@@ -26,7 +26,20 @@
         <img src="assets/common/shopping-cart.svg" alt="shopping-cart" class="link__icon">
         <p class="link__name">Корзина</p>
     </div>
-    <button class="routing__button button_base button_green" routerLink="/auth">
-        Авторизация
-    </button>
+    <ng-container *ngIf="!user; else Autorized">
+        <button class="routing__button button_base button_green" routerLink="/auth">
+            Авторизация
+        </button>
+    </ng-container>
+    <ng-template #Autorized>
+        <div class="user routing__user">
+            <img src="assets/common/avatar.jpg" alt="user-avatar" class="user__avatar">
+            <p class="user_name">
+                Алексей
+            </p>
+            <button class="user__more button_empty">
+                <img src="assets/common/arrow-down.svg" class="user__arrow-down-icon" alt="arrow-down">
+            </button>
+        </div>
+    </ng-template>
 </div>

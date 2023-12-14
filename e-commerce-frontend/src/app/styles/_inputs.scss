@@ -1,0 +1,19 @@
+.input {
+
+    &_base {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid var(--green);
+    }
+
+    &_auth {
+        padding: 12px;
+        border-radius: 4px;
+        border: 1px solid var(--green);
+        font-size: var(--text-size-m);
+
+        &:hover, &:focus {
+            border: 1px solid var(--green-dark);
+        }
+    }
+}

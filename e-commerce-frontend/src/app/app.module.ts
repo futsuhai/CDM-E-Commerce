@@ -22,6 +22,7 @@ import { AuthComponent } from './components/pages/auth/auth.component';
 import { QualityComponent } from './components/layout/quality/quality.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 
 
@@ -42,6 +43,7 @@ import { MaterialModule } from './material/material.module';
     RublesPipe,
     AuthComponent,
     QualityComponent,
+    NotFoundComponent,
 
   ],
   imports: [

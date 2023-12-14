@@ -11,6 +11,10 @@
         border: none;
     }
 
+    &_empty, &_empty:hover, &_empty:focus {
+        border: none;
+        background: inherit;
+    }
 
     &_green {
         background: var(--green);
@@ -21,11 +25,11 @@
     &_product-card {
         border: 1px solid var(--green);
         color: var(--green);
-    }
 
-    &_product-card:hover {
-        background: var(--main-orange);
-        border: 1px solid var(--main-orange);
-        color: var(--white);
+        &:hover {
+            background: var(--main-orange);
+            border: 1px solid var(--main-orange);
+            color: var(--white);
+        }
     }
 }

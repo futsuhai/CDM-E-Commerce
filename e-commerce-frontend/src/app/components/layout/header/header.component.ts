@@ -9,5 +9,7 @@ import { Component } from '@angular/core';
   }
 })
 export class HeaderComponent {
+  
+  public user: boolean = true;
 
 }

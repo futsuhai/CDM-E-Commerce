@@ -15,21 +15,82 @@
 
 .content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-gap: 30px;
 
     &__form-wrapper {
         background: var(--white);
+        border-radius: 8px;
+        padding: 30px 40px;
+        box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.10);
     }
 }
 
 .form-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    &__form {
+        width: 100%;
+    }
 }
 
 .switch {
     display: flex;
+    gap: 16px;
+
+    &__button {
+        color: var(--green);
+        border: none;
+        background-color: inherit;
+        font-size: var(--text-size-xm);
+        padding: 8px;
+
+        &_active {
+            color: var(--main-orange);
+            border-bottom: 2px solid var(--main-orange);
+        }
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__submit {
+        font-size: var(--text-size-xm);
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    &__label {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+    }
+
+    &__password {
+        position: relative;
+    }
+}
+
+.password {
+    &__input {
+        width: 100%;
+        color: var(--surface);
+    }
+
+    &__toggle {
+        position: absolute;
+        top: 13px;
+        right: 13px;
+    }
 }
 
 .about {
