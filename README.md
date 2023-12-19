@@ -8,4 +8,6 @@ Frontend
 Backend
 
 1. Перейти в терминал e-commerce-backend и выполнить dotnet build
-2. Выполнить в том же терминале dotnet run
+2. Перейти в терминал e-commerce-backend и выполнить dotnet run
+
+*Инициализация бд происходит в классе DatabaseInitializer
