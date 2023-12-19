@@ -11,5 +11,10 @@ import { IProduct } from 'src/app/models/product.model';
 })
 export class ProductCardComponent {
 
+  public isLikedHover: boolean = false;
   @Input() product!: IProduct;
+
+  public handleMouse(): void {
+    this.isLikedHover = !this.isLikedHover;
+  }
 }

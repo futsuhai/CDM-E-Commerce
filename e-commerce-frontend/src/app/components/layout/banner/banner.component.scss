@@ -1,7 +1,35 @@
+@import "src/app/styles/mixins";
+
 .banner {
     &__title {
         font-size: var(--text-size-xxl);
         color: var(--surface);
         font-weight: 700;
+        padding: 0px 16px;
+    }
+}
+
+@include md {
+    .banner {
+        &__title {
+            font-size: var(--text-size-xl);
+        }
+
+        &__fruits {
+            height: 160px;
+            width: auto;
+        }
+    }
+}
+
+@include sm {
+    .banner {
+        &__title {
+            font-size: var(--text-size-l);
+        }
+
+        &__fruits {
+            display: none;
+        }
     }
 }

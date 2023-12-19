@@ -4,11 +4,11 @@
     </h2>
     <div class="location">
         <button
+            type="button"
             *ngFor="let map of maps; let i = index;"
             [ngClass]="{'location__button_active' : i === selectedMapIndex}"
             class="location__button button_base"
-            (click)="selectMap(i)"
-        >
+            (click)="selectMap(i)">
             {{ map.location }}
         </button>
     </div>

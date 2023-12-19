@@ -1,11 +1,11 @@
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-    grid-gap: 40px;
+    grid-gap: 27px;
 
     &__item {
-        width: var(--product-card-width);
-        height: var(--product-card-height);
+        width: 100%;
+        height: auto;
         background: var(--white);
     }
 }

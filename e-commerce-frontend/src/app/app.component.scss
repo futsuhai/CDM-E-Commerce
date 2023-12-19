@@ -1,6 +1,8 @@
 @import "src/app/styles/mixins";
 
 .root {
+    position: relative;
+
     &__header-wrapper {
         width: 100vw;
         background: var(--white);
@@ -36,7 +38,7 @@
         height: var(--footer-height);
         margin-left: auto;
         margin-right: auto;
-        padding: 0px 16px;
+        padding: 16px 16px;
     }
 }
 
@@ -47,7 +49,12 @@
 }
 
 @include lg {
+    .header {
+        gap: 20px;
+    }
+    
     .footer {
         flex-direction: column;
+        gap: 20px;
     }
 }

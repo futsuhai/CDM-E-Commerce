@@ -1,7 +1,9 @@
 using e_commerce_backend.Init;
 using e_commerce_backend.Mappers;
 using e_commerce_backend.Models.Options;
+using e_commerce_backend.Repository.AccountRepository;
 using e_commerce_backend.Repository.ProductRepository;
+using e_commerce_backend.Services.AccountService;
 using e_commerce_backend.Services.ArticleService;
 using e_commerce_backend.Services.ProductService;
 
@@ -15,16 +17,20 @@ builder.Services.AddSwaggerGen();
 //repositories
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IArticleRepository, ArticleRepository>();
+builder.Services.AddSingleton<IAccountRepository, AccountRepository>();
 // consts
 
 // mapper
 builder.Services.AddAutoMapper(typeof(AppMappingProfile));
 // options
+builder.Services.AddSingleton<CryptoOptions>();
+builder.Services.AddSingleton<JwtOptions>();
 builder.Services.Configure<DatabaseOptions>(
     builder.Configuration.GetSection("DatabaseOptions"));
 // services
 builder.Services.AddSingleton<IArticleService, ArticleService>();
 builder.Services.AddSingleton<IProductService, ProductService>();
+builder.Services.AddSingleton<IAccountService, AccountService>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

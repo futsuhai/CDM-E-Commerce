@@ -1,0 +1,44 @@
+@import "src/app/styles/mixins";
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    &__rout {
+        background: inherit;
+        border: none;
+        color: var(--surface);
+        font-size: var(--text-size-m);
+
+        &.active {
+            color: var(--main-orange);
+        }
+    }
+}
+
+.rout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@include sm {
+    .wrapper {
+        &__rout {
+            font-size: var(--text-size-s);
+        }
+    }
+
+    .rout {
+        &__icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}

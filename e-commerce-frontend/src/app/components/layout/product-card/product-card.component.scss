@@ -1,3 +1,5 @@
+@import "src/app/styles/mixins";
+
 .product-card {
     &__main-card {
         padding: 8px;
@@ -27,6 +29,11 @@
         bottom: 10px;
         border-radius: 4px;
         width: 56px;
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
     }
 }
 

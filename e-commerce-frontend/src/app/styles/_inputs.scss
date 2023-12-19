@@ -15,5 +15,13 @@
         &:hover, &:focus {
             border: 1px solid var(--green-dark);
         }
+
+        &_invalid {
+            border: 1px solid var(--error);
+
+            &:hover, &:focus {
+                border: 1px solid var(--error);
+            }
+        }
     }
 }

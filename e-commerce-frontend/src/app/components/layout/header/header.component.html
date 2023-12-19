@@ -1,45 +1,9 @@
 <div class="logo-wrapper" routerLink="/home">
     <img src="assets/header/header-logo.svg" alt="logo" class="logo-wrapper__logo">
 </div>
-<div class="controls">
-    <div class="catalog controls__catalog">
-        <button class="catalog__button button_base button_green">
-            <img src="assets/common/menu.svg" alt="menu" class="catalog__button-menu">
-            Каталог
-        </button>
-        <div class="search catalog__search">
-            <input class="search__input" placeholder="Найти товар">
-            <img src="assets/common/search.svg" alt="search" class="search__icon">
-        </div>
-    </div>
+<div class="search header__search">
+    <input class="search__input" placeholder="Найти товар">
+    <img src="assets/common/search.svg" alt="search" class="search__icon">
 </div>
-<div class="routing">
-    <div class="link">
-        <img src="assets/common/heart.svg" alt="heart" class="link__icon">
-        <p class="link__name">Избранное</p>
-    </div>
-    <div class="link">
-        <img src="assets/common/box.svg" alt="box" class="link__icon">
-        <p class="link__name">Заказы</p>
-    </div>
-    <div class="link">
-        <img src="assets/common/shopping-cart.svg" alt="shopping-cart" class="link__icon">
-        <p class="link__name">Корзина</p>
-    </div>
-    <ng-container *ngIf="!user; else Autorized">
-        <button class="routing__button button_base button_green" routerLink="/auth">
-            Авторизация
-        </button>
-    </ng-container>
-    <ng-template #Autorized>
-        <div class="user routing__user">
-            <img src="assets/common/avatar.jpg" alt="user-avatar" class="user__avatar">
-            <p class="user_name">
-                Алексей
-            </p>
-            <button class="user__more button_empty">
-                <img src="assets/common/arrow-down.svg" class="user__arrow-down-icon" alt="arrow-down">
-            </button>
-        </div>
-    </ng-template>
-</div>
+<app-header-desktop [account]="currentAccount$ | async"></app-header-desktop>
+<app-header-navbar class="header__navbar"></app-header-navbar>

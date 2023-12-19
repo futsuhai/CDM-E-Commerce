@@ -21,10 +21,13 @@ import { RublesPipe } from './pipes/rubles.pipe';
 import { AuthComponent } from './components/pages/auth/auth.component';
 import { QualityComponent } from './components/layout/quality/quality.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
-
-
+import { HeaderDesktopComponent } from './components/layout/header/header-desktop/header-desktop.component';
+import { HeaderNavbarComponent } from './components/layout/header/header-navbar/header-navbar.component';
+import { LikedComponent } from './components/pages/liked/liked.component';
+import { BasketComponent } from './components/pages/basket/basket.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
+import { OrdersComponent } from './components/pages/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,12 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     AuthComponent,
     QualityComponent,
     NotFoundComponent,
+    HeaderDesktopComponent,
+    HeaderNavbarComponent,
+    LikedComponent,
+    BasketComponent,
+    ProfileComponent,
+    OrdersComponent,
 
   ],
   imports: [
@@ -54,7 +63,6 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule,
 
   ],
   providers: [],

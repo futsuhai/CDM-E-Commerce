@@ -1,104 +1,78 @@
 @import "src/app/styles/mixins";
 
+.header {
+    &__navbar {
+        display: none;
+    }
+}
+
 .logo-wrapper {
     cursor: pointer;
 }
 
-.controls {
-    display: flex;
-    align-items: center;
-
-    &__catalog {
-        height: var(--header-item-height);
-    }
-}
-
-.catalog {
-    display: flex;
-    gap: 16px;
-
-    &__button {
-        width: var(--header-catalog-btn-width);
-        gap: 22px;
-    }
-
-    &__search {
-        border: 1px solid var(--green);
-        border-radius: 4px;
-        padding: 8px;
-    }
-}
-
 .search {
-    display: flex;
-    gap: 10px;
-
-    &__input {
-        padding-left: 8px;
-        width: 325px;
-    }
+    display: none
 }
 
-.routing {
+.header-desktop {
     display: flex;
-    align-items: center;
-    gap: 24px;
-
-    &__button {
-        height: var(--header-item-height);
-        width: 140px;
-        justify-content: center;
-    }
-
-    &__user {
-        height: var(--header-item-height);
-    }
-}
-
-.link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-
-    &__icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    &__name {
-        font-size: var(--text-size-xs);
-        color: var(--surface);
-    }
-}
-
-.user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &__avatar {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-    }
-
-    &__name {
-        color: var(--surface);
-        font-size: var(--text-size-s);
-    }
+    gap: 40px;
 }
 
 @include xl {
-    .search {
-        &__input {
-            padding-left: 8px;
-            width: 240px;
+    .header-desktop {
+        gap: 60px;
+    }
+}
+
+@include header-between-lg-xl {
+    .header-desktop {
+        gap: 40px;
+    }
+}
+
+@include lg {
+    .header {
+        &__search {
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        &__navbar {
+            display: block;
+            background: var(--white);
+            box-shadow: 8px 8px 8px 8px rgba(0, 0, 0, 0.10);
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 8px 16px;
         }
     }
 
-    .routing {
-        gap: 16px;
+    .search {
+        width: 100%;
+        display: flex;
+        gap: 10px;
+
+        &__input {
+            padding-left: 8px;
+            width: 100%;
+        }
+    }
+
+    .header-desktop {
+        display: none;
+    }
+}
+
+@include sm {
+    .header {
+        &__navbar {
+            padding: 8px 8px;
+        }
     }
 }

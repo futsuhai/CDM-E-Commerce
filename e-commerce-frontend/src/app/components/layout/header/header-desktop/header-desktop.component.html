@@ -1,0 +1,43 @@
+<div class="controls">
+    <div class="catalog controls__catalog">
+        <button type="button" class="catalog__button button_base button_green" routerLink="/catalog">
+            <img src="assets/common/menu.svg" alt="menu" class="catalog__button-menu">
+            Каталог
+        </button>
+        <div class="search catalog__search">
+            <input class="search__input" placeholder="Найти товар">
+            <img src="assets/common/search.svg" alt="search" class="search__icon">
+        </div>
+    </div>
+</div>
+<div class="routing">
+    <button class="rout routing__rout" routerLink="/liked">
+        <img src="assets/common/heart.svg" alt="heart" class="rout__icon">
+        Избранное
+    </button>
+    <button class="rout routing__rout" routerLink="/orders">
+        <img src="assets/common/box.svg" alt="box" class="rout__icon">
+        Заказы
+    </button>
+    <button class="rout routing__rout" routerLink="/basket">
+        <img src="assets/common/shopping-cart.svg" alt="shopping-cart" class="rout__icon">
+        Корзина
+    </button>
+    <ng-container *ngIf="!account; else Autorized">
+        <button type="button" class="routing__button button_base button_green" routerLink="/auth">
+            Авторизация
+        </button>
+    </ng-container>
+    <ng-template #Autorized>
+        <div class="user routing__user">
+            <img src="assets/common/avatar.jpg" alt="user-avatar" class="user__avatar">
+            <p class="user_name">
+                {{ account?.login }}
+            </p>
+            <button type="button" class="user__more button_empty" (click)="logout()">
+                <!-- Здесь должно быть меню но пока просто заглушка, и logout висит на кнопке выше -->
+                <img src="assets/common/arrow-down.svg" class="user__arrow-down-icon" alt="arrow-down">
+            </button>
+        </div>
+    </ng-template>
+</div>

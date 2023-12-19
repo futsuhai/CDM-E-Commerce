@@ -68,37 +68,85 @@ namespace e_commerce_backend.Init
                     Title = "Г/Ц Блинчики с мясом вес",
                     Rating = 5,
                     Country = "Россия",
-                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-1.jpg")
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-1.jpg"),
+                    ProductTag = ProductTag.sales
                 },
                 new()
                 {
                     Id =  Guid.NewGuid(),
                     CardPrice = 50.5,
                     CommonPrice = 55.5,
-                    Title = "Г/Ц Блинчики с мясом вес",
+                    Title = "Молоко ПРОСТОКВАШИНО паст.",
                     Rating = 5,
                     Country = "Россия",
-                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-2.jpg")
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-2.jpg"),
+                    ProductTag = ProductTag.sales
                 },
                 new()
                 {
                     Id =  Guid.NewGuid(),
                     CardPrice = 50.5,
                     CommonPrice = 55.5,
-                    Title = "Г/Ц Блинчики с мясом вес",
+                    Title = "Колбаса сырокопченая Мясная История",
                     Rating = 5,
                     Country = "Россия",
-                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-3.jpg")
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-3.jpg"),
+                    ProductTag = ProductTag.sales
                 },
                 new()
                 {
                     Id =  Guid.NewGuid(),
                     CardPrice = 50.5,
                     CommonPrice = 55.5,
-                    Title = "Г/Ц Блинчики с мясом вес",
+                    Title = "Сосиски вареные Мясная История",
                     Rating = 4,
                     Country = "Россия",
-                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-4.jpg")
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-4.jpg"),
+                    ProductTag = ProductTag.sales
+                },
+                new()
+                {
+                    Id =  Guid.NewGuid(),
+                    CardPrice = 50.5,
+                    CommonPrice = 55.5,
+                    Title = "Г/Ц Блинчики с мясом вес",
+                    Rating = 5,
+                    Country = "Россия",
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-1.jpg"),
+                    ProductTag = ProductTag.news
+                },
+                new()
+                {
+                    Id =  Guid.NewGuid(),
+                    CardPrice = 50.5,
+                    CommonPrice = 55.5,
+                    Title = "Г/Ц Блинчики с мясом вес",
+                    Rating = 5,
+                    Country = "Россия",
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-1.jpg"),
+                    ProductTag = ProductTag.news
+                },
+                new()
+                {
+                    Id =  Guid.NewGuid(),
+                    CardPrice = 50.5,
+                    CommonPrice = 55.5,
+                    Title = "Г/Ц Блинчики с мясом вес",
+                    Rating = 5,
+                    Country = "Россия",
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-1.jpg"),
+                    ProductTag = ProductTag.news
+                },
+                new()
+                {
+                    Id =  Guid.NewGuid(),
+                    CardPrice = 50.5,
+                    CommonPrice = 55.5,
+                    Title = "Г/Ц Блинчики с мясом вес",
+                    Rating = 5,
+                    Country = "Россия",
+                    ImageBytes = ImageUtils.SetImageFromFile("InitAssets/product-1.jpg"),
+                    ProductTag = ProductTag.news
                 },
             };
             collection.InsertMany(products);

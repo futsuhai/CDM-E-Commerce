@@ -1,3 +1,5 @@
+using e_commerce_backend.Models.Backend;
+
 namespace e_commerce_backend.Models.Frontend
 {
     public class ProductModel
@@ -9,5 +11,6 @@ namespace e_commerce_backend.Models.Frontend
         public int Rating { get; set; } = 0;
         public required string Country { get; set; } = string.Empty;
         public required string Base64Image { get; set; } = string.Empty;
+        public required string ProductTag { get; set; } = string.Empty;
     }
 }

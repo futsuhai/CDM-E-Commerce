@@ -1,8 +1,13 @@
 @import "src/app/styles/mixins";
 
-.links {
+.nav {
     display: flex;
     align-items: center;
+    gap: 40px;
+}
+
+.links {
+    display: flex;
     gap: 40px;
 
     &__item {
@@ -39,6 +44,25 @@
     }
 }
 
-@include lg {
-    
+@include md {
+    .nav {
+        gap: 20px;
+    }
+
+    .links {
+        gap: 20px;
+    }
+}
+
+@include sm {
+    .nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 }

@@ -1,0 +1,109 @@
+@import "src/app/styles/mixins";
+
+.controls {
+    display: flex;
+    align-items: center;
+
+    &__catalog {
+        height: var(--header-item-height);
+    }
+}
+
+.catalog {
+    display: flex;
+    gap: 16px;
+
+    &__button {
+        width: var(--header-catalog-btn-width);
+        gap: 22px;
+    }
+
+    &__search {
+        border: 1px solid var(--green);
+        border-radius: 4px;
+        padding: 8px;
+    }
+}
+
+.search {
+    display: flex;
+    gap: 10px;
+
+    &__input {
+        padding-left: 8px;
+        width: 325px;
+    }
+}
+
+.routing {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &__button {
+        height: var(--header-item-height);
+        width: 140px;
+        justify-content: center;
+    }
+
+    &__user {
+        height: var(--header-item-height);
+    }
+
+    &__rout {
+        background: inherit;
+        border: none;
+        color: var(--surface);
+        font-size: var(--text-size-xs);
+        padding: 0;
+    }
+}
+
+.rout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    &__icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    &__name {
+        color: var(--surface);
+        font-size: var(--text-size-s);
+    }
+}
+
+@include xl {
+    .search {
+        &__input {
+            width: 250px;
+        }
+    }
+
+    .routing {
+        gap: 16px;
+    }
+}
+
+@include header-between-lg-xl {
+    .search {
+        &__input {
+            width: 220px;
+        }
+    }
+}

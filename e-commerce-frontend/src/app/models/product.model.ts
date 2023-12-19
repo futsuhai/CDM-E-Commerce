@@ -6,4 +6,11 @@ export interface IProduct {
     country: string,
     rating: number,
     base64Image: string,
+    productTag: ProductTag
+}
+
+export enum ProductTag {
+    none = 'none',
+    news = 'news',
+    sales = 'sales'
 }

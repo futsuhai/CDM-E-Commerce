@@ -23,43 +23,129 @@
                 </li>
             </ul>
             <ng-container *ngIf="!active; else RegisterTemplate">
-                <form class="form form-wrapper__form">
+                <form class="form form-wrapper__form" [formGroup]="authForm" (ngSubmit)="submitAuthForm()">
                     <div class="form-group">
                         <label for="login" class="form-group__label">Логин</label>
-                        <input type="text" id="login" class="form-group__input input_auth">
+                        <input type="text" 
+                               id="login" 
+                               class="form-group__input input_auth"
+                               formControlName="authLogin"
+                               [ngClass]="{'input_auth_invalid': (authLogin?.touched && authLogin?.invalid)}">
+                        <span [hidden]="authLogin?.valid || authLogin?.untouched" 
+                              class="form-group__alert validation_alert">
+                                <ng-container *ngIf="authLogin?.hasError('required')">
+                                    Поле обязательно
+                                </ng-container>
+                                <ng-container *ngIf="authLogin?.hasError('minlength')">
+                                    Минимальная длина логина 4 символа
+                                </ng-container>
+                                <ng-container *ngIf="authLogin?.hasError('maxlength')">
+                                    Максимальная длина логина 12 символов
+                                </ng-container>
+                         </span>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-group__label">Пароль</label>
                         <div class="password form-group__password">
-                            <input type="password" id="password" class="password__input input_auth">
+                            <input type="password" 
+                                   id="password" 
+                                   class="password__input input_auth" 
+                                   formControlName="authPassword"
+                                   [ngClass]="{'input_auth_invalid': (authPassword?.touched && authPassword?.invalid)}">
+                            <span [hidden]="authPassword?.valid || authPassword?.untouched" 
+                                  class="form-group__alert validation_alert">
+                                    <ng-container *ngIf="authPassword?.hasError('required')">
+                                        Поле обязательно
+                                    </ng-container>
+                                    <ng-container *ngIf="authPassword?.hasError('pattern')">
+                                        Некорректный пароль
+                                    </ng-container>
+                            </span>
                             <button class="password__toggle button_empty" (click)="hidePassword('password')">
                                 <img 
-                                [src]="hidden ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg'" 
+                                [src]="!(authPassword?.touched && authPassword?.invalid) ?
+                                    (hiddenPassword ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg') : 
+                                    (hiddenPassword ? 'assets/auth/auth-hidden-invalid.svg' : 'assets/auth/auth-unhidden-invalid.svg')" 
                                 alt="password-toggle" 
                                 class="password__icon">
                             </button>
                         </div>
                     </div>
                     <button type="sumbit" class="form__submit button_base button_green">Войти</button>
+                    <span [hidden]="!(authLogin || authPassword)?.hasError('unauthorized')" 
+                        class="form-group__alert validation_alert">
+                        Неверный логин или пароль
+                    </span>
                 </form>
             </ng-container>
             <ng-template #RegisterTemplate>
-                <form class="form form-wrapper__form">
+                <form class="form form-wrapper__form" [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
                     <div class="form-group">
                         <label for="login" class="form-group__label">Логин</label>
-                        <input type="text" id="login" class="form-group__input input_auth">
+                        <input type="text" 
+                               id="login" 
+                               class="form-group__input input_auth" 
+                               formControlName="registerLogin"
+                               [ngClass]="{'input_auth_invalid': (registerLogin?.touched && registerLogin?.invalid)}">
+                        <span [hidden]="registerLogin?.valid || registerLogin?.untouched" 
+                              class="form-group__alert validation_alert">
+                                <ng-container *ngIf="registerLogin?.hasError('required')">
+                                    Поле обязательно
+                                </ng-container>
+                                <ng-container *ngIf="registerLogin?.hasError('minlength')">
+                                    Минимальная длина логина 4 символа
+                                </ng-container>
+                                <ng-container *ngIf="registerLogin?.hasError('maxlength')">
+                                    Максимальная длина логина 12 символов
+                                </ng-container>
+                                <ng-container *ngIf="registerLogin?.hasError('duplicateLogin')">
+                                    {{ duplicateLogin }}
+                                </ng-container>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-group__label">Электронная почта</label>
-                        <input type="email" id="email" class="form-group__input input_auth">
+                        <input type="email" 
+                               id="email" 
+                               class="form-group__input input_auth" 
+                               placeholder="user@mail.ru" 
+                               formControlName="registerEmail"
+                               [ngClass]="{'input_auth_invalid': (registerEmail?.touched && registerEmail?.invalid)}">
+                        <span [hidden]="registerEmail?.valid || registerEmail?.untouched" 
+                               class="form-group__alert validation_alert">
+                                <ng-container *ngIf="registerEmail?.hasError('required')">
+                                    Поле обязательно
+                                </ng-container>
+                                <ng-container *ngIf="registerEmail?.hasError('email')">
+                                    Некорректная электронная почта
+                                </ng-container>
+                                <ng-container *ngIf="registerEmail?.hasError('duplicateEmail')">
+                                    {{ duplicateEmail }}
+                                </ng-container>
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-group__label">Пароль</label>
                         <div class="password form-group__password">
-                            <input type="password" id="password" class="password__input input_auth">
+                            <input type="password" 
+                                   id="password" 
+                                   class="password__input input_auth" 
+                                   formControlName="registerPassword"
+                                   [ngClass]="{'input_auth_invalid': (registerPassword?.touched && registerPassword?.invalid)}">
+                            <span [hidden]="registerPassword?.valid || registerPassword?.untouched" 
+                                   class="password__alert validation_alert">
+                                    <ng-container *ngIf="registerPassword?.hasError('required')">
+                                        Поле обязательно
+                                    </ng-container>
+                                    <ng-container *ngIf="registerPassword?.hasError('pattern')">
+                                        Некорректный пароль
+                                    </ng-container>
+                            </span>
                             <button class="password__toggle button_empty" (click)="hidePassword('password')">
                                 <img 
-                                [src]="hidden ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg'" 
+                                [src]="!(registerPassword?.touched && registerPassword?.invalid) ?
+                                        (hiddenPassword ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg') : 
+                                        (hiddenPassword ? 'assets/auth/auth-hidden-invalid.svg' : 'assets/auth/auth-unhidden-invalid.svg')" 
                                 alt="password-toggle" 
                                 class="password__icon">
                             </button>
@@ -68,10 +154,25 @@
                     <div class="form-group">
                         <label for="password-confirm" class="form-group__label">Повторите пароль</label>
                         <div class="password form-group__password">
-                            <input type="password" id="password-confirm" class="password__input input_auth">
-                            <button class="password__toggle button_empty" (click)="hidePassword('password')">
+                            <input type="password" 
+                                   id="password-confirm" 
+                                   class="password__input input_auth" 
+                                   formControlName="registerPasswordConfirm"
+                                   [ngClass]="{'input_auth_invalid': (registerPasswordConfirm?.touched && registerPasswordConfirm?.invalid)}">
+                            <span [hidden]="registerPasswordConfirm?.valid || registerPasswordConfirm?.untouched" 
+                                   class="password__alert validation_alert">
+                                    <ng-container *ngIf="registerPasswordConfirm?.hasError('required')">
+                                        Поле обязательно
+                                    </ng-container>
+                                    <ng-container *ngIf="registerPasswordConfirm?.hasError('passwordMismatch')">
+                                        Пароли не совпадают
+                                    </ng-container>
+                            </span>
+                            <button class="password__toggle button_empty" (click)="hidePassword('password-confirm')">
                                 <img 
-                                [src]="hidden ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg'" 
+                                [src]="!(registerPasswordConfirm?.touched && registerPasswordConfirm?.invalid) ?
+                                        (hiddenPasswordConfirm ? 'assets/auth/auth-hidden.svg' : 'assets/auth/auth-unhidden.svg') : 
+                                        (hiddenPasswordConfirm ? 'assets/auth/auth-hidden-invalid.svg' : 'assets/auth/auth-unhidden-invalid.svg')" 
                                 alt="password-toggle" 
                                 class="password__icon">
                             </button>

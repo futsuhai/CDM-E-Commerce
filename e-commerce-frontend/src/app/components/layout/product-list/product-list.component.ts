@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
 
 @Component({
@@ -12,7 +11,6 @@ import { IProduct } from 'src/app/models/product.model';
 })
 export class ProductListComponent {
 
-  @Input() products$!: Observable<IProduct[]>;
-
+  @Input() products!: IProduct[] | null;
 
 }

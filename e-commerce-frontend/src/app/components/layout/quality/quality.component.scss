@@ -1,3 +1,5 @@
+@import "src/app/styles/mixins";
+
 .advantages-wrapper {
     display: grid;
     grid-template-columns: 21% 29% 40%;
@@ -43,5 +45,26 @@
         color: var(--green);
         font-size: var(--text-size-l);
         font-weight: 700;
+    }
+}
+
+@include quality-between-md-xs {
+    .advantages-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .banner {
+        align-items: center;
+        gap: 20px;
+    
+        &__logo {
+            transform: scale(0.7);
+        }
+
+        &__tagline {
+            padding: 10px 20px;
+        }
     }
 }

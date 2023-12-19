@@ -1,16 +1,17 @@
 <img [src]="article.base64Image" alt="article-image" class="article__image">
 <div class="content">
-    <p class="content__date">
-        {{ article.date | date}}
-    </p>
-    <h5 class="content__title">
-        {{ article.title }}
-    </h5>
-    <p class="content__text">
-        {{ article.main }}
-    </p>
-    <!-- Добавь везде где забыл type="button"-->
-    <button class="content__more button_base button_green">
+    <div class="main">
+        <p class="main__date">
+            {{ article.date | date}}
+        </p>
+        <h5 class="main__title">
+            {{ article.title }}
+        </h5>
+        <p class="main__text">
+            {{ article.main }}
+        </p>
+    </div>
+    <button type="button" class="content__more button_base button_green">
         Подробнее
     </button>
 </div>

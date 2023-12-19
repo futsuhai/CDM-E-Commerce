@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace e_commerce_backend.Models.Backend
 {
     public class Product
@@ -9,5 +11,6 @@ namespace e_commerce_backend.Models.Backend
         public int Rating { get; set; } = 0;
         public required string Country { get; set; } = string.Empty;
         public required byte[] ImageBytes { get; set; }
+        public required ProductTag ProductTag { get; set; } = ProductTag.none;
     }
 }

@@ -3,34 +3,29 @@
     <div class="row">
         <div class="title">
             <h2 class="title__name">Акции</h2>
-            <button class="title__more button_base">
+            <button type="button" class="title__more button_base">
                 Все акции
                 <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
             </button>
         </div>
-        <!--
-        Ты можешь передать внутрь сразу значение, вместо observable. Для этого используй https://angular.io/api/common/AsyncPipe
-        Очень популярное решение, так ты избавляешься от подписок ненужных. Вообще, передача observable в качестве пропса один из самых популярных багов в ангуляре.
-        В общем, используй синхронные данные в качестве параметров (а async пайп тебе в этом поможет)
-        -->
-        <app-product-list [products$]="products$"></app-product-list>
+        <app-product-list class="row__product-list" [products]="productsByTag.sales"></app-product-list>
     </div>
     <div class="row">
         <div class="title">
             <h2 class="title__name">Новинки</h2>
-            <button class="title__more button_base">
+            <button type="button" class="title__more button_base">
                 Все новинки
                 <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
             </button>
         </div>
-        <app-product-list [products$]="products$"></app-product-list>
+        <app-product-list [products]="productsByTag.news"></app-product-list>
     </div>
     <app-special></app-special>
     <app-map></app-map>
     <div class="row">
         <div class="title">
             <h2 class="title__name">Статьи</h2>
-            <button class="title__more button_base">
+            <button type="button" class="title__more button_base">
                 Все статьи
                 <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
             </button>
