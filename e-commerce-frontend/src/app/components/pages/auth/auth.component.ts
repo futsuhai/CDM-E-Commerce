@@ -96,7 +96,7 @@ export class AuthComponent {
           this.authPassword?.setErrors({ unauthorized: true });
         }
       );
-      // create modal "successful auth" and navigate on homePage
+      // create modal "successful auth" and navigate on homePage *material
     }
   }
 
@@ -112,10 +112,10 @@ export class AuthComponent {
         (response) => {
           console.log(response)
           this.registerForm.reset();
-          // create modal "successful registration" and push response.message
+          // create modal "successful registration" and push response.message *material
         },
         (error) => {
-          // pipe? УПРОСТИТЬ!!!
+          // pipe? НУЖНО УПРОСТИТЬ!!!
           if (error.error.detail) {
             if (error.error.detail.loginError) {
               this.registerLogin?.setErrors({ duplicateLogin: true });
