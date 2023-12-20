@@ -1,27 +1,17 @@
 <app-banner class="home__banner"></app-banner>
 <div class="content-wrapper home__content-wrapper">
-    <div class="row">
-        <div class="title">
-            <h2 class="title__name">Акции</h2>
-            <button type="button" class="title__more button_base">
-                Все акции
-                <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
-            </button>
-        </div>
-        <app-product-list class="row__product-list" [products]="productsByTag.sales"></app-product-list>
-    </div>
-    <div class="row">
-        <div class="title">
-            <h2 class="title__name">Новинки</h2>
-            <button type="button" class="title__more button_base">
-                Все новинки
-                <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
-            </button>
-        </div>
-        <app-product-list [products]="productsByTag.news"></app-product-list>
-    </div>
-    <app-special></app-special>
-    <app-map></app-map>
+    <app-list-layout
+        class="content-wrapper__list-layout" 
+        [products]="productsByTag.sales" 
+        [category]="'акции'">
+    </app-list-layout>
+    <app-list-layout 
+        class="content-wrapper__list-layout" 
+        [products]="productsByTag.news" 
+        [category]="'новинки'">
+    </app-list-layout>
+    <app-special class="content-wrapper__special"></app-special>
+    <app-map class="content-wrapper__map"></app-map>
     <div class="row">
         <div class="title">
             <h2 class="title__name">Статьи</h2>

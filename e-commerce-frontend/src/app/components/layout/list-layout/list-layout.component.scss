@@ -1,0 +1,38 @@
+@import "src/app/styles/mixins";
+
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    &__name {
+        font-size: var(--text-size-xl);
+        font-weight: 700;
+        color: var(--surface);
+    }
+
+    &__more {
+        display: flex;
+        gap: 8px;
+        font-size: var(--text-size-s);
+        color: var(--grayscale-hardest);
+    }
+}
+
+@include between_md-xl {
+    .row {
+        gap: 32px;
+    }
+}
+
+@include between_xs-md {
+    .row {
+        gap: 16px;
+    }
+}

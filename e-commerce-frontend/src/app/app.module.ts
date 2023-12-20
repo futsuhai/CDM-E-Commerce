@@ -28,6 +28,8 @@ import { LikedComponent } from './components/pages/liked/liked.component';
 import { BasketComponent } from './components/pages/basket/basket.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { OrdersComponent } from './components/pages/orders/orders.component';
+import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
+import { ListLayoutComponent } from './components/layout/list-layout/list-layout.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { OrdersComponent } from './components/pages/orders/orders.component';
     BasketComponent,
     ProfileComponent,
     OrdersComponent,
+    ProductDetailComponent,
+    ListLayoutComponent,
 
   ],
   imports: [
