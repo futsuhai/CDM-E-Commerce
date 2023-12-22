@@ -30,6 +30,7 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { OrdersComponent } from './components/pages/orders/orders.component';
 import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
 import { ListLayoutComponent } from './components/layout/list-layout/list-layout.component';
+import { ProductDetailCardComponent } from './components/layout/product-detail-card/product-detail-card.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ListLayoutComponent } from './components/layout/list-layout/list-layout
     OrdersComponent,
     ProductDetailComponent,
     ListLayoutComponent,
+    ProductDetailCardComponent,
 
   ],
   imports: [

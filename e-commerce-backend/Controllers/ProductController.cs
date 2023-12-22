@@ -32,6 +32,14 @@ namespace e_commerce_backend.Controllers
             return productModels;
         }
 
+        [HttpGet("GetProduct/{productId}")]
+        public async Task<ProductModel> GetProduct(Guid productId)
+        {
+            var product = await _productService.GetAsync(productId);
+            var productModel = _mapper.Map<ProductModel>(product);
+            return productModel;
+        }
+
         [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProduct([FromBody] ProductModel productModel)
         {

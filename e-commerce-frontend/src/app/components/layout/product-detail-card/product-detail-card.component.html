@@ -1,0 +1,22 @@
+<p class="product-detail-card__title">
+    {{ product?.title }}, {{ product?.country }}, {{ product?.weight }} г
+</p>
+<div class="info">
+    <p class="info__articul">
+        арт. {{ product?.acticul }}
+    </p>
+    <div class="rating">
+        <app-rating></app-rating>
+        <p class="rating__count">
+            3 отзыва
+        </p>
+    </div>
+    <button class="info-control button_base">
+        <img src="assets/common/share.svg" alt="share" class="info-control__icon">
+        Поделиться
+    </button>
+    <button class="info-control button_base">
+        <img src="assets/common/heart.svg" alt="share" class="info-control__icon">
+        В избранное
+    </button>
+</div>

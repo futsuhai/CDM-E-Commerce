@@ -5,6 +5,10 @@ export interface IProduct {
     title: string,
     country: string,
     rating: number,
+    discount: number,
+    brand: string,
+    weight: number,
+    acticul: number,
     base64Image: string,
     productTag: ProductTag
 }

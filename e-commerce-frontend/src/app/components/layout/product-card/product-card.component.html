@@ -28,7 +28,7 @@
             </p>
         </div>
     </div>
-    <div class="info">
+    <div class="info" [routerLink]="['product-detail', product.id]">
         <p class="info__description">
             {{ product.title }}, {{ product.country }}
         </p>

@@ -1,0 +1,30 @@
+.product-detail-card {
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-l);
+        font-weight: 700;
+    }
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &__articul {
+        font-size: var(--text-size-s);
+        color: var(--surface);
+    }
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__count {
+        font-size: var(--text-size-s);
+        color: var(--surface);
+        text-decoration: underline;
+    }
+}

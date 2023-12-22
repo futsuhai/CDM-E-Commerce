@@ -1,5 +1,3 @@
-using e_commerce_backend.Models.Backend;
-
 namespace e_commerce_backend.Models.Frontend
 {
     public class ProductModel
@@ -9,7 +7,11 @@ namespace e_commerce_backend.Models.Frontend
         public double CommonPrice { get; set; } = 0;
         public required string Title { get; set; } = string.Empty;
         public int Rating { get; set; } = 0;
+        public int Discount { get; set; } = 0;
         public required string Country { get; set; } = string.Empty;
+        public required string Brand { get; set; } = string.Empty;
+        public int Weight { get; set; } = 0;
+        public int Articul { get; set; } = 0;
         public required string Base64Image { get; set; } = string.Empty;
         public required string ProductTag { get; set; } = string.Empty;
     }

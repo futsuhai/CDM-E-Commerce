@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RestService } from '../rest/rest.service';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
 
 @Injectable({
@@ -22,5 +22,15 @@ export class ProductService {
         return [];
       })
     );
+  }
+
+  public getProductById(productId: string): Observable<IProduct> {
+    const endpoint: string = `${this.api}/GetProduct/${productId}`;
+    return this.restService.restGET<IProduct>(endpoint).pipe(
+      catchError((error: unknown) => {
+        console.log("An error occurred while fetching product with ID ${productId}:", error)
+        return throwError(error);
+      })
+    )
   }
 }

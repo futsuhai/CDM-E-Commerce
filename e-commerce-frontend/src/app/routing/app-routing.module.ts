@@ -8,6 +8,7 @@ import { LikedComponent } from '../components/pages/liked/liked.component';
 import { BasketComponent } from '../components/pages/basket/basket.component';
 import { ProfileComponent } from '../components/pages/profile/profile.component';
 import { OrdersComponent } from '../components/pages/orders/orders.component';
+import { ProductDetailComponent } from '../components/pages/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'product-detail/:id', component: ProductDetailComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
