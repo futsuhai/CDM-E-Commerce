@@ -30,5 +30,32 @@ namespace e_commerce_backend.Utils.ImageUtils
 
             return imageBytes;
         }
+
+        public static  List<byte[]> SetImagesFromFiles(List<string> imagePaths)
+        {
+            List<byte[]> imageBytesList = new();
+            foreach(var imagePath in imagePaths)
+            {
+                try
+                {
+                    byte[] imageBytes = File.ReadAllBytes(imagePath);
+                    imageBytesList.Add(imageBytes);
+                } catch
+                {
+                    throw new FileNotFoundException($"File not found: {imagePath}");
+                }
+            }
+            return imageBytesList;
+        }
+
+        public static List<byte[]> ConvertBase64ListToBytesList(List<string> base64Strings)
+        {
+            return base64Strings.Select(ConvertBase64ToBytes).ToList();
+        }
+
+        public static List<string> ConvertBytesListToBase64List(List<byte[]> imageBytesList)
+        {
+            return imageBytesList.Select(ConvertBytesToBase64).ToList();
+        }
     }
 }

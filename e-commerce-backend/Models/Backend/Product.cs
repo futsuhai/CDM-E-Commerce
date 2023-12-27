@@ -12,7 +12,10 @@ namespace e_commerce_backend.Models.Backend
         public required string Brand { get; set; } = string.Empty;
         public int Weight { get; set; } = 0;
         public int Articul { get; set; } = 0;
-        public required byte[] ImageBytes { get; set; }
+        public List<byte[]> ProductByteImages { get; set; } = new List<byte[]>();
+        public required byte[] ProductMainByteImage { get; set; }
         public required ProductTag ProductTag { get; set; } = ProductTag.none;
+        public required ProductCategory ProductCategory { get; set; }
+        public required List<Rewiev> Rewievs { get; set; }
     }
 }

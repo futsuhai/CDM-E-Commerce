@@ -13,6 +13,12 @@ namespace e_commerce_backend.Services.ProductService
         {
             _productRepository = productRepository;
         }
+        public async Task<List<Product>> GetProductByCategoryAsync(ProductCategory productCategory)
+        {
+            var products = await _productRepository.GetAllAsync();
+            var productsInCategory = products.Where(p => p.ProductCategory == productCategory).ToList();
+            return productsInCategory;
+        }
         public async Task<IList<Product>> GetAllAsync() =>
             await _productRepository.GetAllAsync();
 

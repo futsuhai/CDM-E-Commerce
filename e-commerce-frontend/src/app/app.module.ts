@@ -17,7 +17,7 @@ import { SpecialComponent } from './components/layout/special/special.component'
 import { MapComponent } from './components/layout/map/map.component';
 import { ActicleListComponent } from './components/layout/acticle-list/acticle-list.component';
 import { ArticleComponent } from './components/layout/article/article.component';
-import { RublesPipe } from './pipes/rubles.pipe';
+import { RublesPipe } from './pipes/rubles/rubles.pipe';
 import { AuthComponent } from './components/pages/auth/auth.component';
 import { QualityComponent } from './components/layout/quality/quality.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +31,8 @@ import { OrdersComponent } from './components/pages/orders/orders.component';
 import { ProductDetailComponent } from './components/pages/product-detail/product-detail.component';
 import { ListLayoutComponent } from './components/layout/list-layout/list-layout.component';
 import { ProductDetailCardComponent } from './components/layout/product-detail-card/product-detail-card.component';
+import { ProductDetailRewievsComponent } from './components/layout/product-detail-rewiews/product-detail-rewievs.component';
+import { PluralizePipe } from './pipes/pluralize/pluralize.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { ProductDetailCardComponent } from './components/layout/product-detail-c
     ProductDetailComponent,
     ListLayoutComponent,
     ProductDetailCardComponent,
-
+    ProductDetailRewievsComponent,
+    PluralizePipe
   ],
   imports: [
     BrowserModule,

@@ -33,4 +33,23 @@
             color: var(--white);
         }
     }
+
+    &_product-detail {
+        padding: 16px;
+        background: var(--main-orange);
+        border: 1px solid var(--main-orange);
+        color: var(--white);
+        border-radius: 4px;
+        font-size: var(--text-size-l);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 375px;
+    }
+
+    &_flex {
+        display: flex;
+        justify-content: center;
+        flex: 1 0 0;
+    }
 }

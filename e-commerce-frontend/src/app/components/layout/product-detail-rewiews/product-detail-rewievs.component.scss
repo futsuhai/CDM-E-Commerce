@@ -1,0 +1,148 @@
+@import "src/app/styles/mixins";
+
+.product-detail-rewievs {
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-xl);
+        font-weight: 700;
+    }
+}
+
+.main {
+    display: flex;
+    gap: 144px;
+
+    &__rewievs {
+        width: 680px;
+    }
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.final-rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &__score {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+        font-weight: 700;
+    }
+}
+
+.count-rating {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.count-rating-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.rewievs {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.rewiev {
+    display: flex;
+    flex-direction: column;
+
+    &__description {
+        color: var(--surface);
+        font-size: var(--text-size-s);
+    }
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &__icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__username {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+    }
+}
+
+.rewiev-rating {
+    display: flex;
+    gap: 16px;
+
+    &__date {
+        color: var(--grayscale-hard);
+        font-size: var(--text-size-xs);
+    }
+}
+
+.no-rewievs {
+    &__text {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+        font-weight: 700;
+    }
+}
+
+.new-rewiev {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__submit {
+        color: var(--main-orange);
+        background: var(--orange-dark);
+        width: 190px;
+    }
+}
+
+.new-rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+        font-weight: 700;
+    }
+}
+
+@include xl {
+    .main {
+        gap: 120px;
+
+        &__rewievs {
+            width: 580px;
+        }
+    }
+}
+
+@include lg {
+    .main {
+        gap: 60px;
+
+        &__rewievs {
+            width: 480px;
+        }
+    }
+}
+
+@include md {
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+}

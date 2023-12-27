@@ -19,7 +19,14 @@ const routes: Routes = [
   { path: 'orders', component: OrdersComponent },
   { path: 'basket', component: BasketComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'product-detail/:id', component: ProductDetailComponent },
+  { path: 'product-detail', children: [
+    {
+      path: ':id', children: [{
+        path: "", component: ProductDetailComponent
+      }
+      ]
+    }
+  ] },
   { path: '**', component: NotFoundComponent }
 ];
 

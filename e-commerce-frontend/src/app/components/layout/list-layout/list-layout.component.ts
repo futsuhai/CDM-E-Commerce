@@ -12,5 +12,5 @@ import { IProduct } from 'src/app/models/product.model';
 export class ListLayoutComponent {
 
   @Input() category!: string;
-  @Input() products!: IProduct[];
+  @Input() products!: IProduct[] | null;
 }

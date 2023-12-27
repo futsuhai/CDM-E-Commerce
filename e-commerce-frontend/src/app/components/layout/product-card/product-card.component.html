@@ -1,12 +1,12 @@
 <div class="product-image product-card__product-image">
-    <img [src]="product.base64Image" alt="product-card-image" class="product-image__image">
+    <img [src]="product.productMain64Image" alt="product-card-image" class="product-image__image">
     <div class="icon product-image__icon" (mouseenter)="handleMouse()" (mouseleave)="handleMouse()">
         <img [src]="isLikedHover ? 'assets/common/heart-fill.svg' : 'assets/common/heart.svg'"
              alt="product-card-like" 
              class="icon__like">
     </div>
     <div *ngIf="product.productTag === 'sales'" class="sale product-image__sale">
-        <span class="sale__percent">-50%</span>
+        <span class="sale__percent">-{{ product.discount }}%</span>
     </div>
 </div>
 <div class="main-card product-card__main-card">
@@ -28,12 +28,12 @@
             </p>
         </div>
     </div>
-    <div class="info" [routerLink]="['product-detail', product.id]">
+    <div class="info" [routerLink]="['/product-detail', product.id]">
         <p class="info__description">
             {{ product.title }}, {{ product.country }}
         </p>
     </div>
-    <app-rating></app-rating>
+    <app-rating [rating]="product.rating"></app-rating>
     <button type="button" class="main-card__button button_base button_product-card">
         В корзину
     </button>

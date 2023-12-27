@@ -24,4 +24,17 @@
             }
         }
     }
+
+    &_rewiev {
+        height: 100px;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: 1px solid var(--grayscale-light);
+        background: var(--white);
+        color: var(--surface);
+
+        &:hover, &:focus, &:active {
+            border: 2px solid var(--grayscale-light);
+        }
+    }
 }

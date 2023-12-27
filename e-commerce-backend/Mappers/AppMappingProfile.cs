@@ -11,10 +11,13 @@ namespace e_commerce_backend.Mappers
         {
 
             CreateMap<ProductModel, Product>()
-                .ForMember(dest => dest.ImageBytes, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Base64Image)))
+                .ForMember(dest => dest.ProductByteImages, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ListToBytesList(src.Product64Images)))
+                .ForMember(dest => dest.ProductMainByteImage, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.ProductMain64Image)))
                 .ReverseMap()
-                .ForMember(dest => dest.Base64Image, opt => opt.MapFrom(src => ImageUtils.ConvertBytesToBase64(src.ImageBytes)))
-                .ForMember(dest => dest.ProductTag, opt => opt.MapFrom(src => src.ProductTag.ToString()));
+                .ForMember(dest => dest.Product64Images, opt => opt.MapFrom(src => ImageUtils.ConvertBytesListToBase64List(src.ProductByteImages)))
+                .ForMember(dest => dest.ProductMain64Image, opt => opt.MapFrom(src => ImageUtils.ConvertBytesToBase64(src.ProductMainByteImage)))
+                .ForMember(dest => dest.ProductTag, opt => opt.MapFrom(src => src.ProductTag.ToString()))
+                .ForMember(dest => dest.ProductCategory, opt => opt.MapFrom(src => src.ProductCategory.ToString()));
 
             CreateMap<ArticleModel, Article>()
                 .ForMember(dest => dest.ImageBytes, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Base64Image)))

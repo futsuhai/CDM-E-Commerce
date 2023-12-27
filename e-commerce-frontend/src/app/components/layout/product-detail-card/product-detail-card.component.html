@@ -3,20 +3,96 @@
 </p>
 <div class="info">
     <p class="info__articul">
-        арт. {{ product?.acticul }}
+        арт. {{ product?.articul }}
     </p>
     <div class="rating">
         <app-rating></app-rating>
         <p class="rating__count">
-            3 отзыва
+            {{ product?.rewievs?.length | pluralize: 'отзыв' }}
         </p>
     </div>
-    <button class="info-control button_base">
+    <button type="button" class="info-control button_base">
         <img src="assets/common/share.svg" alt="share" class="info-control__icon">
         Поделиться
     </button>
-    <button class="info-control button_base">
+    <button type="button" class="info-control button_base">
         <img src="assets/common/heart.svg" alt="share" class="info-control__icon">
         В избранное
     </button>
+</div>
+<div class="main">
+    <div class="assets">
+        <div class="images-stack">
+            <button *ngFor="let image of product?.product64Images"class="images-stack__item" (click)="setActiveImage(image)">
+                <img [src]="image" alt="product-image" class="images-stack__image">
+            </button>
+        </div>
+        <div class="active-image">
+            <img [src]="activeImage" alt="active-product-image" class="active-image__image">
+        </div>
+    </div>
+    <div class="description">
+        <div class="controls">
+            <div class="prices">
+                <div class="price">
+                    <p class="price__item">
+                        {{ product?.commonPrice | rubles }}
+                    </p>
+                    <p class="price__description">
+                        Обычная цена
+                    </p>
+                </div>
+                <div class="price">
+                    <p class="price__item price__item_bold">
+                        {{ product?.cardPrice | rubles }}
+                    </p>
+                    <p class="price__description">
+                        С Картой Северяночки
+                    </p>
+                </div>
+            </div>
+            <div class="operators">
+                <button type="button" class="basket button_product-detail">
+                    <img src="assets/common/shopping-cart-icon.svg" alt="shopping-cart" class="basket__icon">
+                    <div class="basket-text button_flex">
+                        <p class="basket-text__item">В корзину</p>
+                    </div>
+                </button>
+                <button type="button" class="operators__button operators__button_green button_base">
+                    <img src="assets/common/atom.svg" alt="atom" class="operators__icon">
+                    Вы получите {{ bonus | number: '1.0-0' }} бонусов
+                </button>
+                <button type="button" class="operators__button button_base">
+                    <img src="assets/common/bell-off.svg" alt="bell-off" class="operators__icon">
+                    Уведомить о снижении цены
+                </button>
+            </div>
+        </div>
+        <div class="specifications">
+            <div class="specifications-item specifications__item specifications__item_gray">
+                <p class="specifications-item__text">
+                    Брэнд
+                </p>
+                <p class="specifications-item__text specifications-item__text_bold">
+                    {{ product?.brand }}
+                </p>
+            </div>
+            <div class="specifications-item specifications__item">
+                <p class="specifications-item__text">
+                    Страна производителя
+                </p>
+                <p class="specifications-item__text specifications-item__text_bold">
+                    {{ product?.country }}
+                </p>
+            </div>
+            <div class="specifications-item specifications__item specifications__item_gray">
+                <p class="specifications-item__text">
+                    Упаковка
+                </p>
+                <p class="specifications-item__text specifications-item__text_bold">
+                    {{ product?.weight }} г
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

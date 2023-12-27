@@ -1,4 +1,9 @@
 <div class="content-wrapper content-wrapper_desktop">
-    <app-product-detail-card [product]="product$ | async" class="content-wrapper__product-detail-card"></app-product-detail-card>
-    <p>{{ product$ | async}}</p>
+    <app-product-detail-card [product$]="product$" class="content-wrapper__product-detail-card"></app-product-detail-card>
+    <app-product-detail-rewievs [product]="product$ | async"></app-product-detail-rewievs>
+    <app-list-layout 
+        class="product-detail__list-layout" 
+        [products]="productByCategory$ | async" 
+        [category]="'похожие товары'">
+    </app-list-layout>
 </div>

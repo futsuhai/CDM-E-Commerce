@@ -32,6 +32,14 @@ namespace e_commerce_backend.Controllers
             return productModels;
         }
 
+        [HttpGet("GetProductsByCategory/{productCategory}")]
+        public async Task<List<ProductModel>> GetProductsByCategory(ProductCategory productCategory)
+        {
+            var productsInCategory = await _productService.GetProductByCategoryAsync(productCategory);
+            var productModels = _mapper.Map<List<ProductModel>>(productsInCategory);
+            return productModels;
+        }
+
         [HttpGet("GetProduct/{productId}")]
         public async Task<ProductModel> GetProduct(Guid productId)
         {

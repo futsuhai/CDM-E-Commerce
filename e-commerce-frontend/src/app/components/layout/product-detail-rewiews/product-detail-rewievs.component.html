@@ -1,0 +1,67 @@
+<h2 class="product-detail-rewievs__title">
+    Отзывы
+</h2>
+<div class="main">
+    <div class="rating">
+        <div class="final-rating">
+            <app-rating [rating]="product?.rating"></app-rating>
+            <p class="final-rating__score">
+                {{ product?.rating }} из 5
+            </p>
+        </div>
+        <div class="count-rating">
+            <div *ngFor="let rewiev of [1, 2, 3, 4, 5]; let i = index" class="count-rating-item">
+                <p class="count-rating-item__count">
+                    {{ rewiev }}
+                </p>
+                <app-rating [rating]="rewiev"></app-rating>
+                <p class="count-rating-item__count">
+                    {{ getCountByRating(rewiev) }}
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="rewievs main__rewievs">
+        <ng-container *ngIf="hasReviews(); else noRewievs">
+            <div *ngFor="let rewiev of product?.rewievs" class="rewiev">
+                <div class="user">
+                    <img src="assets/common/user.svg" alt="" class="user__icon">
+                    <p class="user__username">
+                        {{ rewiev.username }}
+                    </p>
+                </div>
+                <div class="rewiev-rating">
+                    <app-rating [rating]="rewiev.rating"></app-rating>
+                    <p class="rewiev-rating__date">
+                        {{ rewiev.date | date }}
+                    </p>
+                </div>
+                <p class="rewiev__description">
+                    {{ rewiev.description }}
+                </p>
+            </div>
+        </ng-container>
+        <ng-template #noRewievs >
+            <div class="no-rewievs">
+                <p class="no-rewievs__text">
+                    Отзывы на данный товар отсутствуют
+                </p>
+            </div>
+        </ng-template>
+        <div class="new-rewiev">
+            <div class="new-rating">
+                <p class="new-rating__title">
+                    Ваша оценка
+                </p>
+                <app-rating [rating]="0"></app-rating>
+            </div>
+            <textarea name="rewiev"
+                      class="new-rewiev__textarea input_rewiev"
+                      placeholder="Отзыв">
+            </textarea>
+            <button class="new-rewiev__submit button_base">
+                Отправить отзыв
+            </button>
+        </div>
+    </div>
+</div>

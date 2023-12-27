@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
 
 @Component({
@@ -9,8 +10,30 @@ import { IProduct } from 'src/app/models/product.model';
     class: 'product-detail-card'
   }
 })
-export class ProductDetailCardComponent  {
+export class ProductDetailCardComponent implements OnInit, OnDestroy {
 
-  @Input() product!: IProduct | null;
+  @Input() product$!: Observable<IProduct | null>;
+  product!: IProduct | null;
+  public bonus: number = 0;
+  public activeImage: string | undefined;
+  private destroy$: Subject<void> = new Subject<void>();
 
+  public ngOnInit(): void {
+    this.product$.subscribe(data => {
+      if (data) {
+        this.product = data;
+        this.activeImage = data?.productMain64Image;
+        this.bonus = (data?.commonPrice / 10)
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  public setActiveImage(image: string) {
+    this.activeImage = image;
+  }
 }
