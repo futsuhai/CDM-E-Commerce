@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'pluralize'
+  name: 'pluralize',
+  standalone: true,
 })
 
 export class PluralizePipe implements PipeTransform {

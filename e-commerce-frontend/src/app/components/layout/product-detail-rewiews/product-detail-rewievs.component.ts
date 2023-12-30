@@ -1,8 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { IProduct } from 'src/app/models/product.model';
+import { RatingComponent } from '../rating/rating.component';
 
 @Component({
   selector: 'app-product-detail-rewievs',
+  standalone: true,
+  imports: [CommonModule, RatingComponent],
   templateUrl: './product-detail-rewievs.component.html',
   styleUrls: ['./product-detail-rewievs.component.scss'],
   host: {

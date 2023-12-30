@@ -1,12 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap, catchError, tap } from 'rxjs/operators';
 import { IProduct } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
+import { ProductDetailCardComponent } from '../../layout/product-detail-card/product-detail-card.component';
+import { ProductDetailRewievsComponent } from '../../layout/product-detail-rewiews/product-detail-rewievs.component';
+import { ListLayoutComponent } from '../../layout/list-layout/list-layout.component';
 
 @Component({
   selector: 'app-product-detail',
+  standalone: true,
+  imports: [CommonModule, ProductDetailCardComponent, ProductDetailRewievsComponent, ListLayoutComponent],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
   host: {

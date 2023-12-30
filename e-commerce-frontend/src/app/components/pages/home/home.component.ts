@@ -1,10 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, map, takeUntil } from 'rxjs';
 import { IProduct, ProductTag } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
+import { ListLayoutComponent } from '../../layout/list-layout/list-layout.component';
+import { BannerComponent } from '../../layout/banner/banner.component';
+import { SpecialComponent } from '../../layout/special/special.component';
+import { MapComponent } from '../../layout/map/map.component';
+import { ArticleListComponent } from '../../layout/acticle-list/acticle-list.component';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
+  imports: [CommonModule, BannerComponent, ListLayoutComponent, SpecialComponent, MapComponent, ArticleListComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   host: {

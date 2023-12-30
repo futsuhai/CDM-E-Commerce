@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { IAccount } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 
 @Component({
   selector: 'app-header-desktop',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './header-desktop.component.html',
   styleUrls: ['./header-desktop.component.scss'],
   host: {

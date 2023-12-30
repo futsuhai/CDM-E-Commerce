@@ -1,13 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { IAccount } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { QualityComponent } from '../../layout/quality/quality.component';
 
 @Component({
   selector: 'app-auth',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, QualityComponent],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
   host: {

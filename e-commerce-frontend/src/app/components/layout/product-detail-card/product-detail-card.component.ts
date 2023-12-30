@@ -1,9 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
+import { RatingComponent } from '../rating/rating.component';
+import { PluralizePipe } from 'src/app/pipes/pluralize/pluralize.pipe';
+import { RublesPipe } from 'src/app/pipes/rubles/rubles.pipe';
 
 @Component({
   selector: 'app-product-detail-card',
+  standalone: true,
+  imports: [CommonModule, RatingComponent, PluralizePipe, RublesPipe],
   templateUrl: './product-detail-card.component.html',
   styleUrls: ['./product-detail-card.component.scss'],
   host: {

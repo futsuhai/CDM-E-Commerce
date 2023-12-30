@@ -1,8 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { IArticle } from 'src/app/models/article.model';
 
 @Component({
   selector: 'app-article',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss'],
   host: {

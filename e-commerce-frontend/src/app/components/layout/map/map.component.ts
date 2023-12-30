@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MapData } from 'src/app/models/map.model';
 import { MapService } from 'src/app/services/map/map.service';
 
 @Component({
   selector: 'app-map',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
   host: {
