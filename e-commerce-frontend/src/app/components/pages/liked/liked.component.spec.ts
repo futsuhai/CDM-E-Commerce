@@ -8,8 +8,8 @@ describe('LikedComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LikedComponent]
-    });
+    imports: [LikedComponent]
+});
     fixture = TestBed.createComponent(LikedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -8,8 +8,8 @@ describe('HeaderDesktopComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderDesktopComponent]
-    });
+    imports: [HeaderDesktopComponent]
+});
     fixture = TestBed.createComponent(HeaderDesktopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

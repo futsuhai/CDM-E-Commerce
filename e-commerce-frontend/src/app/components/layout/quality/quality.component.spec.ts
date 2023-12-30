@@ -8,8 +8,8 @@ describe('QualityComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [QualityComponent]
-    });
+    imports: [QualityComponent]
+});
     fixture = TestBed.createComponent(QualityComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

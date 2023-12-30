@@ -8,8 +8,8 @@ describe('SpecialComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SpecialComponent]
-    });
+    imports: [SpecialComponent]
+});
     fixture = TestBed.createComponent(SpecialComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

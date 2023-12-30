@@ -8,8 +8,8 @@ describe('ListLayoutComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListLayoutComponent]
-    });
+    imports: [ListLayoutComponent]
+});
     fixture = TestBed.createComponent(ListLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
