@@ -6,6 +6,8 @@ import { LikedComponent } from "../components/pages/liked/liked.component";
 import { BasketComponent } from "../components/pages/basket/basket.component";
 import { OrdersComponent } from "../components/pages/orders/orders.component";
 import { ProfileComponent } from "../components/pages/profile/profile.component";
+import { NotFoundComponent } from "../components/pages/not-found/not-found.component";
+import { ProductDetailComponent } from "../components/pages/product-detail/product-detail.component";
 
 export const APP_ROUTES: Routes = [
     {
@@ -40,5 +42,22 @@ export const APP_ROUTES: Routes = [
         path: 'profile',
         component: ProfileComponent
     },
-
+    {
+        path: 'product-detail',
+        children: [
+            {
+                path: ':id',
+                children: [
+                    {
+                        path: '',
+                        component: ProductDetailComponent
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        path: '**',
+        component: NotFoundComponent
+    }
 ]
