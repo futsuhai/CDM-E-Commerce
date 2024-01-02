@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, Subscription, of } from 'rxjs';
 import { switchMap, catchError, tap } from 'rxjs/operators';
 import { IProduct } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -19,12 +19,15 @@ import { ListLayoutComponent } from '../../layout/list-layout/list-layout.compon
     class: 'product-detail'
   }
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy {
 
   public productByCategory$!: Observable<IProduct[] | null>;
   public product$!: Observable<IProduct | null>;
   public id: string = '';
   public productCategory: string = '';
+
+  private routeSubscription: Subscription = new Subscription();
+  private productSubscription: Subscription = new Subscription();
 
   constructor(
     private productService: ProductService,
@@ -34,8 +37,8 @@ export class ProductDetailComponent implements OnInit {
 
   public ngOnInit(): void {
     this.route.paramMap.pipe(
-      switchMap(params => params.getAll("id")),
-      tap(data => this.id = this.id + data)
+      switchMap(params => of(params.get("id"))),
+      tap(data => this.id = data || '')
     )
     .subscribe(() => {
       this.product$ = this.productService.getProductById(this.id).pipe(
@@ -49,5 +52,10 @@ export class ProductDetailComponent implements OnInit {
         })
       );
     });
+  }
+
+  public ngOnDestroy(): void {
+    this.routeSubscription.unsubscribe();
+    this.productSubscription.unsubscribe();
   }
 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
 import { RatingComponent } from '../rating/rating.component';
@@ -16,15 +16,15 @@ import { RublesPipe } from 'src/app/pipes/rubles/rubles.pipe';
     class: 'product-detail-card'
   }
 })
-export class ProductDetailCardComponent implements OnInit, OnDestroy {
+export class ProductDetailCardComponent implements OnDestroy, OnChanges {
 
   @Input() product$!: Observable<IProduct | null>;
   product!: IProduct | null;
   public bonus: number = 0;
   public activeImage: string | undefined;
   private destroy$: Subject<void> = new Subject<void>();
-
-  public ngOnInit(): void {
+  
+  public ngOnChanges(): void {
     this.product$.subscribe(data => {
       if (data) {
         this.product = data;
