@@ -37,4 +37,15 @@
             border: 2px solid var(--grayscale-light);
         }
     }
+
+    &__search {
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: 1px solid var(--grayscale-light);
+        background: var(--white);
+
+        &:hover, &:focus, &:active {
+            border: 1px solid var(--grayscale-light);
+        }
+    }
 }

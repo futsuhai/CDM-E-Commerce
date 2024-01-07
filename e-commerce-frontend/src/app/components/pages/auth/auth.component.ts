@@ -116,6 +116,7 @@ export class AuthComponent {
         (response) => {
           console.log(response)
           this.registerForm.reset();
+          this.active = !this.active;
           // create modal "successful registration" and push response.message *material
         },
         (error) => {

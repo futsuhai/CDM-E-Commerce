@@ -1,1 +1,74 @@
-<p>profile works!</p>
+<app-banner class="profile__banner"></app-banner>
+<div class="content-wrapper content-wrapper_desktop">
+    <div class="mini-profile content-wrapper__mini-profile">
+        <img src="assets/common/avatar.jpg" alt="avatar" class="mini-profile__avatar">
+        <p class="mini-profile__fio">
+            Мишкин Егор Евгеньевич
+        </p>
+        <button type="button" class="mini-profile__logout button_base button_green">
+            Сменить аккаунт
+        </button>
+    </div>
+    <form class="profile content-wrapper__profile">
+        <p class="profile__title">
+            Редактировать данные
+        </p>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="family" class="form-group__label">Фамилия</label>
+                <input 
+                    type="text"
+                    id="family"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="name" class="form-group__label">Имя</label>
+                <input 
+                    type="text"
+                    id="name"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="surname" class="form-group__label">Отчество</label>
+                <input 
+                    type="text"
+                    id="surname"
+                    class="form-group__input input_auth">
+            </div>
+        </div>
+        <hr class="divider">
+        <p>ПОЛ ДАТА РОЖДЕНИЯ</p>
+        <hr class="divider">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="email" class="form-group__label">Электронная почта</label>
+                <input 
+                    type="text"
+                    id="email"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="phone" class="form-group__label">Номер телефона</label>
+                <input 
+                    type="text"
+                    id="phone"
+                    class="form-group__input input_auth">
+            </div>
+        </div>
+        <hr class="divider">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="adress" class="form-group__label">Адрес доставки</label>
+                <input 
+                    type="text"
+                    id="adress"
+                    class="form-group__input input_auth">
+            </div>
+        </div>
+        <div class="submit">
+            <button class="submit__button button_base button_green">
+                Сохранить изменения
+            </button>
+        </div>
+    </form>
+</div>

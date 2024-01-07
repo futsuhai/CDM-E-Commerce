@@ -8,6 +8,7 @@ import { OrdersComponent } from "../components/pages/orders/orders.component";
 import { ProfileComponent } from "../components/pages/profile/profile.component";
 import { NotFoundComponent } from "../components/pages/not-found/not-found.component";
 import { ProductDetailComponent } from "../components/pages/product-detail/product-detail.component";
+import { SearchComponent } from "../components/pages/search/search.component";
 
 export const APP_ROUTES: Routes = [
     {
@@ -55,6 +56,10 @@ export const APP_ROUTES: Routes = [
                 ]
             }
         ]
+    },
+    {
+        path: 'search',
+        component: SearchComponent
     },
     {
         path: '**',

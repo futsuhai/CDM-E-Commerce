@@ -6,13 +6,21 @@
     &__header-wrapper {
         width: 100vw;
         background: var(--white);
-        margin-bottom: 4px;
         box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.10);
     }
 
     &__footer-wrapper {
         width: 100vw;
         background-image: url('/assets/footer/footer-background.svg');
+    }
+
+    &__menu-wrapper {
+        position: absolute;
+        width: 100vw;
+        height: 248px;
+        background: var(--white);
+        box-shadow: 8px 4px 8px 0px rgba(0, 0, 0, 0.10);
+        z-index: 3;
     }
 }
 
@@ -46,6 +54,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.menu-wrapper {
+    &__menu {
+        display: flex;
+        max-width: var(--content-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 16px;
+    }
 }
 
 @include lg {

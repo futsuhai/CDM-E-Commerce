@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IAccount } from 'src/app/models/account.model';
-import { AuthState } from 'src/app/services/auth/auth-state.module';
 
 @Component({
   selector: 'app-header-desktop',
@@ -17,10 +16,16 @@ import { AuthState } from 'src/app/services/auth/auth-state.module';
 export class HeaderDesktopComponent {
 
   @Input() account: IAccount | null = null;
+  @Output() public toggledMenu = new EventEmitter<void>();
+  private hoverTimer: any;
 
-  constructor(private authState: AuthState) { }
+  public startHoverTimer(): void {
+    this.hoverTimer = setTimeout(() => {
+      this.toggledMenu.emit();
+    }, 700);
+  }
 
-  public logout(): void {
-    this.authState.logout();
+  public clearHoverTimer(): void {
+    clearTimeout(this.hoverTimer);
   }
 }

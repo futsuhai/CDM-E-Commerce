@@ -1,5 +1,8 @@
 <div class="header-wrapper root__header-wrapper">
-    <app-header class="header-wrapper__header"></app-header>
+    <app-header (toggledMenu)="toggleMenu()" class="header-wrapper__header"></app-header>
+</div>
+<div [hidden]="isMenuHidden" class="menu-wrapper root__menu-wrapper">
+    <app-catalog-menu class="menu-wrapper__menu"></app-catalog-menu>
 </div>
 <router-outlet></router-outlet>
 <div class="footer-wrapper root__footer-wrapper">

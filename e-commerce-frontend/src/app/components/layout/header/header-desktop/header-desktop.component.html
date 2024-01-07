@@ -1,6 +1,6 @@
 <div class="controls">
     <div class="catalog controls__catalog">
-        <button type="button" class="catalog__button button_base button_green" routerLink="/catalog">
+        <button type="button" class="catalog__button button_base button_green" routerLink="/catalog" (mouseenter)="startHoverTimer()" (mouseleave)="clearHoverTimer()">
             <img src="assets/common/menu.svg" alt="menu" class="catalog__button-menu">
             Каталог
         </button>
@@ -29,15 +29,11 @@
         </button>
     </ng-container>
     <ng-template #Autorized>
-        <div class="user routing__user">
+        <div class="user routing__user" routerLink="/profile">
             <img src="assets/common/avatar.jpg" alt="user-avatar" class="user__avatar">
             <p class="user_name">
                 {{ account?.login }}
             </p>
-            <button type="button" class="user__more button_empty" (click)="logout()">
-                <!-- Здесь должно быть меню но пока просто заглушка, и logout висит на кнопке выше -->
-                <img src="assets/common/arrow-down.svg" class="user__arrow-down-icon" alt="arrow-down">
-            </button>
         </div>
     </ng-template>
 </div>

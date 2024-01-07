@@ -1,0 +1,51 @@
+<form class="filter-form search-filter__filter-form">
+    <p class="filter-form__title">
+        Фильтры
+    </p>
+    <div class="form-group">
+        <label for="title" class="form-group__label">Название</label>
+        <input 
+            type="text" 
+            id="title" 
+            class="form-group__input input__search">
+    </div>
+    <div class="slider">
+        <div class="clear">
+            <p class="clear__price">
+                Цена
+            </p>
+            <button class="clear__button">
+                Очистить
+            </button>
+        </div>
+        <div class="price-range">
+            <input 
+                type="number"
+                placeholder="1" 
+                class="price-range__input input__search">
+            <img src="assets/common/minus.svg" alt="minus" class="price-range__icon">
+            <input 
+                type="number" 
+                placeholder="100"
+                class="price-range__input input__search">
+        </div>
+        <mat-slider class="price-range__slider" min="200" max="500">
+            <input value="300" matSliderStartThumb>
+            <input value="400" matSliderEndThumb>
+        </mat-slider>
+    </div>
+    <div class="categories">
+        <p class="categories__title">
+            Категории
+        </p>
+        <button
+            *ngFor="let category of categories"
+            type="button"
+            class="categories__button button_empty button_flex">
+            {{ category }}
+        </button>
+    </div>
+    <button type="button" class="filter-form__submit button_base">
+        Применить
+    </button>
+</form>

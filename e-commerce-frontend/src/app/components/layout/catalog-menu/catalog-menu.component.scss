@@ -1,0 +1,27 @@
+.catalog-menu {
+    &__categories {
+        width: 100%;
+    }
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__item {
+        font-size: var(--text-size-s);
+        color: var(--surface);
+        font-weight: 700;
+
+        &:hover {
+            color: var(--main-orange);
+        }
+    }
+}

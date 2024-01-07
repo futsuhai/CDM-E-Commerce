@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss'],
   host: {
@@ -12,5 +13,4 @@ import { Component } from '@angular/core';
   },
 })
 export class CatalogComponent {
-
 }

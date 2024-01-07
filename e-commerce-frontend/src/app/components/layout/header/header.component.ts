@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IAccount } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
@@ -19,9 +19,14 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
+  @Output() public toggledMenu = new EventEmitter<void>();
   public currentAccount$: Observable<IAccount | null>;
   
   constructor(private authState: AuthState) {
     this.currentAccount$ = this.authState.currentAccount;
    }
+
+  public toggleMenu(): void {
+    this.toggledMenu.emit();
+  }
 }

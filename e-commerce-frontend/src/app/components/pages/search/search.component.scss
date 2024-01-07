@@ -1,0 +1,16 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-xxl);
+        font-weight: 700;
+    }
+}
+
+.main {
+    display: flex;
+    gap: 40px;
+}

@@ -5,5 +5,5 @@
     <input class="search__input" placeholder="Найти товар">
     <img src="assets/common/search.svg" alt="search" class="search__icon">
 </div>
-<app-header-desktop [account]="currentAccount$ | async"></app-header-desktop>
+<app-header-desktop (toggledMenu)="toggleMenu()" [account]="currentAccount$ | async"></app-header-desktop>
 <app-header-navbar class="header__navbar"></app-header-navbar>

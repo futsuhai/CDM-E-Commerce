@@ -8,6 +8,11 @@ import { IAccount } from "src/app/models/account.model";
 export class AuthState {
 
     public currentAccount = new BehaviorSubject<IAccount | null>(null);
+    public currentAccountMock = new BehaviorSubject<IAccount>({
+        id: '1',
+        login: 'MockUser',
+        email: 'mock@mail.ru'
+    })
 
     public setCurrentUser(user: IAccount): void {
         this.currentAccount.next(user);
