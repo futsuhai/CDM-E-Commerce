@@ -1,15 +1,21 @@
 <app-banner class="profile__banner"></app-banner>
 <div class="content-wrapper content-wrapper_desktop">
     <div class="mini-profile content-wrapper__mini-profile">
-        <img src="assets/common/avatar.jpg" alt="avatar" class="mini-profile__avatar">
+        <div class="avatar">
+            <img [src]="change ? uploadedAvatar : currentAccount?.avatar" alt="avatar" class="avatar__image">
+        </div>
         <p class="mini-profile__fio">
-            Мишкин Егор Евгеньевич
+            {{ currentAccount?.family }} {{ currentAccount?.name }} {{ currentAccount?.surname }}
         </p>
-        <button type="button" class="mini-profile__logout button_base button_green">
+        <input type="file" accept="image/*" style="display:none" id="avatarInput" (change)="changeAvatar($event)">
+        <label for="avatarInput" class="mini-profile__button button_base button_green">
+            Загрузить аватар
+        </label>
+        <button type="button" class="mini-profile__button button_base button_green" (click)="logout()">
             Сменить аккаунт
         </button>
     </div>
-    <form class="profile content-wrapper__profile">
+    <form class="profile-form content-wrapper__profile-form" [formGroup]="profileForm" (ngSubmit)="submitProfileForm()">
         <p class="profile__title">
             Редактировать данные
         </p>
@@ -19,6 +25,7 @@
                 <input 
                     type="text"
                     id="family"
+                    formControlName="profileFamily"
                     class="form-group__input input_auth">
             </div>
             <div class="form-group">
@@ -26,6 +33,7 @@
                 <input 
                     type="text"
                     id="name"
+                    formControlName="profileName"
                     class="form-group__input input_auth">
             </div>
             <div class="form-group">
@@ -33,39 +41,82 @@
                 <input 
                     type="text"
                     id="surname"
+                    formControlName="profileSurname"
                     class="form-group__input input_auth">
             </div>
         </div>
         <hr class="divider">
-        <p>ПОЛ ДАТА РОЖДЕНИЯ</p>
-        <hr class="divider">
         <div class="form-row">
+            <div class="form-group">
+                <label for="date" class="form-group__label">Дата рождения</label>
+                <input 
+                    type="date"
+                    id="date"
+                    formControlName="profileDate"
+                    class="form-group__input input_auth">
+            </div>
             <div class="form-group">
                 <label for="email" class="form-group__label">Электронная почта</label>
                 <input 
                     type="text"
                     id="email"
-                    class="form-group__input input_auth">
+                    formControlName="profileEmail"
+                    class="form-group__input input_auth"
+                    [ngClass]="{'input_auth_invalid': (profileEmail?.touched && profileEmail?.invalid)}">
+                <span [hidden]="profileEmail?.valid || profileEmail?.untouched" 
+                    class="form-group__alert validation_alert">
+                     <ng-container *ngIf="profileEmail?.hasError('required')">
+                         Поле обязательно
+                     </ng-container>
+                     <ng-container *ngIf="profileEmail?.hasError('email')">
+                         Некорректная электронная почта
+                     </ng-container>
+                </span>
             </div>
             <div class="form-group">
                 <label for="phone" class="form-group__label">Номер телефона</label>
                 <input 
                     type="text"
                     id="phone"
-                    class="form-group__input input_auth">
+                    formControlName="profilePhone"
+                    class="form-group__input input_auth"
+                    placeholder="+7 (___) ___-__-__"
+                    pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                    maxlength="18"
+                    appPhoneNumber>
             </div>
         </div>
         <hr class="divider">
+        <p class="profile__title">
+            Адрес доставки
+        </p>
         <div class="form-row">
             <div class="form-group">
-                <label for="adress" class="form-group__label">Адрес доставки</label>
+                <label for="city" class="form-group__label">Город</label>
                 <input 
                     type="text"
-                    id="adress"
+                    id="city"
+                    formControlName="profileCity"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="street" class="form-group__label">Улица</label>
+                <input 
+                    type="text"
+                    id="street"
+                    formControlName="profileStreet"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="house" class="form-group__label">Дом</label>
+                <input 
+                    type="text"
+                    id="house"
+                    formControlName="profileHouse"
                     class="form-group__input input_auth">
             </div>
         </div>
-        <div class="submit">
+        <div class="submit profile-form__submit">
             <button class="submit__button button_base button_green">
                 Сохранить изменения
             </button>

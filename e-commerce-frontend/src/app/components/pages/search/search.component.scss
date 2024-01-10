@@ -1,3 +1,5 @@
+@import "src/app/styles/mixins";
+
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -13,4 +15,20 @@
 .main {
     display: flex;
     gap: 40px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+
+    &__item {
+        width: 100%;
+        height: auto;
+        background: var(--white);
+    }
+}
+
+@include xl {
+
 }

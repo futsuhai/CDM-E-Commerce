@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchFilterComponent } from '../../layout/search-filter/search-filter.component';
-import { ProductListComponent } from '../../layout/product-list/product-list.component';
 import { IProduct } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
+import { ProductCardComponent } from '../../layout/product-card/product-card.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, SearchFilterComponent, ProductListComponent],
+  imports: [CommonModule, SearchFilterComponent, ProductCardComponent],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })

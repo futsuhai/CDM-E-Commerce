@@ -1,3 +1,5 @@
+@import "src/app/styles/mixins";
+
 .profile {
     &__banner {
         background-image: url('/assets/banner/banner-background.svg');
@@ -16,13 +18,11 @@
     justify-content: center;
     gap: 40px;
 
-    &__profile {
+    &__profile-form {
         background: var(--white);
         border-radius: 8px;
-        width: 1000px;
         padding: 40px;
         box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.10);
-
     }
 
     &__mini-profile {
@@ -37,22 +37,31 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-
-    &__avatar {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-    }
+    gap: 16px;
 
     &__fio {
         color: var(--surface);
         font-weight: 700;
         font-size: var(--text-size-s);
     }
+
+    &__button {
+        cursor: pointer;
+    }
 }
 
-.profile {
+.avatar {
+    display: flex;
+    position: relative;
+
+    &__image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+}
+
+.profile-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -61,12 +70,16 @@
         color: var(--surface);
         font-size: var(--text-size-s);
     }
+
+    &__submit {
+        margin-top: 16px;
+    }
 }
 
 .form-row {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     gap: 32px;
 }
 
@@ -84,4 +97,13 @@
 .submit {
     display: flex;
     justify-content: center;
+}
+
+@include md {
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+    }
 }

@@ -3,6 +3,7 @@ using e_commerce_backend.Models.Backend;
 using e_commerce_backend.Models.Frontend;
 using e_commerce_backend.Models.Options;
 using e_commerce_backend.Services.AccountService;
+using e_commerce_backend.Utils.ImageUtils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace e_commerce_backend.Controllers
@@ -46,6 +47,7 @@ namespace e_commerce_backend.Controllers
             account.Salt = Convert.ToBase64String(salt);
             account.HashPassword = Convert.ToBase64String(hashPassword);
             account.Tokens = _jwtOptions.GetJwtTokens(account.Login);
+            account.Avatar = ImageUtils.SetImageFromFile("InitAssets/avatar.jpg");
             await _accountService.CreateAsync(account);
             return Ok("Регистрация прошла успешно");
         }
@@ -56,7 +58,7 @@ namespace e_commerce_backend.Controllers
             var account = await _accountService.GetAccountByLoginAsync(accountModel.Login);
             if (account == null)
             {
-                return Unauthorized(); // BadRequest // УПРОСТИТЬ!!
+                return Unauthorized();
             }
             var hashPassword = _cryptoOptions.GenerateHashPassword(accountModel.Password, Convert.FromBase64String(account.Salt));
             if (Convert.ToBase64String(hashPassword) == account.HashPassword)
@@ -68,6 +70,24 @@ namespace e_commerce_backend.Controllers
                 return Ok(loginedAccount);
             }
             else
+            {
+                return Unauthorized();
+            }
+        }
+
+        [HttpPut("RefreshTokens/{refreshToken}")]
+        public async Task<IActionResult> RefreshTokens(string refreshToken)
+        {
+            var login = _jwtOptions.GetLoginFromJwtToken(refreshToken);
+            var account = await _accountService.GetAccountByLoginAsync(login);
+            if (account?.Tokens.RefreshToken == refreshToken)
+            {
+                var tokens = _jwtOptions.GetJwtTokens(login);
+                account.Tokens = tokens;
+                await _accountService.UpdateAsync(account.Id, account);
+                return Ok(account);
+            }
+            else 
             {
                 return Unauthorized();
             }

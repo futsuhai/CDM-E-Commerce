@@ -1,7 +1,12 @@
 <div class="content-wrapper content-wrapper_desktop">
     <div class="main">
         <app-search-filter></app-search-filter>
-        <app-product-list [products]="products.slice(0, 3)"></app-product-list>
+        <div class="products">
+            <app-product-card 
+                *ngFor="let product of products" 
+                [product]="product" 
+                class="products__item">
+            </app-product-card>
+        </div>
     </div>
 </div>
-

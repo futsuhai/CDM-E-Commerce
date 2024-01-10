@@ -9,7 +9,6 @@ namespace e_commerce_backend.Mappers
     {
         public AppMappingProfile()
         {
-
             CreateMap<ProductModel, Product>()
                 .ForMember(dest => dest.ProductByteImages, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ListToBytesList(src.Product64Images)))
                 .ForMember(dest => dest.ProductMainByteImage, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.ProductMain64Image)))
@@ -23,10 +22,13 @@ namespace e_commerce_backend.Mappers
                 .ForMember(dest => dest.ImageBytes, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Base64Image)))
                 .ReverseMap()
                 .ForMember(dest => dest.Base64Image, opt => opt.MapFrom(src => ImageUtils.ConvertBytesToBase64(src.ImageBytes)));
+                
             CreateMap<AccountModel, Account>()
                 .ForMember(dest => dest.Salt, opt => opt.Ignore())
                 .ForMember(dest => dest.HashPassword, opt => opt.Ignore())
-                .ReverseMap();
+                .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Avatar)))
+                .ReverseMap()
+                .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => ImageUtils.ConvertBytesToBase64(src.Avatar)));
         }
     }
 }

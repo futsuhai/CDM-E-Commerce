@@ -63,6 +63,10 @@ export class AuthComponent {
         [Validators.required,
         Validators.minLength(this.MIN_LENGHT_LOGIN),
         Validators.maxLength(this.MAX_LENGHT_LOGIN)]),
+      registerName: new FormControl(
+        "",
+        [Validators.required]
+      ),
       registerEmail: new FormControl(
         "",
         [Validators.required,
@@ -83,7 +87,7 @@ export class AuthComponent {
     return form;
   }
 
-  submitAuthForm(): void {
+  public submitAuthForm(): void {
     if(this.authForm.valid) {
       const formValue = this.authForm.value;
       const account: IAccount = {
@@ -104,23 +108,26 @@ export class AuthComponent {
     }
   }
 
-  submitRegisterForm(): void {
+  public submitRegisterForm(): void {
     if (this.registerForm.valid) {
       const formValue = this.registerForm.value;
       const account: IAccount = {
         login: formValue.registerLogin,
+        name: formValue.registerName,
         email: formValue.registerEmail,
-        password: formValue.registerPassword
+        password: formValue.registerPassword,
+        adress: {
+          city: "",
+          street: "",
+          house: ""
+        }
       }
       this.authService.register(account).pipe(take(1)).subscribe(
-        (response) => {
-          console.log(response)
-          this.registerForm.reset();
-          this.active = !this.active;
-          // create modal "successful registration" and push response.message *material
+        (responce) => {
+          console.log(responce);
+          // create modal "successful registration"
         },
         (error) => {
-          // pipe? НУЖНО УПРОСТИТЬ!!!
           if (error.error.detail) {
             if (error.error.detail.loginError) {
               this.registerLogin?.setErrors({ duplicateLogin: true });
@@ -133,6 +140,8 @@ export class AuthComponent {
           }
         }
       );
+      this.registerForm.reset();
+      this.active = !this.active;
     }
   }
 
@@ -175,6 +184,10 @@ export class AuthComponent {
 
   public get registerLogin(): AbstractControl | null {
     return this.registerForm.get("registerLogin");
+  }
+
+  public get registerName(): AbstractControl | null {
+    return this.registerForm.get("registerName");
   }
 
   public get registerEmail(): AbstractControl | null {

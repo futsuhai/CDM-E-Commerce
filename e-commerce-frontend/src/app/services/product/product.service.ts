@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestService } from '../rest/rest.service';
 import { Observable, catchError, throwError } from 'rxjs';
-import { IProduct, ProductCategory } from 'src/app/models/product.model';
+import { IProduct } from 'src/app/models/product.model';
 
 @Injectable({
   providedIn: 'root'

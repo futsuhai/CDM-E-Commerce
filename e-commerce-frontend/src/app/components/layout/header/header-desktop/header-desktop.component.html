@@ -30,9 +30,9 @@
     </ng-container>
     <ng-template #Autorized>
         <div class="user routing__user" routerLink="/profile">
-            <img src="assets/common/avatar.jpg" alt="user-avatar" class="user__avatar">
+            <img [src]="account?.avatar" alt="user-avatar" class="user__avatar">
             <p class="user_name">
-                {{ account?.login }}
+                {{ account?.name }}
             </p>
         </div>
     </ng-template>

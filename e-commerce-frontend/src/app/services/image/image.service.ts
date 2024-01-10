@@ -6,29 +6,21 @@ import { Observable, Observer } from 'rxjs';
 })
 export class ImageService {
 
-  public convertImageToBase64(imagePath: string): Observable<string> {
+  public convertFileToBase64(file: File): Observable<string> {
     return new Observable((observer: Observer<string>) => {
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
+      const reader = new FileReader();
 
-      img.onload = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-
-        const ctx = canvas.getContext('2d');
-        ctx?.drawImage(img, 0, 0, img.width, img.height);
-
-        const dataURL = canvas.toDataURL('image/png');
-        observer.next(dataURL);
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        observer.next(base64String);
         observer.complete();
       };
 
-      img.onerror = (error) => {
+      reader.onerror = (error) => {
         observer.error(error);
       };
 
-      img.src = imagePath;
+      reader.readAsDataURL(file);
     });
   }
 }

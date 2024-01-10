@@ -20,10 +20,10 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
 
   @Output() public toggledMenu = new EventEmitter<void>();
-  public currentAccount$: Observable<IAccount | null>;
+  public currentAccount: Observable<IAccount | null>;
   
   constructor(private authState: AuthState) {
-    this.currentAccount$ = this.authState.currentAccount;
+    this.currentAccount = this.authState.currentAccount;
    }
 
   public toggleMenu(): void {

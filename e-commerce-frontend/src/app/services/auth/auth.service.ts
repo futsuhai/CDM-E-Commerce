@@ -23,4 +23,9 @@ export class AuthService {
     const endpoint: string = `${this.api}/Auth`;
     return this.restService.restPUT<IAccount>(endpoint, account);
   }
+
+  public refreshTokens(refreshToken: string): Observable<IAccount> {
+    const endpoint: string = `${this.api}/RefreshTokens/${refreshToken}`;
+    return this.restService.restPUT<IAccount>(endpoint);
+  }
 }

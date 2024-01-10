@@ -110,25 +110,6 @@
     gap: 120px;
 }
 
-.banner {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-
-    &__tagline {
-        padding: 30px 40px;
-        background: var(--green-light);
-    }
-}
-
-.tagline {
-    &__text {
-        color: var(--green);
-        font-size: var(--text-size-l);
-        font-weight: 700;
-    }
-}
-
 @include md {
     .content {
         display: flex;
