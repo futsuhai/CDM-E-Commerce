@@ -9,6 +9,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
 import { AccountService } from 'src/app/services/account/account.service';
 import { take } from 'rxjs';
 import { ImageService } from 'src/app/services/image/image.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-profile',
@@ -25,9 +26,12 @@ export class ProfileComponent {
   public currentAccount!: IAccount | null;
   public profileForm!: FormGroup;
   public uploadedAvatar: string = "";
-  public change: boolean = false;
 
-  constructor(private authState: AuthState, private router: Router, private accountService: AccountService, private imageService: ImageService) {
+  constructor(private authState: AuthState,
+    private router: Router,
+    private accountService: AccountService,
+    private alertService: AlertService,
+    private imageService: ImageService) {
     this.currentAccount = authState.getCurrentUser();
     if (this.currentAccount && this.currentAccount.avatar) {
       this.uploadedAvatar = this.currentAccount.avatar;
@@ -68,11 +72,16 @@ export class ProfileComponent {
         },
         avatar: this.uploadedAvatar,
       }
-      this.accountService.update(account).pipe(take(1)).subscribe(
-        account => {
+      this.accountService.update(account).pipe(take(1)).subscribe({
+        next: account => {
           this.authState.setCurrentUser(account);
-          //snackbar
-        })
+          this.alertService.openSnackBar("Данные успешно сохранены", 2000, "valid");
+        },
+        error: () => {
+          this.alertService.openSnackBar("Ошибка при сохранении данных", 2000, "invalid");
+        }
+      });
+      
     }
   }
 
@@ -80,16 +89,15 @@ export class ProfileComponent {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
     if (file) {
-      this.imageService.convertFileToBase64(file).pipe(take(1)).subscribe(
-        (base64String) => {
+      this.imageService.convertFileToBase64(file).pipe(take(1)).subscribe({
+        next: (base64String) => {
           this.uploadedAvatar = base64String;
-          this.change = !this.change;
+          this.alertService.openSnackBar("Файл успешно загружен", 2000, "valid");
         },
-        (error) => {
-          console.error(error);
-          // snackbar
+        error: () => {
+          this.alertService.openSnackBar("Ошибка при загрузке файла", 2000, "invalid");
         }
-      );
+      });
     }
   }
   

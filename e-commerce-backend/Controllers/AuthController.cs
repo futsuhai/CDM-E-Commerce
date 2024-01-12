@@ -49,7 +49,7 @@ namespace e_commerce_backend.Controllers
             account.Tokens = _jwtOptions.GetJwtTokens(account.Login);
             account.Avatar = ImageUtils.SetImageFromFile("InitAssets/avatar.jpg");
             await _accountService.CreateAsync(account);
-            return Ok("Регистрация прошла успешно");
+            return Ok(new { message = "Регистрация прошла успешно" });
         }
 
         [HttpPut("Auth")]

@@ -7,6 +7,7 @@ import { IAccount } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { QualityComponent } from '../../layout/quality/quality.component';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-auth',
@@ -36,6 +37,7 @@ export class AuthComponent {
   constructor(
     private authService: AuthService,
     private authState: AuthState,
+    private alertService: AlertService,
     private router: Router) {
       this.registerForm = this.initRegisterForm();
       this.authForm = this.initAuthForm();
@@ -94,17 +96,16 @@ export class AuthComponent {
         login: formValue.authLogin,
         password: formValue.authPassword
       }
-      this.authService.login(account).pipe(take(1)).subscribe(
-        (account) => {
-          this.authState.setCurrentUser(account);
+      this.authService.login(account).pipe(take(1)).subscribe({
+        next: (loggedInAccount) => {
+          this.authState.setCurrentUser(loggedInAccount);
           this.router.navigate(['/home']);
         },
-        () => {
+        error: () => {
           this.authLogin?.setErrors({ unauthorized: true });
           this.authPassword?.setErrors({ unauthorized: true });
         }
-      );
-      // create modal "successful auth" and navigate on homePage *material
+      });
     }
   }
 
@@ -122,12 +123,14 @@ export class AuthComponent {
           house: ""
         }
       }
-      this.authService.register(account).pipe(take(1)).subscribe(
-        (responce) => {
-          console.log(responce);
-          // create modal "successful registration"
+      this.authService.register(account).pipe(take(1)).subscribe({
+        next: (response: any) => {
+          console.log(response.message);
+          this.alertService.openSnackBar(response.message, 2000, "valid");
+          this.registerForm.reset();
+          this.active = !this.active;
         },
-        (error) => {
+        error: (error) => {
           if (error.error.detail) {
             if (error.error.detail.loginError) {
               this.registerLogin?.setErrors({ duplicateLogin: true });
@@ -139,9 +142,7 @@ export class AuthComponent {
             }
           }
         }
-      );
-      this.registerForm.reset();
-      this.active = !this.active;
+      });      
     }
   }
 
