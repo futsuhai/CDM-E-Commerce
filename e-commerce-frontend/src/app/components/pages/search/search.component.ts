@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchFilterComponent } from '../../layout/search-filter/search-filter.component';
 import { IProduct } from 'src/app/models/product.model';
-import { ProductService } from 'src/app/services/product/product.service';
 import { ProductCardComponent } from '../../layout/product-card/product-card.component';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -12,19 +13,38 @@ import { ProductCardComponent } from '../../layout/product-card/product-card.com
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
-  public products!: IProduct[];
+export class SearchComponent implements OnInit, OnDestroy {
 
-  constructor(private productService: ProductService) { }
+  public products!: IProduct[];
+  public searchTitle: string = "";
+  public searchCategory: string = "";
+  public searchTag: string = "";
+
+  private routeSubscription: Subscription | undefined;
+
+  constructor(private route: ActivatedRoute) { }
 
   public ngOnInit(): void {
-    this.productService.getProducts().subscribe(data => {
-      this.products = data;
-      console.log(this.products);
-    })
+    this.route.queryParams.subscribe(params => {
+      if(params['search']){
+        this.searchTitle = params['search'];
+      }
+      if(params['category']){
+        this.searchCategory = params['category'];
+      }
+      if(params['tag']){
+        this.searchTag = params['tag'];
+      }
+    });
   }
 
   onProductsChanged(filteredProducts: IProduct[]): void {
     this.products = filteredProducts;
+  }
+
+  ngOnDestroy(): void {
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
   }
 }

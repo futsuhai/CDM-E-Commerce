@@ -1,6 +1,11 @@
 <div class="content-wrapper content-wrapper_desktop">
     <div class="main">
-        <app-search-filter (filteredProducts)="onProductsChanged($event)"></app-search-filter>
+        <app-search-filter 
+            [searchTitle]="searchTitle" 
+            [searchCategory]="searchCategory" 
+            [searchTag]="searchTag" 
+            (filteredProducts)="onProductsChanged($event)">
+        </app-search-filter>
         <div class="products">
             <app-product-card 
                 *ngFor="let product of products" 

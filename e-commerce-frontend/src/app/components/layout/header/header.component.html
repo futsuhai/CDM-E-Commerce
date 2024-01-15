@@ -2,8 +2,10 @@
     <img src="assets/header/header-logo.svg" alt="logo" class="logo-wrapper__logo">
 </div>
 <div class="search header__search">
-    <input class="search__input" placeholder="Найти товар">
-    <img src="assets/common/search.svg" alt="search" class="search__icon">
+    <input class="search__input" placeholder="Найти товар" #searchInput>
+    <button type="button" class="search__button button_empty" (click)="navigateToCatalog(searchInput.value)">
+        <img src="assets/common/search.svg" alt="search" class="search__icon">
+    </button>
 </div>
 <app-header-desktop (toggledMenu)="toggleMenu()" [account]="currentAccount | async"></app-header-desktop>
 <app-header-navbar class="header__navbar"></app-header-navbar>

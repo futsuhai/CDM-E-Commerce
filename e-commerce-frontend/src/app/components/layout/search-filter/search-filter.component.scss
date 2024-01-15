@@ -102,4 +102,11 @@
             pointer-events: all;
         }
     }
+
+    .filter-form {
+        &__submit {
+            margin-top: 16px;
+            width: 100%;
+        }
+    }
 }

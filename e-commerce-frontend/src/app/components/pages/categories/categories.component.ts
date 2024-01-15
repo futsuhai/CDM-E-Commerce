@@ -16,4 +16,5 @@ import { ICategory, appCategories } from 'src/app/models/category.model';
 export class CategoriesComponent {
 
   public categories: ICategory[] = appCategories;
+
 }

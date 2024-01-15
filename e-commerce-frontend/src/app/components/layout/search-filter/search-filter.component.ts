@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatChipsModule } from '@angular/material/chips';
@@ -20,8 +20,11 @@ import { IProduct } from 'src/app/models/product.model';
     class: 'search-filter'
   }
 })
-export class SearchFilterComponent {
+export class SearchFilterComponent implements OnChanges {
 
+  @Input() searchCategory: string = "";
+  @Input() searchTag: string = "";
+  @Input() searchTitle: string = "";
   @Output() filteredProducts: EventEmitter<IProduct[]> = new EventEmitter<IProduct[]>();
 
   public categories: ICategory[] = appCategories;
@@ -36,9 +39,20 @@ export class SearchFilterComponent {
     this.filterForm = this.initFilterForm();
   }
 
+  public ngOnChanges(): void {
+    if(this.searchCategory !== "") {
+      this.filterCategories.push(this.searchCategory);
+    }
+    if(this.searchTag !== "") {
+      this.filterTags.push(this.searchTag);
+    }
+    this.filterForm = this.initFilterForm();
+    this.sumbitFilterForm();
+  }
+
   public initFilterForm(): FormGroup {
     return new FormGroup({
-      filterTitle: new FormControl(""),
+      filterTitle: new FormControl(this.searchTitle),
       filterPriceSlider: new FormGroup({
         sliderStartValue: new FormControl(1, [Validators.min(1)]),
         sliderEndValue: new FormControl(300, [Validators.max(300)])

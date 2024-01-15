@@ -3,11 +3,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription, of } from 'rxjs';
 import { switchMap, catchError, tap } from 'rxjs/operators';
-import { IProduct } from 'src/app/models/product.model';
+import { IProduct, ProductTag } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ProductDetailCardComponent } from '../../layout/product-detail-card/product-detail-card.component';
 import { ProductDetailRewievsComponent } from '../../layout/product-detail-rewiews/product-detail-rewievs.component';
 import { ListLayoutComponent } from '../../layout/list-layout/list-layout.component';
+import { ITag } from 'src/app/models/tag.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -25,6 +26,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   public product$!: Observable<IProduct | null>;
   public id: string = '';
   public productCategory: string = '';
+  public same: ITag = {
+    key: "Похожие товары",
+    value: ProductTag.none
+  }
 
   private routeSubscription: Subscription = new Subscription();
   private productSubscription: Subscription = new Subscription();

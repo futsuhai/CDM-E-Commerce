@@ -5,8 +5,10 @@
             Каталог
         </button>
         <div class="search catalog__search">
-            <input class="search__input" placeholder="Найти товар">
-            <img src="assets/common/search.svg" alt="search" class="search__icon">
+            <input class="search__input" placeholder="Найти товар" [(ngModel)]="searchValue">
+            <button type="button" class="search__button button_empty" (click)="navigateToCatalog()">
+                <img src="assets/common/search.svg" alt="search" class="search__icon">
+            </button>
         </div>
     </div>
 </div>

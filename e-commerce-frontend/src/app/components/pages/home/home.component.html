@@ -3,12 +3,12 @@
     <app-list-layout
         class="content-wrapper__list-layout" 
         [products]="productsByTag.sales" 
-        [category]="'акции'">
+        [tag]="tags[0]">
     </app-list-layout>
     <app-list-layout 
         class="content-wrapper__list-layout" 
         [products]="productsByTag.news" 
-        [category]="'новинки'">
+        [tag]="tags[1]">
     </app-list-layout>
     <app-special class="content-wrapper__special"></app-special>
     <app-map class="content-wrapper__map"></app-map>

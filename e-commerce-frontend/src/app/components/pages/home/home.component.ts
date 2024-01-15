@@ -8,6 +8,7 @@ import { BannerComponent } from '../../layout/banner/banner.component';
 import { SpecialComponent } from '../../layout/special/special.component';
 import { MapComponent } from '../../layout/map/map.component';
 import { ArticleListComponent } from '../../layout/acticle-list/acticle-list.component';
+import { appTags } from 'src/app/models/tag.model';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ import { ArticleListComponent } from '../../layout/acticle-list/acticle-list.com
 export class HomeComponent implements OnInit, OnDestroy  {
 
   private destroy$: Subject<void> = new Subject<void>();
+  public tags = appTags;
   public productsByTag: { [key in ProductTag]: IProduct[] } = {
     [ProductTag.none]: [],
     [ProductTag.news]: [],
