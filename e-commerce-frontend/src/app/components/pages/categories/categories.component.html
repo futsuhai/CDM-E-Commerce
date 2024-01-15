@@ -1,0 +1,13 @@
+<div class="content-wrapper content-wrapper_desktop">
+    <h2 class="content-wrapper__title">
+        Каталог
+    </h2>
+    <div class="categories">
+        <div *ngFor="let category of categories" class="category categories__category" routerLink="/search">
+            <img [src]="category.image" alt="category-image" class="category__image">
+            <h3 class="category__title">
+                {{ category.key }}
+            </h3>
+        </div>
+    </div>
+</div>

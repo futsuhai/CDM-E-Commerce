@@ -1,51 +1,65 @@
-<form class="filter-form search-filter__filter-form">
-    <p class="filter-form__title">
-        Фильтры
-    </p>
+<button type="button" class="search-filter__settings button_empty" (click)="showSettings()">
+    Фильтры
+</button>
+<form class="filter-form search-filter__filter-form" [formGroup]="filterForm" (ngSubmit)="sumbitFilterForm()">
+    <div class="tags">
+        <button 
+            type="button" 
+            *ngFor="let tag of tags" 
+            (click)="selectItem(tag, filterTags)"
+            [ngClass]="{'button_chip_active': isItemSelected(tag, filterTags)}" 
+            class="tags__item button_chip button_flex">
+            {{ tag.key }}
+        </button>
+    </div>
     <div class="form-group">
         <label for="title" class="form-group__label">Название</label>
         <input 
             type="text" 
             id="title" 
+            formControlName="filterTitle"
             class="form-group__input input__search">
     </div>
     <div class="slider">
-        <div class="clear">
-            <p class="clear__price">
-                Цена
-            </p>
-            <button class="clear__button">
-                Очистить
-            </button>
-        </div>
-        <div class="price-range">
+        <p class="slider__price">
+            Цена
+        </p>
+        <div class="price-range" formGroupName="filterPriceSlider">
             <input 
-                type="number"
-                placeholder="1" 
-                class="price-range__input input__search">
+              type="number"
+              placeholder="1" 
+              formControlName="sliderStartValue"
+              [value]="filterForm.get('filterPriceSlider')?.get('sliderStartValue')?.value"
+              class="price-range__input input__search">
             <img src="assets/common/minus.svg" alt="minus" class="price-range__icon">
             <input 
-                type="number" 
-                placeholder="100"
-                class="price-range__input input__search">
-        </div>
-        <mat-slider class="price-range__slider" min="200" max="500">
-            <input value="300" matSliderStartThumb>
-            <input value="400" matSliderEndThumb>
-        </mat-slider>
+              type="number" 
+              placeholder="300"
+              formControlName="sliderEndValue"
+              [value]="filterForm.get('filterPriceSlider')?.get('sliderEndValue')?.value"
+              class="price-range__input input__search">
+          </div>
+          <mat-slider class="price-range__slider" [min]="1" [max]="300" formGroupName="filterPriceSlider">
+            <input [value]="filterForm.get('filterPriceSlider')?.get('sliderStartValue')?.value" matSliderStartThumb formControlName="sliderStartValue">
+            <input [value]="filterForm.get('filterPriceSlider')?.get('sliderEndValue')?.value" matSliderEndThumb formControlName="sliderEndValue">
+          </mat-slider>
     </div>
     <div class="categories">
         <p class="categories__title">
             Категории
         </p>
-        <button
-            *ngFor="let category of categories"
-            type="button"
-            class="categories__button button_empty button_flex">
-            {{ category }}
-        </button>
+        <div class="categories-list">
+            <button 
+                type="button" 
+                *ngFor="let category of categories"
+                (click)="selectItem(category, filterCategories)"
+                [ngClass]="{'button_chip_active': isItemSelected(category, filterCategories)}"  
+                class="categories-list__item button_chip button_flex">
+                {{ category.key }}
+            </button>
+        </div>
     </div>
-    <button type="button" class="filter-form__submit button_base">
+    <button class="filter-form__submit button_base">
         Применить
     </button>
 </form>

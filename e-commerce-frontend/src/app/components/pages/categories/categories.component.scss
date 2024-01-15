@@ -1,3 +1,5 @@
+@import "src/app/styles/mixins";
+
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -12,7 +14,7 @@
 
 .categories {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto;
     gap: 40px;
 
     &__category {
@@ -36,17 +38,17 @@
           }
     }
 
-    &__left {
+    &__category:nth-child(1) {
         grid-column-start: 1;
         grid-column-end: 3;
     }
 
-    &__right {
+    &__category:nth-child(10) {
         grid-column-start: 3;
         grid-column-end: 5;
     }
 
-    &__mid {
+    &__category:nth-child(12) {
         grid-column-start: 2;
         grid-column-end: 4;
     }
@@ -69,5 +71,20 @@
         width: 100%;
         height: auto;
         z-index: 3;
+    }
+}
+
+@include lg {
+    .categories {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+
+        &__category:nth-child(1),
+        &__category:nth-child(10),
+        &__category:nth-child(12) {
+            grid-column-start: auto;
+            grid-column-end: auto;
+        }
     }
 }

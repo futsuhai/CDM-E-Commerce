@@ -23,4 +23,8 @@ export class SearchComponent implements OnInit {
       console.log(this.products);
     })
   }
+
+  onProductsChanged(filteredProducts: IProduct[]): void {
+    this.products = filteredProducts;
+  }
 }

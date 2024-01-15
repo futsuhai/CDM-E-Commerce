@@ -52,4 +52,19 @@
         justify-content: center;
         flex: 1 0 0;
     }
+
+    &_chip {
+        background: var(--grayscale-lightest);
+        border-radius: 16px;
+        border: 1px solid var(--grayscale-lightest);
+        font-size: var(--text-size-s);
+        color: var(--surface);
+        font-family: var( --base-font-family), sans-serif;
+        padding: 4px 8px;
+
+        &_active {
+            color: var(--white);
+            background: var(--main-orange);
+        }
+    }
 }

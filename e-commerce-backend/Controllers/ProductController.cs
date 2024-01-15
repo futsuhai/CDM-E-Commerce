@@ -55,5 +55,13 @@ namespace e_commerce_backend.Controllers
             await _productService.CreateAsync(product);
             return Ok("Продукт добавлен");
         }
+
+        [HttpPut("Search")]
+        public async Task<List<ProductModel>> Search([FromBody] FilterProperties filterProperties)
+        {
+            var products = await _productService.SearchAsync(filterProperties);
+            var productModels = _mapper.Map<List<ProductModel>>(products);
+            return productModels;
+        }
     }
 }

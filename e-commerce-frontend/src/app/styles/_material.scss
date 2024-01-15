@@ -13,9 +13,8 @@
 }
 
 // snackbar
-
 .mat-mdc-snack-bar-container {
-    --mdc-snackbar-supporting-text-font: --base-font-family, sans-serif;
+    --mdc-snackbar-supporting-text-font: var(--base-font-family), sans-serif;
     --mdc-snackbar-supporting-text-line-height: 20px;
     --mdc-snackbar-supporting-text-size: var(--text-size-s);
     --mdc-snackbar-supporting-text-weight: 400;
@@ -29,4 +28,19 @@
         --mdc-snackbar-container-color: var(--error-light);
         --mdc-snackbar-supporting-text-color: var(--error);
     }
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-elevated-container-color: var(--grayscale-lightest);
+    --mdc-chip-label-text-font: var(--base-font-family), sans-serif;
+    --mdc-chip-label-text-line-height: 20px;
+    --mdc-chip-label-text-size: var(--text-size-s);
+    --mdc-chip-label-text-weight: 400;
+}
+
+.mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary, .mat-mdc-standard-chip.mat-mdc-chip-highlighted.mat-primary {
+    --mdc-chip-disabled-label-text-color: var(--white);
+    --mdc-chip-elevated-container-color: var(--main-orange);
+    --mdc-chip-elevated-disabled-container-color: var(--main-orange);
+    --mdc-chip-focus-state-layer-color: black;
 }

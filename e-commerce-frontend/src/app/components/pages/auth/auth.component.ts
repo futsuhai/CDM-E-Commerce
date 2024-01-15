@@ -125,7 +125,6 @@ export class AuthComponent {
       }
       this.authService.register(account).pipe(take(1)).subscribe({
         next: (response: any) => {
-          console.log(response.message);
           this.alertService.openSnackBar(response.message, 2000, "valid");
           this.registerForm.reset();
           this.active = !this.active;

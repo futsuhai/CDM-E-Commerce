@@ -1,0 +1,15 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
+
+.item {
+    width: 275px;
+    height: 465px;
+    background: var(--white);
+}

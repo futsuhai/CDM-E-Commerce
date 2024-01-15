@@ -1,7 +1,7 @@
 import { Routes } from "@angular/router";
 import { HomeComponent } from "../components/pages/home/home.component";
 import { AuthComponent } from "../components/pages/auth/auth.component";
-import { CatalogComponent } from "../components/pages/catalog/catalog.component";
+import { CategoriesComponent } from "../components/pages/categories/categories.component";
 import { LikedComponent } from "../components/pages/liked/liked.component";
 import { BasketComponent } from "../components/pages/basket/basket.component";
 import { OrdersComponent } from "../components/pages/orders/orders.component";
@@ -25,7 +25,7 @@ export const APP_ROUTES: Routes = [
     },
     {
         path: 'catalog',
-        component: CatalogComponent
+        component: CategoriesComponent
     },
     {
         path: 'liked',

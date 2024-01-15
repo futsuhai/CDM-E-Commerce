@@ -30,5 +30,19 @@
 }
 
 @include xl {
+    .main {
+        flex-direction: column;
+    }
+}
 
+@include lg {
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@include sm {
+    .products {
+        grid-template-columns: 1fr;
+    }
 }

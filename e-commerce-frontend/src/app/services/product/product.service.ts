@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestService } from '../rest/rest.service';
 import { Observable, catchError, throwError } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
+import { IFilterProperties } from 'src/app/models/filterProperties.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +41,16 @@ export class ProductService {
       catchError((error: unknown) => {
         console.log("An error occurred while fetching product with ID ${productId}:", error)
         return throwError(error);
+      })
+    )
+  }
+
+  public search(filterProps: IFilterProperties): Observable<IProduct[]> {
+    const endpoint: string = `${this.api}/Search`;
+    return this.restService.restPUT<IProduct[]>(endpoint, filterProps).pipe(
+      catchError((error: unknown) => {
+        console.log('An error occurred while fetching products:', error);
+        return [];
       })
     )
   }
