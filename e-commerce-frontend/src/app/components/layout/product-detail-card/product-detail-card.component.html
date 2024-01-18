@@ -36,7 +36,7 @@
             <div class="prices">
                 <div class="price">
                     <p class="price__item">
-                        {{ product?.commonPrice | rubles }}
+                        {{ product?.commonPrice | currency:'₽':'symbol':'1.2-2' }}
                     </p>
                     <p class="price__description">
                         Обычная цена
@@ -44,7 +44,7 @@
                 </div>
                 <div class="price">
                     <p class="price__item price__item_bold">
-                        {{ product?.cardPrice | rubles }}
+                        {{ product?.cardPrice | currency:'₽':'symbol':'1.2-2' }}
                     </p>
                     <p class="price__description">
                         С Картой Северяночки

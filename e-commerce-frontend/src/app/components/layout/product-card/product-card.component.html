@@ -13,7 +13,7 @@
     <div class="prices">
         <div class="card-price">
             <p class="card-price__price">
-                {{ product.cardPrice | rubles }}
+                {{ product.cardPrice | currency:'₽':'symbol':'1.2-2' }}
             </p>
             <p class="card-price__type">
                 С картой
@@ -21,7 +21,7 @@
         </div>
         <div class="common-price">
             <p class="common-price__price">
-                {{ product.commonPrice | rubles }}
+                {{ product.commonPrice | currency:'₽':'symbol':'1.2-2' }}
             </p>
             <p class="common-price__type">
                 Обычная
