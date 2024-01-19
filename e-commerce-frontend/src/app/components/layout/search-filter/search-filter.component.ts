@@ -7,7 +7,6 @@ import { IFilterProperties } from 'src/app/models/filterProperties.model';
 import { ICategory, appCategories } from 'src/app/models/category.model';
 import { ITag, appTags } from 'src/app/models/tag.model';
 import { ProductService } from 'src/app/services/product/product.service';
-import { take } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
 
 @Component({
@@ -70,11 +69,12 @@ export class SearchFilterComponent implements OnChanges {
         tags: this.filterTags,
         categories: this.filterCategories
       }
-      this.productService.search(filterProps).pipe(take(1)).subscribe({
+      this.productService.search(filterProps).subscribe({
         next: (products) => {
           this.filteredProducts.emit(products);
         },
         error: () => {
+          // по вашему запросу продукты не найдеты snackBar
           console.log("Error");
         }
       })

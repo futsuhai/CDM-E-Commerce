@@ -1,32 +1,42 @@
 <div class="wrapper">
-    <button class="rout wrapper__rout" routerLink="/catalog" routerLinkActive="active">
+    <a [routerLink]="['/catalog']" class="rout wrapper__rout">
         <img [src]="isRouteActive('/catalog') ? 'assets/common/menu-active.svg' : 'assets/common/menu-dark.svg'" 
         alt="catalog-icon" 
         class="rout__icon">
         Каталог
-    </button>
-    <button class="rout wrapper__rout" routerLink="/liked" routerLinkActive="active">
+    </a>
+    <a [routerLink]="['/liked']" class="rout wrapper__rout">
         <img [src]="isRouteActive('/liked') ? 'assets/common/heart-active.svg' : 'assets/common/heart.svg'" 
         alt="liked-icon" 
         class="rout__icon">
         Избранное
-    </button>
-    <button class="rout wrapper__rout" routerLink="/orders" routerLinkActive="active">
+    </a>
+    <a [routerLink]="['/orders']" class="rout wrapper__rout">
         <img [src]="isRouteActive('/orders') ? 'assets/common/box-active.svg' : 'assets/common/box.svg'" 
          alt="box-icon" 
          class="rout__icon">
         Заказы
-    </button>
-    <button class="rout wrapper__rout" routerLink="/basket" routerLinkActive="active">
+    </a>
+    <a [routerLink]="['/basket']" class="rout wrapper__rout">
         <img [src]="isRouteActive('/basket') ? 'assets/common/shopping-cart-active.svg' : 'assets/common/shopping-cart.svg'"  
         alt="cart-icon" 
         class="rout__icon">
         Корзина
-    </button>
-    <button class="rout wrapper__rout" routerLink="/profile" routerLinkActive="active">
-        <img [src]="isRouteActive('/profile') ? 'assets/common/profile-active.svg' : 'assets/common/profile.svg'" 
-        alt="profile-icon" 
-        class="rout__icon">
-        Профиль
-    </button>
+    </a>
+    <ng-container *ngIf="(currentAccount | async) === null; else Autorized">
+        <a [routerLink]="['/auth']" class="rout wrapper__rout">
+            <img [src]="isRouteActive('/auth') ? 'assets/common/profile-active.svg' : 'assets/common/profile.svg'" 
+            alt="profile-icon" 
+            class="rout__icon">
+            Войти
+        </a>
+    </ng-container>
+    <ng-template #Autorized>
+        <a [routerLink]="['/profile']" class="rout wrapper__rout">
+            <img [src]="isRouteActive('/profile') ? 'assets/common/profile-active.svg' : 'assets/common/profile.svg'" 
+            alt="profile-icon" 
+            class="rout__icon">
+            Профиль
+        </a>
+    </ng-template>
 </div>

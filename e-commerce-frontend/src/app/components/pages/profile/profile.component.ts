@@ -72,7 +72,7 @@ export class ProfileComponent {
         },
         avatar: this.uploadedAvatar,
       }
-      this.accountService.update(account).pipe(take(1)).subscribe({
+      this.accountService.update(account).subscribe({
         next: account => {
           this.authState.setCurrentUser(account);
           this.alertService.openSnackBar("Данные успешно сохранены", 2000, "valid");

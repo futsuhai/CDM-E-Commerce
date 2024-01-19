@@ -6,12 +6,19 @@
             [searchTag]="searchTag" 
             (filteredProducts)="onProductsChanged($event)">
         </app-search-filter>
-        <div class="products">
-            <app-product-card 
-                *ngFor="let product of products" 
-                [product]="product" 
-                class="products__item">
-            </app-product-card>
-        </div>
+        <ng-container *ngIf="products.length > 0; else noProductsFound">
+            <div class="products">
+                <app-product-card 
+                    *ngFor="let product of products" 
+                    [product]="product" 
+                    class="products__item">
+                </app-product-card>
+            </div>
+        </ng-container>
+        <ng-template #noProductsFound>
+            <p class="main__nothing">
+                По вашему запросу ничего не найдено
+            </p>
+        </ng-template>
     </div>
 </div>

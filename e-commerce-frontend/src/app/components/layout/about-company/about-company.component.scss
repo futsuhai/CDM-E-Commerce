@@ -1,0 +1,17 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__title {
+        font-size: var(--text-size-xxl);
+        color: var(--surface);
+        font-weight: 700;
+    }
+
+    &__main {
+        font-size: var(--text-size-l);
+        color: var(--main-orange);
+        font-weight: 700;
+    }
+}

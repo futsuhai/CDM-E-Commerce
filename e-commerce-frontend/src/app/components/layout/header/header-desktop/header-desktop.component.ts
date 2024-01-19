@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 import { IAccount } from 'src/app/models/account.model';
+import { AuthState } from 'src/app/services/auth/auth-state.module';
 
 @Component({
   selector: 'app-header-desktop',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, ReactiveFormsModule],
   templateUrl: './header-desktop.component.html',
   styleUrls: ['./header-desktop.component.scss'],
   host: {
@@ -16,12 +18,15 @@ import { IAccount } from 'src/app/models/account.model';
 })
 export class HeaderDesktopComponent {
 
-  @Input() account: IAccount | null = null;
   @Output() public toggledMenu = new EventEmitter<void>();
-  public searchValue: string = '';
+  
+  public searchInput: FormControl = new FormControl('');
+  public currentAccount: Observable<IAccount | null>;
   private hoverTimer: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authState: AuthState) {
+    this.currentAccount = this.authState.currentAccount;
+  }
 
   public startHoverTimer(): void {
     this.hoverTimer = setTimeout(() => {
@@ -29,12 +34,11 @@ export class HeaderDesktopComponent {
     }, 700);
   }
 
-  public clearHoverTimer(): void {
-    clearTimeout(this.hoverTimer);
+  public resetSearchInput(): void {
+    this.searchInput.setValue('');
   }
 
-  public navigateToCatalog() {
-    this.router.navigate(['/search'], { queryParams: { search: this.searchValue } });
-    this.searchValue = '';
+  public clearHoverTimer(): void {
+    clearTimeout(this.hoverTimer);
   }
 }

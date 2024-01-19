@@ -1,41 +1,41 @@
 <div class="controls">
     <div class="catalog controls__catalog">
-        <button type="button" class="catalog__button button_base button_green" routerLink="/catalog" (mouseenter)="startHoverTimer()" (mouseleave)="clearHoverTimer()">
-            <img src="assets/common/menu.svg" alt="menu" class="catalog__button-menu">
+        <a class="catalog__link button_base button_green" [routerLink]="['/catalog']" (mouseenter)="startHoverTimer()" (mouseleave)="clearHoverTimer()">
+            <i class="fa-solid fa-bars"></i>
             Каталог
-        </button>
+        </a>
         <div class="search catalog__search">
-            <input class="search__input" placeholder="Найти товар" [(ngModel)]="searchValue">
-            <button type="button" class="search__button button_empty" (click)="navigateToCatalog()">
+            <input class="search__input" placeholder="Найти товар" [formControl]="searchInput">
+            <a class="search__link button_empty" [routerLink]="['/search']" [queryParams]="{search: searchInput.value}" (click)="resetSearchInput()">
                 <img src="assets/common/search.svg" alt="search" class="search__icon">
-            </button>
+            </a>
         </div>
     </div>
 </div>
 <div class="routing">
-    <button class="rout routing__rout" routerLink="/liked">
+    <a [routerLink]="['/liked']" class="rout routing__rout" >
         <img src="assets/common/heart.svg" alt="heart" class="rout__icon">
         Избранное
-    </button>
-    <button class="rout routing__rout" routerLink="/orders">
+    </a>
+    <a [routerLink]="['/orders']" class="rout routing__rout">
         <img src="assets/common/box.svg" alt="box" class="rout__icon">
         Заказы
-    </button>
-    <button class="rout routing__rout" routerLink="/basket">
+    </a>
+    <a [routerLink]="['/basket']" class="rout routing__rout">
         <img src="assets/common/shopping-cart.svg" alt="shopping-cart" class="rout__icon">
         Корзина
-    </button>
-    <ng-container *ngIf="!account; else Autorized">
-        <button type="button" class="routing__button button_base button_green" routerLink="/auth">
+    </a>
+    <ng-container *ngIf="(currentAccount | async) === null; else Autorized">
+        <a [routerLink]="['/auth']" class="routing__button button_base button_green" >
             Авторизация
-        </button>
+        </a>
     </ng-container>
     <ng-template #Autorized>
-        <div class="user routing__user" routerLink="/profile">
-            <img [src]="account?.avatar" alt="user-avatar" class="user__avatar">
+        <a *ngIf="currentAccount | async as account" [routerLink]="['/profile']" class="user routing__user">
+            <img [src]="account.avatar" alt="user-avatar" class="user__avatar">
             <p class="user_name">
-                {{ account?.name }}
+                {{ account.name }}
             </p>
-        </div>
+        </a>
     </ng-template>
 </div>

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="title">
         <h2 class="title__name">{{ tag.key | titlecase }}</h2>
-        <button type="button" class="title__more button_base" [routerLink]="['/search']" [queryParams]="{ tag: tag.value}">
+        <button type="button" class="title__more button_base" [routerLink]="['/search']" [queryParams]="{tag: tag.value}">
             Все {{ tag.key }}
             <img src="assets/common/right-arrow.svg" alt="more-right-arrow" class="more__icon">
         </button>

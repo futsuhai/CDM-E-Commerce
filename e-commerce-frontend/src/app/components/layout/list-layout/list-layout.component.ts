@@ -19,4 +19,5 @@ export class ListLayoutComponent {
 
   @Input() tag!: ITag;
   @Input() products!: IProduct[] | null;
+
 }

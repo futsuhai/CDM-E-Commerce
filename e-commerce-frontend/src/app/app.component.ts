@@ -5,7 +5,6 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { CatalogMenuComponent } from './components/layout/catalog-menu/catalog-menu.component';
 import { AuthService } from './services/auth/auth.service';
-import { take } from 'rxjs';
 import { AuthState } from './services/auth/auth-state.module';
 
 @Component({
@@ -27,7 +26,7 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
     const refreshToken = localStorage.getItem('refreshToken');
     if(refreshToken) {
-      this.authService.refreshTokens(refreshToken).pipe(take(1)).subscribe(
+      this.authService.refreshTokens(refreshToken).subscribe(
         (account) => {
           this.authState.setCurrentUser(account);
         }

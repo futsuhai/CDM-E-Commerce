@@ -6,11 +6,12 @@ import { HeaderDesktopComponent } from './header-desktop/header-desktop.componen
 import { HeaderNavbarComponent } from './header-navbar/header-navbar.component';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [HeaderDesktopComponent, HeaderNavbarComponent, CommonModule, RouterLink],
+  imports: [HeaderDesktopComponent, HeaderNavbarComponent, CommonModule, RouterLink, ReactiveFormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   host: {
@@ -21,9 +22,9 @@ export class HeaderComponent {
 
   @Output() public toggledMenu = new EventEmitter<void>();
   public currentAccount: Observable<IAccount | null>;
+  public searchInput: FormControl = new FormControl('');
   
-  constructor(private authState: AuthState,
-    private router: Router) {
+  constructor(private authState: AuthState, private router: Router) {
     this.currentAccount = this.authState.currentAccount;
    }
 
@@ -31,7 +32,7 @@ export class HeaderComponent {
     this.toggledMenu.emit();
   }
 
-  public navigateToCatalog(searchValue: string) {
-    this.router.navigate(['/search'], { queryParams: { search: searchValue } });
+  public resetSearchInput(): void {
+    this.searchInput.setValue('');
   }
 }

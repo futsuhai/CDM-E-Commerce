@@ -1,10 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchFilterComponent } from '../../layout/search-filter/search-filter.component';
 import { IProduct } from 'src/app/models/product.model';
 import { ProductCardComponent } from '../../layout/product-card/product-card.component';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -13,14 +12,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit {
 
   public products!: IProduct[];
   public searchTitle: string = "";
   public searchCategory: string = "";
   public searchTag: string = "";
-
-  private routeSubscription: Subscription | undefined;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -38,13 +35,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
   }
 
-  onProductsChanged(filteredProducts: IProduct[]): void {
+  public onProductsChanged(filteredProducts: IProduct[]): void {
     this.products = filteredProducts;
-  }
-
-  ngOnDestroy(): void {
-    if (this.routeSubscription) {
-      this.routeSubscription.unsubscribe();
-    }
   }
 }
