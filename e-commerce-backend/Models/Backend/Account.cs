@@ -13,7 +13,8 @@ namespace e_commerce_backend.Models.Backend
         public string Phone { get; set; } = string.Empty;
         public DateTime? Date { get; set; }
         public required Adress Adress { get; set; }
-        public required byte[] Avatar { get; set; }
+        public required Guid Avatar { get; set; }
         public required Tokens Tokens { get; set; }
+        public required Role Role { get; set; }
     }
 }

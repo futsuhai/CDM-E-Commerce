@@ -1,4 +1,5 @@
 using e_commerce_backend.Models.Backend;
+using e_commerce_backend.Models.Options;
 using e_commerce_backend.Utils.ImageUtils;
 using MongoDB.Driver;
 
@@ -11,6 +12,16 @@ namespace e_commerce_backend.Init
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("E-Commerce");
 
+
+            if (!CollectionExists(database, "Images"))
+            {
+                InitializeImages(database);
+            }
+            if (!CollectionExists(database, "Accounts"))
+            {
+                InitializeAccounts(database);
+            }
+
             if (!CollectionExists(database, "Articles"))
             {
                 InitializeArticles(database);
@@ -22,6 +33,48 @@ namespace e_commerce_backend.Init
             }
         }
 
+        private static void InitializeImages(IMongoDatabase database)
+        {
+            var collection = database.GetCollection<Image>("Images");
+            var images = new List<Image>
+            {
+                new()
+                {
+                    Id = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f"),
+                    Img = ImageUtils.SetImageFromFile("InitAssets/Avatar.svg"),
+                }
+            };
+            collection.InsertMany(images);
+        }
+
+        private static void InitializeAccounts(IMongoDatabase database)
+        {
+            var collection = database.GetCollection<Account>("Accounts");
+            var jwtOptions = new JwtOptions();
+            var cryptoOptions = new CryptoOptions();
+            var salt  = cryptoOptions.GenerateSalt();
+            var accounts = new List<Account>
+            {
+                new()
+                {
+                    Id =  Guid.NewGuid(),
+                    Login = "Admin",
+                    Name = "Admin",
+                    Adress = new() {
+                        City = "",
+                        Street = "",
+                        House = ""
+                    },
+                    Avatar = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f"),
+                    Tokens = jwtOptions.GetJwtTokens("Admin"),
+                    Salt = Convert.ToBase64String(salt),
+                    HashPassword = Convert.ToBase64String(cryptoOptions.GenerateHashPassword("Admin123!", salt)),
+                    Role = Role.admin
+                }
+            };
+            collection.InsertMany(accounts);
+        }
+    
         private static void InitializeArticles(IMongoDatabase database)
         {
             var collection = database.GetCollection<Article>("Articles");

@@ -14,7 +14,8 @@ namespace e_commerce_backend.Models.Frontend
         public string Phone { get; set; } = string.Empty;
         public DateTime? Date { get; set; }
         public Adress? Adress { get; set; }
-        public string Avatar { get; set; } = string.Empty;     
+        public Guid Avatar { get; set; }   
         public Tokens? Tokens { get; set; }
+        public string? Role { get; set; }
     }
 }

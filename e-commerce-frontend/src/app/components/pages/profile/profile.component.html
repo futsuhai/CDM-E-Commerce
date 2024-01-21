@@ -14,6 +14,9 @@
         <button type="button" class="mini-profile__button button_base button_green" (click)="logout()">
             Сменить аккаунт
         </button>
+        <a [routerLink]="['/admin']" class="mini-profile__button button_base button_green">
+            Администрирование
+        </a>
     </div>
     <form class="profile-form content-wrapper__profile-form" [formGroup]="profileForm" (ngSubmit)="submitProfileForm()">
         <p class="profile__title">

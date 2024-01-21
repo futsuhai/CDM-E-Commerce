@@ -1,6 +1,7 @@
 using AutoMapper;
 using e_commerce_backend.Models.Backend;
 using e_commerce_backend.Models.Frontend;
+using e_commerce_backend.Services.ImageService;
 using e_commerce_backend.Services.ProductService;
 using Microsoft.AspNetCore.Mvc;
 

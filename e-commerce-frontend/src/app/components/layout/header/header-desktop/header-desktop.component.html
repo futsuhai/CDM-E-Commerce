@@ -32,7 +32,7 @@
     </ng-container>
     <ng-template #Autorized>
         <a *ngIf="currentAccount | async as account" [routerLink]="['/profile']" class="user routing__user">
-            <img [src]="account.avatar" alt="user-avatar" class="user__avatar">
+            <img [src]="currentAvatar | async" alt="user-avatar" class="user__avatar">
             <p class="user_name">
                 {{ account.name }}
             </p>

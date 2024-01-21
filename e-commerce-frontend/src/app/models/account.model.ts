@@ -13,5 +13,11 @@ export interface IAccount {
     phone?: string,
     adress?: IAdress,
     avatar?: string,
-    tokens?: ITokens
+    tokens?: ITokens,
+    role?: Role
+}
+
+export enum Role {
+    admin = 'admin',
+    user = 'user'
 }

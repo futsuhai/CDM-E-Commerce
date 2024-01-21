@@ -2,9 +2,11 @@ using e_commerce_backend.Init;
 using e_commerce_backend.Mappers;
 using e_commerce_backend.Models.Options;
 using e_commerce_backend.Repository.AccountRepository;
+using e_commerce_backend.Repository.ImageRepository;
 using e_commerce_backend.Repository.ProductRepository;
 using e_commerce_backend.Services.AccountService;
 using e_commerce_backend.Services.ArticleService;
+using e_commerce_backend.Services.ImageService;
 using e_commerce_backend.Services.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IArticleRepository, ArticleRepository>();
 builder.Services.AddSingleton<IAccountRepository, AccountRepository>();
+builder.Services.AddSingleton<IImageRepository, ImageRepository>();
 // consts
 
 // mapper
@@ -31,6 +34,7 @@ builder.Services.Configure<DatabaseOptions>(
 builder.Services.AddSingleton<IArticleService, ArticleService>();
 builder.Services.AddSingleton<IProductService, ProductService>();
 builder.Services.AddSingleton<IAccountService, AccountService>();
+builder.Services.AddSingleton<IImageService, ImageService>();
 builder.Services.AddControllers();
 
 var app = builder.Build();

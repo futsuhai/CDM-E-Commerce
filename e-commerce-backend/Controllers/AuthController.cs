@@ -3,6 +3,7 @@ using e_commerce_backend.Models.Backend;
 using e_commerce_backend.Models.Frontend;
 using e_commerce_backend.Models.Options;
 using e_commerce_backend.Services.AccountService;
+using e_commerce_backend.Services.ImageService;
 using e_commerce_backend.Utils.ImageUtils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace e_commerce_backend.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAccountService _accountService;
+        private readonly IImageService _imageService;
         private readonly IMapper _mapper;
         private readonly ILogger<AuthController> _logger;
         private readonly CryptoOptions _cryptoOptions;
@@ -21,12 +23,14 @@ namespace e_commerce_backend.Controllers
         public AuthController(
             ILogger<AuthController> logger,
             IAccountService accountService,
+            IImageService imageService,
             IMapper mapper,
             CryptoOptions cryptoOptions,
             JwtOptions jwtOptions)
         {
             _logger = logger;
             _accountService = accountService;
+            _imageService = imageService;
             _mapper = mapper;
             _cryptoOptions = cryptoOptions;
             _jwtOptions = jwtOptions;
@@ -47,7 +51,7 @@ namespace e_commerce_backend.Controllers
             account.Salt = Convert.ToBase64String(salt);
             account.HashPassword = Convert.ToBase64String(hashPassword);
             account.Tokens = _jwtOptions.GetJwtTokens(account.Login);
-            account.Avatar = ImageUtils.SetImageFromFile("InitAssets/avatar.jpg");
+            account.Avatar = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f");
             await _accountService.CreateAsync(account);
             return Ok(new { message = "Регистрация прошла успешно" });
         }

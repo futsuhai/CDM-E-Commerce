@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { IAccount } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { BannerComponent } from '../../layout/banner/banner.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PhoneNumberDirective } from 'src/app/directives/phone.directive';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account/account.service';
@@ -14,7 +14,7 @@ import { AlertService } from 'src/app/services/alert/alert.service';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, BannerComponent, PhoneNumberDirective, ReactiveFormsModule],
+  imports: [CommonModule, BannerComponent, PhoneNumberDirective, ReactiveFormsModule, RouterLink],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
   host: {

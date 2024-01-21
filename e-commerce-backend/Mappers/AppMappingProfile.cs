@@ -26,9 +26,13 @@ namespace e_commerce_backend.Mappers
             CreateMap<AccountModel, Account>()
                 .ForMember(dest => dest.Salt, opt => opt.Ignore())
                 .ForMember(dest => dest.HashPassword, opt => opt.Ignore())
-                .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Avatar)))
                 .ReverseMap()
-                .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => ImageUtils.ConvertBytesToBase64(src.Avatar)));
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.ToString()));
+                
+            CreateMap<ImageModel, Image>()
+                .ForMember(dest => dest.Img, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Img64)))
+                .ReverseMap()
+                .ForMember(dest => dest.Img64, opt => opt.MapFrom(src => ImageUtils.ConvertBytesToBase64(src.Img)));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace e_commerce_backend.Models.Options
         private const string Audience = "E-Commerce";
         private static SymmetricSecurityKey GetSymmetricSecurityKey() => new(Encoding.UTF8.GetBytes(Secret));
 
-        public Tokens GetJwtTokens(string? login)
+        public Tokens GetJwtTokens(string login)
         {
             if (login is null)
             {

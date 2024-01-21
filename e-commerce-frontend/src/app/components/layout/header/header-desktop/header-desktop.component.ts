@@ -22,10 +22,13 @@ export class HeaderDesktopComponent {
   
   public searchInput: FormControl = new FormControl('');
   public currentAccount: Observable<IAccount | null>;
+  public currentAvatar: Observable<string | null>;
   private hoverTimer: any;
 
   constructor(private router: Router, private authState: AuthState) {
     this.currentAccount = this.authState.currentAccount;
+    this.currentAvatar = this.authState.currentAvatar;
+    console.log(this.currentAvatar);
   }
 
   public startHoverTimer(): void {
