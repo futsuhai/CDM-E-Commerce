@@ -1,3 +1,5 @@
+@import "src/app/styles/mixins";
+
 .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -49,7 +51,12 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+}
 
+.info-button {
+    display: flex;
+    justify-content: center;
+    
     &__submit {
         width: 275px;
         justify-content: center;
@@ -95,4 +102,10 @@
 .divider {
     color: var(--grayscale-lightest);
     height: 2px;
+}
+
+@include lg {
+    .main {
+        flex-direction: column;
+    }
 }

@@ -15,8 +15,10 @@
         <img src="assets/common/share.svg" alt="share" class="info-control__icon">
         Поделиться
     </button>
-    <button type="button" class="info-control button_base">
-        <img src="assets/common/heart.svg" alt="share" class="info-control__icon">
+    <button type="button" class="info-control button_base" (click)="likeProduct()">
+        <img [src]="isLiked ? 'assets/common/heart-fill.svg' : 'assets/common/heart.svg'"
+             alt="product-card-like" 
+             class="icon__like">
         В избранное
     </button>
 </div>
@@ -52,7 +54,7 @@
                 </div>
             </div>
             <div class="operators">
-                <button type="button" class="basket button_product-detail">
+                <button type="button" class="basket button_product-detail" (click)="addToBasket()">
                     <img src="assets/common/shopping-cart-icon.svg" alt="shopping-cart" class="basket__icon">
                     <div class="basket-text button_flex">
                         <p class="basket-text__item">В корзину</p>

@@ -6,7 +6,7 @@
     }
 
     &__basket {
-        padding: 14px;
+        padding: 14px 14px 0px 0px;
     }
 }
 
@@ -162,6 +162,29 @@
 
         &__prices {
             font-size: var(--text-size-xs);
+        }
+    }
+
+    .basket {
+        flex-direction: column;
+        gap: 4px;
+    
+        &__count-control {
+            width: 100px;
+            height: 40px;
+            background: var(--green);
+            border-radius: 4px;
+            padding: 8px;
+        }
+    
+        &__final-price {
+            width: 80px;
+        }
+    }
+
+    .product-card-admin {
+        &__basket {
+            padding: 6px;
         }
     }
 }

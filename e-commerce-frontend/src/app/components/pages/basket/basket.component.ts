@@ -82,19 +82,23 @@ export class BasketComponent {
       const orderPrice = orderProducts.reduce((total, product) => {
         return total + product.finalPrice;
       }, 0);
-      const newOrder: IOrder = {
-        orderProducts: orderProducts,
-        orderPrice: orderPrice,
-        orderStatus: OrderStatus.performed
-      };
-      this.currentAccount.accountDataModel.orders.push(newOrder)
-      this.accountService.update(this.currentAccount).subscribe({
-        next: (account) => {
-          this.authState.setCurrentUser(account);
-        }
-      });
-      this.deleteFromBasket();
-      this.alertService.openSnackBar("Заказ успешно оформлен", 5000, "valid");
+      if(orderProducts.length > 0) {
+        const newOrder: IOrder = {
+          orderProducts: orderProducts,
+          orderPrice: orderPrice,
+          orderStatus: OrderStatus.performed
+        };
+        this.currentAccount.accountDataModel.orders.push(newOrder)
+        this.accountService.update(this.currentAccount).subscribe({
+          next: (account) => {
+            this.authState.setCurrentUser(account);
+          }
+        });
+        this.deleteFromBasket();
+        this.alertService.openSnackBar("Заказ успешно оформлен", 5000, "valid");
+        return;
+      }
+      this.alertService.openSnackBar("Ошибка! Товары не выбраны!", 5000, "invalid");
     }
   }
 }

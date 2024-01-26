@@ -19,6 +19,7 @@ export class OrdersComponent {
       next: (account) => {
         if (account && account.accountDataModel?.liked) {
           this.orders = account.accountDataModel.orders;
+          console.log(this.orders);
         }
       }
     });
