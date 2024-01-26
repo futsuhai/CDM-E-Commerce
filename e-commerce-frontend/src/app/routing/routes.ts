@@ -12,7 +12,6 @@ import { SearchComponent } from "../components/pages/search/search.component";
 import { AdminComponent } from "../components/pages/admin/admin.component";
 import { authGuard } from "../guards/auth.guard";
 import { adminGuard } from "../guards/admin.guard";
-import { ProductDetailAdminComponent } from "../components/layout/product-detail-admin/product-detail-admin.component";
 
 export const APP_ROUTES: Routes = [
     {
@@ -37,17 +36,20 @@ export const APP_ROUTES: Routes = [
     {
         path: 'liked',
         title: 'Избранное',
-        component: LikedComponent
+        component: LikedComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'orders',
         title: 'Заказы',
-        component: OrdersComponent
+        component: OrdersComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'basket',
         title: 'Корзина',
-        component: BasketComponent
+        component: BasketComponent,
+        canActivate: [authGuard]
     },
     {
         path: 'profile',
@@ -78,12 +80,6 @@ export const APP_ROUTES: Routes = [
         path: 'admin',
         title: 'Админ-Панель',
         component: AdminComponent,
-        canActivate: [adminGuard],
-    },
-    {
-        path: 'editProduct',
-        title: 'Админ-Панель',
-        component: ProductDetailAdminComponent,
         canActivate: [adminGuard],
     },
     {

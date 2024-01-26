@@ -44,3 +44,8 @@
     --mdc-chip-elevated-disabled-container-color: var(--main-orange);
     --mdc-chip-focus-state-layer-color: black;
 }
+
+// select 
+.mat-select-trigger {
+    font-family: var(--base-font-family);
+}

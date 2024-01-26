@@ -32,5 +32,29 @@ namespace e_commerce_backend.Controllers
             var imageModel = _mapper.Map<ImageModel>(image);
             return imageModel;
         }
+
+
+        [HttpPost("AddImage")]
+        public async Task<IActionResult> AddImage(IFormFile img)
+        {
+            if (img == null || img.Length == 0)
+            {
+                return BadRequest("No image provided");
+            }
+            byte[] imgBytes;
+            using (MemoryStream ms = new())
+            {
+                await img.CopyToAsync(ms);
+                imgBytes = ms.ToArray();
+            }
+            Image image = new()
+            {
+                Id = Guid.NewGuid(),
+                Img = imgBytes
+            };
+            await _imageService.CreateAsync(image);
+            var imageModel = _mapper.Map<ImageModel>(image);
+            return Ok(imageModel);
+        }
     }
 }

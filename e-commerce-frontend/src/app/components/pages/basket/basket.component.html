@@ -1,1 +1,63 @@
-<p>basket works!</p>
+<div class="content-wrapper content-wrapper_desktop">
+    <h1 class="content-wrapper__title">
+        Корзина
+    </h1>
+    <div class="main">
+        <div class="content">
+            <div class="controls">
+                <button type="button" class="controls__control button_base button_empty" (click)="handleAllCheckboxChange()">
+                    <img src="assets/common/basket-minus.svg" alt="icon-minus" class="conrtols__icon">
+                    Выделить всё
+                </button>
+                <button type="button" class="controls__control controls__control_orange button_base button_empty" (click)="deleteFromBasket()">
+                    Удалить выбранные
+                </button>
+            </div>
+            <div class="products">
+                <app-product-card-admin 
+                    *ngFor="let product of products" 
+                    [product]="product.product" 
+                    [count]="product.count"
+                    [isChecked]="product.isChecked"
+                    class="products__item product-card-admin_base">
+                </app-product-card-admin >
+            </div>
+        </div>
+        <div class="info main__info">
+            <div class="info-row">
+                <p class="info-row__text">
+                    {{ productsCount | pluralize: 'товар' }}
+                </p>
+                <p class="info-row__text info-row__text_dark">
+                    {{ sumPrice | currency:'₽':'symbol':'1.2-2' }}
+                </p>
+            </div>
+            <div class="info-row">
+                <p class="info-row__text">
+                    Скидка
+                </p>
+                <p class="info-row__text info-row__text_orange info-row__bold">
+                    {{ discount | currency:'₽':'symbol':'1.2-2' }}
+                </p>
+            </div>
+            <hr class="divider">
+            <div class="info-column">
+                <div class="info-row">
+                    <p class="info-row__text">
+                        Итог
+                    </p>
+                    <p class="info-row__text info-row__text_bold info-row__text_dark info-row__text_large">
+                        {{ finalPrice | currency:'₽':'symbol':'1.2-2' }}
+                    </p>
+                </div>
+                <button type="button" class="info-column__bonus button_base">
+                    <img src="assets/common/atom.svg" alt="atom" class="operators__icon">
+                    Вы получите {{ bonus | number: '1.0-0' }} бонусов
+                </button>
+            </div>
+            <button type="button" class="info__submit button_product-detail" (click)="createOrder()">
+                Оформить заказ
+            </button>
+        </div>
+    </div>
+</div>

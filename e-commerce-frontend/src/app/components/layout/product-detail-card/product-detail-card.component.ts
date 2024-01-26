@@ -37,8 +37,4 @@ export class ProductDetailCardComponent implements OnDestroy, OnChanges {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
-  public setActiveImage(image: string) {
-    this.activeImage = image;
-  }
 }

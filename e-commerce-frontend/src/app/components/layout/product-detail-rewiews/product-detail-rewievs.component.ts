@@ -18,7 +18,7 @@ export class ProductDetailRewievsComponent {
   @Input() product!: IProduct | null;
 
   public getCountByRating(rating: number): number {
-    if (this.product) {
+    if (this.product && this.product.rewievs) {
       return this.product?.rewievs.filter(review => review.rating === rating).length;
     } else {
       return 0;

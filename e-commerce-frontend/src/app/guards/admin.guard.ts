@@ -7,7 +7,7 @@ export const adminGuard = () => {
     const authState = inject(AuthState);
     const router = inject(Router);
     const role = authState.currentAccount.value?.role;
-    if(role === Role.admin){
+    if(role === Role.admin) {
         return true;
     }
     return router.parseUrl('/');

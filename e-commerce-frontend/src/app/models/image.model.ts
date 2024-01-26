@@ -1,4 +1,4 @@
 export interface IImage {
     id: string,
-    img: string
+    img64: string
 }

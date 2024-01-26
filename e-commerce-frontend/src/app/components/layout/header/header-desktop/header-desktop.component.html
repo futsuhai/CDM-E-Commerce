@@ -5,10 +5,20 @@
             Каталог
         </a>
         <div class="search catalog__search">
-            <input class="search__input" placeholder="Найти товар" [formControl]="searchInput">
+            <input class="search__input" placeholder="Найти товар" [formControl]="searchInput" [matAutocomplete]="auto">
             <a class="search__link button_empty" [routerLink]="['/search']" [queryParams]="{search: searchInput.value}" (click)="resetSearchInput()">
                 <img src="assets/common/search.svg" alt="search" class="search__icon">
             </a>
+            <mat-autocomplete #auto="matAutocomplete" class="search__auto">
+                <mat-option 
+                    *ngFor="let product of filteredProducts | async" 
+                    [value]="product.title" 
+                    [routerLink]="['/search']" 
+                    [queryParams]="{search: searchInput.value}" 
+                    (click)="resetSearchInput()">
+                    {{ product.title }}
+                </mat-option>
+            </mat-autocomplete>
         </div>
     </div>
 </div>

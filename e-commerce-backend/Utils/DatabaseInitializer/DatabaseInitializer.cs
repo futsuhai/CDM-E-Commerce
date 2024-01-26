@@ -41,7 +41,7 @@ namespace e_commerce_backend.Init
                 new()
                 {
                     Id = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f"),
-                    Img = ImageUtils.SetImageFromFile("InitAssets/Avatar.svg"),
+                    Img = ImageUtils.SetImageFromFile("InitAssets/Avatar.jpg"),
                 }
             };
             collection.InsertMany(images);
@@ -52,7 +52,7 @@ namespace e_commerce_backend.Init
             var collection = database.GetCollection<Account>("Accounts");
             var jwtOptions = new JwtOptions();
             var cryptoOptions = new CryptoOptions();
-            var salt  = cryptoOptions.GenerateSalt();
+            var salt = cryptoOptions.GenerateSalt();
             var accounts = new List<Account>
             {
                 new()
@@ -65,16 +65,21 @@ namespace e_commerce_backend.Init
                         Street = "",
                         House = ""
                     },
+                    Email = "Admin@mail.ru",
                     Avatar = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f"),
                     Tokens = jwtOptions.GetJwtTokens("Admin"),
                     Salt = Convert.ToBase64String(salt),
                     HashPassword = Convert.ToBase64String(cryptoOptions.GenerateHashPassword("Admin123!", salt)),
-                    Role = Role.admin
+                    Role = Role.admin,
+                    AccountData = new () {
+                        Liked = new List<Product>(),
+                        Basket =  new List<ProductBasket>()
+                    }
                 }
             };
             collection.InsertMany(accounts);
         }
-    
+
         private static void InitializeArticles(IMongoDatabase database)
         {
             var collection = database.GetCollection<Article>("Articles");
@@ -125,14 +130,6 @@ namespace e_commerce_backend.Init
                     Brand = "ПАПА МОЖЕТ",
                     Weight = 200,
                     Articul = 371431,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-1-1.jpg",
-                            "InitAssets/product-1-2.jpg",
-                            "InitAssets/product-1-3.jpg",
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-1-1.jpg"),
                     ProductTag = ProductTag.sales,
@@ -167,12 +164,6 @@ namespace e_commerce_backend.Init
                     Brand = "ПРОСТОКВАШИНО",
                     Weight = 950,
                     Articul = 371432,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-2.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-2.jpg"),
                     ProductTag = ProductTag.sales,
@@ -191,12 +182,6 @@ namespace e_commerce_backend.Init
                     Brand = "Тоскана",
                     Weight = 140,
                     Articul = 371433,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-3.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-3.jpg"),
                     ProductTag = ProductTag.sales,
@@ -215,12 +200,6 @@ namespace e_commerce_backend.Init
                     Brand = "Белебеевский Комбинат",
                     Weight = 120,
                     Articul = 371434,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-4.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-4.jpg"),
                     ProductTag = ProductTag.sales,
@@ -238,12 +217,6 @@ namespace e_commerce_backend.Init
                     Brand = "Barilla",
                     Weight = 200,
                     Articul = 371431,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-5.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-5.jpg"),
                     ProductTag = ProductTag.news,
@@ -261,12 +234,6 @@ namespace e_commerce_backend.Init
                     Brand = "Макфа",
                     Weight = 200,
                     Articul = 371431,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-6.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-6.jpg"),
                     ProductTag = ProductTag.news,
@@ -284,12 +251,6 @@ namespace e_commerce_backend.Init
                     Brand = "ПРОСТО",
                     Weight = 700,
                     Articul = 371431,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-7.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-7.jpg"),
                     ProductTag = ProductTag.news,
@@ -307,12 +268,6 @@ namespace e_commerce_backend.Init
                     Brand = "РОСАГРОКОМПЛЕКС",
                     Weight = 40,
                     Articul = 371431,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-8.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-8.jpg"),
                     ProductTag = ProductTag.news,
@@ -330,12 +285,6 @@ namespace e_commerce_backend.Init
                     Brand = "Стародворье",
                     Weight = 300,
                     Articul = 371439,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-9.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-9.jpg"),
                     ProductTag = ProductTag.none,
@@ -353,12 +302,6 @@ namespace e_commerce_backend.Init
                     Brand = "Мираторг",
                     Weight = 150,
                     Articul = 371438,
-                    ProductByteImages = ImageUtils.SetImagesFromFiles(
-                        new List<string>
-                        {
-                            "InitAssets/product-10.jpg"
-                        }
-                    ),
                     ProductMainByteImage = ImageUtils.SetImageFromFile(
                         "InitAssets/product-10.jpg"),
                     ProductTag = ProductTag.none,

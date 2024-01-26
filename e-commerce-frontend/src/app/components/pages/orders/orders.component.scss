@@ -1,0 +1,10 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    &__title {
+        color: var(--surface);
+        font-weight: 700;
+    }
+}

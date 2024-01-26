@@ -39,10 +39,29 @@ li {
 
 .content-wrapper {
     &_desktop {
+        height: 100vh;
         margin: 60px 0px;
         max-width: var(--content-width);
         margin-left: auto;
         margin-right: auto;
         padding: 0px 16px;
     }
+}
+
+.product-card-admin {
+    display: flex;
+    justify-content: space-between;
+
+    &_base {
+        height: auto;
+        background: var(--white);
+        border-radius: 4px;
+        box-shadow: 1px 2px 4px 0px rgba(0, 0, 0, 0.10);
+    }
+}
+
+.no-image {
+    width: 200px;
+    height: 200px;
+    background: var(--grayscale-lightest);
 }

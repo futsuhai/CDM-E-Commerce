@@ -89,7 +89,8 @@ namespace e_commerce_backend.Controllers
                 var tokens = _jwtOptions.GetJwtTokens(login);
                 account.Tokens = tokens;
                 await _accountService.UpdateAsync(account.Id, account);
-                return Ok(account);
+                var loginedAccount = _mapper.Map<AccountModel>(account);
+                return Ok(loginedAccount);
             }
             else 
             {

@@ -1,19 +1,18 @@
 export interface IProduct {
-    id: string,
+    id?: string,
     cardPrice: number,
     commonPrice: number,
     title: string,
     country: string,
-    rating: number,
+    rating?: number,
     discount: number,
     brand: string,
     weight: number,
     articul: number,
-    product64Images: string[],
-    productMain64Image: string,
+    productMain64Image?: string,
     productTag: ProductTag,
     productCategory: ProductCategory,
-    rewievs: IRewiev[];
+    rewievs?: IRewiev[];
 }
 
 export enum ProductTag {

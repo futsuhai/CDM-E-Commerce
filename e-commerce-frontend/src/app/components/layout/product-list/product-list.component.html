@@ -5,7 +5,7 @@
             class="products__item">
         </app-product-card>
     </ng-container>
-    <ng-container *ngFor="let i of [].constructor(4 - (products?.length || 0)); let j = index">
+    <ng-container *ngFor="let i of [].constructor(4 - ((products?.slice(0, 4))?.length || 0)); let j = index">
         <div class="products__empty"></div>
     </ng-container>
 </div>

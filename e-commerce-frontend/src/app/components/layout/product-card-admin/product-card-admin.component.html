@@ -1,0 +1,64 @@
+<div class="main">
+    <div class="product-image">
+        <img [src]="product.productMain64Image" alt="product-image" class="product-image__image">
+        <label class="check product-image__check">
+            <input class="check__input" type="checkbox" id="checkbox" [(ngModel)]="isChecked" (change)="toggleCheckbox()">
+            <span class="check__box"></span>
+        </label>
+    </div>
+    <div class="product-info main__product-info">
+        <a class="product-info__title" [routerLink]="['/product-detail', product.id]">
+            {{ product.title }}
+        </a>
+        <div class="prices product-info__prices">
+            <div class="price">
+                <p class="price__card">
+                    {{ product.cardPrice | currency:'₽':'symbol':'1.2-2' }}
+                </p>
+                <p class="price__desc">
+                    С картой
+                </p>
+            </div>
+            <div class="price">
+                <p class="price__common">
+                    {{ product.commonPrice | currency:'₽':'symbol':'1.2-2' }}
+                </p>
+                <p class="price__desc">
+                    Обычная
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="cardType; else admin">
+    <div class="basket product-card-admin__basket">
+        <div class="count-control basket__count-control">
+            <button type="button" class="count-control__control button_empty" (click)="decrementCount()">
+                <img src="assets/common/minus.svg" alt="control-minus" class="count-control__icon">
+            </button>
+            <p class="count-control__value">
+                {{ count }}
+            </p>
+            <button type="button" class="count-control__control button_empty" (click)="incrementCount()">
+                <img src="assets/common/plus.svg" alt="control-plus" class="count-control__icon">
+            </button>
+        </div>
+        <div class="final-price basket__final-price">
+            <p class="final-price__value">
+                {{ finalPrice | currency:'₽':'symbol':'1.2-2' }}
+            </p>
+        </div>
+    </div>
+</ng-container>
+<ng-template #admin>
+    <div class="controls product-card-admin__controls">
+        <button class="controls__admin-control button_base button_green" (click)="dialogService.openProductFormDialog('0ms', '0ms', product)">
+            <i class="fa-solid fa-pen-to-square controls__icon"></i>
+            Изменить
+        </button>
+        <button class="controls__admin-control button_base button_red" (click)="product && product.id ? dialogService.openDialog('0ms', '0ms', product.id) : null">
+            <i class="fa-solid fa-xmark controls__icon"></i>
+            Удалить
+        </button>
+    </div>
+</ng-template>

@@ -6,6 +6,9 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { registerLocaleData } from "@angular/common";
 import localeRu from '@angular/common/locales/fr';
+import { MatDialogContent, MatDialogModule } from "@angular/material/dialog";
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 registerLocaleData(localeRu, 'ru');
 
@@ -18,6 +21,10 @@ export const appConfig: ApplicationConfig = {
         provideRouter(APP_ROUTES),
         importProvidersFrom(HttpClientModule),
         importProvidersFrom(MatSnackBarModule),
+        importProvidersFrom(MatDialogModule),
+        importProvidersFrom(MatDialogContent),
+        importProvidersFrom(MatSelectModule),
+        importProvidersFrom(MatAutocompleteModule),
         provideAnimations()
     ]
 }

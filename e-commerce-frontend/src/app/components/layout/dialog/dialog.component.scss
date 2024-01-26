@@ -1,0 +1,21 @@
+.dialog {
+    &__main {
+        padding: 20px;
+    }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-xm);
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+}

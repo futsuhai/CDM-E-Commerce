@@ -23,8 +23,8 @@
 <div class="main">
     <div class="assets">
         <div class="images-stack">
-            <button *ngFor="let image of product?.product64Images"class="images-stack__item" (click)="setActiveImage(image)">
-                <img [src]="image" alt="product-image" class="images-stack__image">
+            <button *ngFor="let image of [1]"class="images-stack__item">
+                <img [src]="product?.productMain64Image" alt="product-image" class="images-stack__image">
             </button>
         </div>
         <div class="active-image">

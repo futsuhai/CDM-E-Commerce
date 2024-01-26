@@ -2,14 +2,27 @@
     display: flex;
     flex-direction: column;
     gap: 60px;
+
+    &__nothing {
+        color: var(--surface);
+        font-size: var(--text-size-xm);
+    }
+
+    &__title {
+        font-size: var(--text-size-xl);
+        color: var(--surface);
+        font-weight: 700;
+    }
 }
 
-mat-grid-tile {
-    background: lightblue;
-}
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
 
-.item {
-    width: 275px;
-    height: 465px;
-    background: var(--white);
+    &__item {
+        width: 100%;
+        height: 455px;
+        background: var(--white);
+    }
 }

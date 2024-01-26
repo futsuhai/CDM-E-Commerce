@@ -10,6 +10,7 @@ import { AccountService } from 'src/app/services/account/account.service';
 import { take } from 'rxjs';
 import { ImageService } from 'src/app/services/image/image.service';
 import { AlertService } from 'src/app/services/alert/alert.service';
+import { IImage } from 'src/app/models/image.model';
 
 @Component({
   selector: 'app-profile',
@@ -25,7 +26,8 @@ export class ProfileComponent {
 
   public currentAccount!: IAccount | null;
   public profileForm!: FormGroup;
-  public uploadedAvatar: string = "";
+  public avatar: string = "";
+  public currentAvatar: string = "";
 
   constructor(private authState: AuthState,
     private router: Router,
@@ -34,7 +36,13 @@ export class ProfileComponent {
     private imageService: ImageService) {
     this.currentAccount = authState.getCurrentUser();
     if (this.currentAccount && this.currentAccount.avatar) {
-      this.uploadedAvatar = this.currentAccount.avatar;
+      this.authState.currentAvatar.subscribe(
+        (avatar) => {
+          if(avatar) {
+            this.avatar = avatar;
+            this.currentAvatar = avatar;
+          }
+        });
       this.profileForm = this.initProfileForm();
     }
   }
@@ -70,7 +78,7 @@ export class ProfileComponent {
           street: formValue.profileStreet,
           house: formValue.profileHouse,
         },
-        avatar: this.uploadedAvatar,
+        avatar: this.currentAvatar
       }
       this.accountService.update(account).subscribe({
         next: account => {
@@ -81,18 +89,39 @@ export class ProfileComponent {
           this.alertService.openSnackBar("Ошибка при сохранении данных", 2000, "invalid");
         }
       });
-      
     }
   }
 
   public changeAvatar(event: Event): void {
     const input = event.target as HTMLInputElement;
     const file = input.files?.[0];
+
     if (file) {
       this.imageService.convertFileToBase64(file).pipe(take(1)).subscribe({
         next: (base64String) => {
-          this.uploadedAvatar = base64String;
-          this.alertService.openSnackBar("Файл успешно загружен", 2000, "valid");
+          this.avatar = base64String;
+          if (this.avatar !== this.currentAvatar) {
+            this.imageService.convertImageToByteArray(this.avatar).subscribe({
+              next: (uint8Array) => {
+                this.imageService.addImage(uint8Array).subscribe({
+                  next: (image: IImage) => {
+                    this.currentAvatar = image.id;
+                    this.alertService.openSnackBar("Файл успешно загружен", 2000, "valid");
+                  },
+                  error: () => {
+                    this.alertService.openSnackBar("Ошибка при загрузке файла", 2000, "invalid");
+                  }
+                });
+              },
+              error: () => {
+                this.alertService.openSnackBar("Ошибка при загрузке файла", 2000, "invalid");
+              }
+          });
+          } else {
+            if (this.currentAccount?.avatar) {
+              this.currentAvatar = this.currentAccount.avatar;
+            }
+          }
         },
         error: () => {
           this.alertService.openSnackBar("Ошибка при загрузке файла", 2000, "invalid");
@@ -101,7 +130,6 @@ export class ProfileComponent {
     }
   }
   
-
   public logout(): void {
     this.authState.logout();
     this.router.navigate(['/auth'])

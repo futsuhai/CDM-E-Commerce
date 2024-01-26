@@ -17,5 +17,6 @@ namespace e_commerce_backend.Models.Frontend
         public Guid Avatar { get; set; }   
         public Tokens? Tokens { get; set; }
         public string? Role { get; set; }
+        public AccountDataModel? AccountDataModel { get; set; }
     }
 }

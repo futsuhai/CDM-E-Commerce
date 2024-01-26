@@ -52,9 +52,28 @@ namespace e_commerce_backend.Controllers
         [HttpPost("AddProduct")]
         public async Task<IActionResult> AddProduct([FromBody] ProductModel productModel)
         {
+            productModel.Id = Guid.NewGuid().ToString();
             var product = _mapper.Map<Product>(productModel);
+            Console.WriteLine(product);
             await _productService.CreateAsync(product);
-            return Ok("Продукт добавлен");
+            return Ok();
+        }
+
+        [HttpPut("EditProduct")]
+        public async Task<IActionResult> EditProduct([FromBody] ProductModel productModel)
+        {
+            var id = Guid.Parse(productModel.Id);
+            var existingProduct = await _productService.GetAsync(id);
+            if (existingProduct != null)
+            {
+                _mapper.Map(productModel, existingProduct);
+                await _productService.UpdateAsync(existingProduct.Id, existingProduct);
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpPut("Search")]
@@ -63,6 +82,13 @@ namespace e_commerce_backend.Controllers
             var products = await _productService.SearchAsync(filterProperties);
             var productModels = _mapper.Map<List<ProductModel>>(products);
             return productModels;
+        }
+
+        [HttpDelete("DeleteProduct/{productId}")]
+        public async Task<IActionResult> Delete(Guid productId)
+        {
+            await _productService.DeleteAsync(productId);
+            return Ok();
         }
     }
 }

@@ -1,0 +1,167 @@
+@import "src/app/styles/mixins";
+
+.product-card-admin {
+    &__controls {
+        padding: 20px 20px 20px 0px;
+    }
+
+    &__basket {
+        padding: 14px;
+    }
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__product-info {
+        padding: 14px 0px;
+    }
+}
+
+.product-image {
+    position: relative;
+    
+    &__image {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+    }
+
+    &__prices {
+        font-size: var(--text-size-s);
+        color: var(--surface);
+    }
+}
+
+.prices {
+    display: flex;
+    flex: 1 0 0;
+    gap: 16px;
+}
+
+.price {
+    display: flex;
+    flex-direction: column;
+
+    &__card {
+        color: var(--surface);
+    }
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &__admin-control {
+        width: 120px;
+        height: 50px;
+    }
+
+    &__icon {
+        color: var(--white);
+    }
+}
+
+.basket {
+    display: flex;
+    gap: 16px;
+
+    &__count-control {
+        width: 100px;
+        height: 40px;
+        background: var(--green);
+        border-radius: 4px;
+        padding: 8px;
+    }
+
+    &__final-price {
+        width: 80px;
+    }
+}
+
+.count-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    &__control {
+        padding: 0px;
+    }
+
+    &__icon {
+        color: var(--white);
+    }
+
+    &__value {
+        color: var(--white);
+    }
+}
+
+.final-price {
+    display: flex;
+    justify-content: flex-end;
+
+    &__value {
+        font-size: var(--text-size-m);
+        color: var(--surface);
+        font-weight: 700;
+    }
+}
+
+@include md {
+    .product-card-admin {
+        &__controls {
+            padding: 8px 8px 8px 0px;
+        }
+    }
+
+    .controls {
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    
+        &__admin-control {
+            width: 100px;
+            height: 30px;
+        }
+    }
+}
+
+@include sm {
+    .product-image {
+        &__image {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .main {
+        &__product-info {
+            padding: 6px 0px;
+        }
+    }
+
+    .product-info {
+        &__title {
+            font-size: var(--text-size-s);
+        }
+
+        &__prices {
+            font-size: var(--text-size-xs);
+        }
+    }
+}

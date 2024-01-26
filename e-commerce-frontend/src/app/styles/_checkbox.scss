@@ -1,0 +1,26 @@
+.check {
+    font-size: var(--text-size-xm);
+
+    &__input {
+        position: absolute;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    &__box {
+        position: absolute;
+        top: -6px;
+        left: 8px;
+        width: 24px;
+        height: 24px;
+        border-radius: 0.05em;
+        box-shadow: 0 0 0 0.1em var(--grayscale-light);
+    }
+}
+
+.check__input:checked+.check__box {
+    background-color: var(--green);
+    box-shadow: 0 0 0 0.1em var(--green);
+    background-image: url("/assets/common/checked.svg");
+}

@@ -8,11 +8,14 @@ import { ICategory, appCategories } from 'src/app/models/category.model';
 import { ITag, appTags } from 'src/app/models/tag.model';
 import { ProductService } from 'src/app/services/product/product.service';
 import { IProduct } from 'src/app/models/product.model';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { Observable } from 'rxjs';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-search-filter',
   standalone: true,
-  imports: [CommonModule, MatSliderModule, MatChipsModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, MatSliderModule, MatChipsModule, ReactiveFormsModule, FormsModule, MatAutocompleteModule],
   templateUrl: './search-filter.component.html',
   styleUrls: ['./search-filter.component.scss'],
   host: {
@@ -25,6 +28,7 @@ export class SearchFilterComponent implements OnChanges {
   @Input() searchTag: string = "";
   @Input() searchTitle: string = "";
   @Output() filteredProducts: EventEmitter<IProduct[]> = new EventEmitter<IProduct[]>();
+  public searchedProducts!: Observable<IProduct[]>;
 
   public categories: ICategory[] = appCategories;
   public tags: ITag[] = appTags;
@@ -34,7 +38,7 @@ export class SearchFilterComponent implements OnChanges {
   public filterTags: string[] = [];
   public filterCategories: string[] = [];
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private alertService: AlertService) {
     this.filterForm = this.initFilterForm();
   }
 
@@ -74,8 +78,7 @@ export class SearchFilterComponent implements OnChanges {
           this.filteredProducts.emit(products);
         },
         error: () => {
-          // по вашему запросу продукты не найдеты snackBar
-          console.log("Error");
+          this.alertService.openSnackBar("По вашему запросу ничего не найдено", 2000, "invalid");
         }
       })
     }
@@ -99,5 +102,5 @@ export class SearchFilterComponent implements OnChanges {
   public isItemSelected(item: ITag | ICategory, list: string[]): boolean {
     return list.includes(item.value);
   }
-  
+
 }

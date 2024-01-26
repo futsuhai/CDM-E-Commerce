@@ -1,0 +1,105 @@
+@import "src/app/styles/mixins";
+
+.product-form-wrapper {
+    &__product-form {
+        position: relative;
+        background: var(--white);
+        border-radius: 4px;
+        box-shadow: 8px 16px 32px 0px rgba(255, 102, 51, 0.20);
+        padding: 40px;
+    }
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &__cancel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--grayscale-lightest);
+    }
+
+    &__icon {
+        color: var(--surface);
+    }
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &__input {
+        &_large {
+            width: 100%;
+        }
+
+        &_select {
+            font-family: var(--base-font-family);
+            font-size: var(--text-size-m);
+            width: 244px;
+        }
+    }
+}
+
+.divider {
+    color: var(--green);
+    height: 1px;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+
+    &__button {
+        margin-top: 16px;
+        width: 140px;
+    }
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    &__image {
+        background: var(--grayscale-lightest);
+        width: 200px;
+        height: 200px;
+    }
+
+    &__button {
+        height: 40px;
+        width: 240px;
+    }
+}
+
+@include xl {
+    .product-form-wrapper {
+        overflow-y: auto;
+        max-height: 80vh;
+    }
+}
+
+@include md {
+    .product-form-wrapper {
+        &__product-form {
+            padding: 20px;
+        }
+    }
+
+    .form-row {
+        justify-content: center;
+    }
+}

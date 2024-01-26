@@ -1,0 +1,121 @@
+<div mat-dialog-content class="product-form-wrapper">
+    <form class="product-form product-form-wrapper__product-form" [formGroup]="productForm" (ngSubmit)="currentProduct ? submitEditProductForm() : submitAddProductForm()">
+        <div class="image-container">
+            <ng-container *ngIf="currentImage !== ''; else NoImage ">
+                <img [src]="currentImage" alt="product-image" class="image-container__image">
+            </ng-container>
+            <ng-template #NoImage>
+                <div class="no-image"></div>
+            </ng-template>
+            <input type="file" accept="image/*" style="display:none" id="imageInput" (change)="uploadImage($event)">
+            <label for="imageInput" class="image-container__button button_base button_green">
+                Загрузить изображение
+            </label>
+        </div>
+        <hr class="divider">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="productArticul" class="form-group__label">Артикул</label>
+                <input 
+                    type="number"
+                    id="productArticul"
+                    formControlName="productArticul"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="productCountry" class="form-group__label">Страна производства</label>
+                <input 
+                    type="text"
+                    id="productCountry"
+                    formControlName="productCountry"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="productBrand" class="form-group__label">Брэнд</label>
+                <input 
+                    type="text"
+                    id="productBrand"
+                    formControlName="productBrand"
+                    class="form-group__input input_auth">
+            </div>
+        </div>
+        <hr class="divider">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="productTitle" class="form-group__label">Наименование</label>
+                <input 
+                    type="text"
+                    id="productTitle"
+                    formControlName="productTitle"
+                    class="form-group__input form-group__input_large input_auth">
+            </div>
+            <div class="form-group">
+                <label for="productCategory" class="form-group__label">Категория</label>
+                <mat-select id="productCategory" 
+                formControlName="productCategory" 
+                class="form-group__input form-group__input_select input_auth">
+                    <mat-option *ngFor="let category of categories" [value]="category.value">
+                        {{ category.key }}
+                    </mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <hr class="divider">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="productCommonPrice" class="form-group__label">Обычная цена</label>
+                <input 
+                    type="number"
+                    id="productCommonPrice"
+                    formControlName="productCommonPrice"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="productCardPrice" class="form-group__label">Цена с картой</label>
+                <input 
+                    type="number"
+                    id="productCardPrice"
+                    formControlName="productCardPrice"
+                    class="form-group__input input_auth">
+            </div>
+        </div>
+        <hr class="divider">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="productWeight" class="form-group__label">Вес г</label>
+                <input 
+                    type="text"
+                    id="productWeight"
+                    formControlName="productWeight"
+                    class="form-group__input input_auth">
+            </div>
+            <div class="form-group">
+                <label for="productTag" class="form-group__label">Тэг</label>
+                <mat-select id="productTag" 
+                formControlName="productTag" 
+                class="form-group__input form-group__input_select input_auth">
+                    <mat-option *ngFor="let tag of tags" [value]="tag.value">
+                        {{ tag.key }}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <div class="form-group">
+                <label for="productDiscount" class="form-group__label">Скидка %</label>
+                <input 
+                    type="number"
+                    id="productDiscount"
+                    formControlName="productDiscount"
+                    class="form-group__input input_auth">
+            </div>
+        </div>
+        <div class="submit">
+            <button class="submit__button button_base button_green">
+                Сохранить
+            </button>
+        </div>
+        <button type="button" class="product-form__cancel button_empty button_base" (click)="cancel()">
+            <i class="fa-solid fa-xmark product-form__icon"></i>
+        </button>
+    </form>
+</div>
+
