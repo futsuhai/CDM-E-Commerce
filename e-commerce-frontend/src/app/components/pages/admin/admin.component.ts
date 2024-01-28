@@ -6,11 +6,12 @@ import { IProduct } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
 import { ProductCardAdminComponent } from '../../layout/product-card-admin/product-card-admin.component';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, RouterLink, SearchFilterComponent, ProductCardAdminComponent],
+  imports: [CommonModule, RouterLink, SearchFilterComponent, ProductCardAdminComponent, MatTabsModule],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })

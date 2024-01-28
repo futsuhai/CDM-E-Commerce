@@ -20,7 +20,7 @@ import { appTags } from 'src/app/models/tag.model';
     class: 'home'
   }
 })
-export class HomeComponent implements OnInit, OnDestroy  {
+export class HomeComponent implements OnInit, OnDestroy {
 
   private destroy$: Subject<void> = new Subject<void>();
   public tags = appTags;
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, OnDestroy  {
 
   constructor(private productService: ProductService) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.productService.getProducts().pipe(
       map(products => {
         return products.reduce((acc, product) => {
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy  {
     ).subscribe();
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

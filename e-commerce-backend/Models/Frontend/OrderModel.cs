@@ -5,5 +5,6 @@ namespace e_commerce_backend.Models.Frontend
         public List<ProductBasketModel> OrderProducts { get; set; }= new List<ProductBasketModel>();
         public required double OrderPrice { get; set; }
         public required string OrderStatus { get; set; }
+        public required DateTime OrderDate { get; set; }
     }
 }

@@ -5,6 +5,14 @@
              alt="product-card-like" 
              class="icon__like">
     </button>
+    <div *ngIf="isOrder" class="product-count product-image__product-count">
+        <img src="assets/common/shopping-cart.svg"
+             alt="product-card-basket" 
+             class="product-count__icon">
+        <p class="product-count__count">
+            {{ count }}
+        </p>
+    </div>
     <div *ngIf="product.productTag === 'sales'" class="sale product-image__sale">
         <span class="sale__percent">-{{ product.discount }}%</span>
     </div>

@@ -33,7 +33,7 @@
                 <div class="rewiev-rating">
                     <app-rating [rating]="rewiev.rating"></app-rating>
                     <p class="rewiev-rating__date">
-                        {{ rewiev.date | date }}
+                        {{ rewiev.date | date: 'dd.MM.yyyy' }}
                     </p>
                 </div>
                 <p class="rewiev__description">
@@ -48,7 +48,7 @@
                 </p>
             </div>
         </ng-template>
-        <div class="new-rewiev">
+        <div *ngIf="accessedToRewiev()" class="new-rewiev">
             <div class="new-rating">
                 <p class="new-rating__title">
                     Ваша оценка

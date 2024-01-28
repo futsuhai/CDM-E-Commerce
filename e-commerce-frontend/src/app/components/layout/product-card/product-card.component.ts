@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/product.model';
 import { RatingComponent } from '../rating/rating.component';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { IBasketProduct } from 'src/app/models/basketProduct.model';
 
@@ -19,9 +19,15 @@ import { IBasketProduct } from 'src/app/models/basketProduct.model';
 export class ProductCardComponent implements OnInit {
 
   @Input() product!: IProduct;
-  public isLiked!: boolean;
+  @Input() count!: number;
+  public isLiked: boolean = false;
+  public isOrder: boolean = false;
 
-  constructor(private authState: AuthState) { }
+  constructor(private authState: AuthState, private route: ActivatedRoute) { 
+    this.route.url.subscribe(urlSegments => {
+      this.isOrder = urlSegments.some(segment => segment.path === 'orders');
+    });
+  }
 
   public ngOnInit(): void {
     this.authState.currentAccount.subscribe({

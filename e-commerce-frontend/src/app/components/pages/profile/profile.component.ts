@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { IAccount } from 'src/app/models/account.model';
+import { IAccount, Role } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { BannerComponent } from '../../layout/banner/banner.component';
 import { Router, RouterLink } from '@angular/router';
@@ -28,6 +28,7 @@ export class ProfileComponent {
   public profileForm!: FormGroup;
   public avatar: string = "";
   public currentAvatar: string = "";
+  public role: Role = Role.admin;
 
   constructor(private authState: AuthState,
     private router: Router,
@@ -38,7 +39,7 @@ export class ProfileComponent {
     if (this.currentAccount && this.currentAccount.avatar) {
       this.authState.currentAvatar.subscribe(
         (avatar) => {
-          if(avatar) {
+          if (avatar) {
             this.avatar = avatar;
             this.currentAvatar = avatar;
           }
@@ -78,8 +79,11 @@ export class ProfileComponent {
           street: formValue.profileStreet,
           house: formValue.profileHouse,
         },
-        avatar: this.currentAvatar
+        avatar: this.currentAccount?.avatar,
+        accountDataModel: this.currentAccount?.accountDataModel,
+        role: this.currentAccount?.role
       }
+      console.log(account);
       this.accountService.update(account).subscribe({
         next: account => {
           this.authState.setCurrentUser(account);
@@ -105,8 +109,10 @@ export class ProfileComponent {
               next: (uint8Array) => {
                 this.imageService.addImage(uint8Array).subscribe({
                   next: (image: IImage) => {
-                    this.currentAvatar = image.id;
-                    this.alertService.openSnackBar("Файл успешно загружен", 2000, "valid");
+                    if (this.currentAccount?.avatar) {
+                      this.currentAccount.avatar = image.id;
+                      this.alertService.openSnackBar("Файл успешно загружен", 2000, "valid");
+                    }
                   },
                   error: () => {
                     this.alertService.openSnackBar("Ошибка при загрузке файла", 2000, "invalid");
@@ -116,7 +122,7 @@ export class ProfileComponent {
               error: () => {
                 this.alertService.openSnackBar("Ошибка при загрузке файла", 2000, "invalid");
               }
-          });
+            });
           } else {
             if (this.currentAccount?.avatar) {
               this.currentAvatar = this.currentAccount.avatar;
@@ -129,7 +135,7 @@ export class ProfileComponent {
       });
     }
   }
-  
+
   public logout(): void {
     this.authState.logout();
     this.router.navigate(['/auth'])

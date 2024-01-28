@@ -1,9 +1,9 @@
 @import "src/app/styles/mixins";
 
-.content-wrapper {
+.tabs {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
 }
 
 .main {

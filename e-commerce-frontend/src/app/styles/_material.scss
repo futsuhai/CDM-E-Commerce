@@ -49,3 +49,26 @@
 .mat-select-trigger {
     font-family: var(--base-font-family);
 }
+
+// tabs
+.mat-mdc-tab-header {
+    --mat-tab-header-label-text-font: var(--base-font-family), sans-serif;
+    --mat-tab-header-label-text-size: var(--text-size-s);
+    --mat-tab-header-label-text-weight: 400;
+}
+
+.mat-mdc-tab-group, .mat-mdc-tab-nav-bar {
+    --mdc-tab-indicator-active-indicator-color: var(--green);
+    --mat-tab-header-disabled-ripple-color: rgba(0, 0, 0, 0.38);
+    --mat-tab-header-pagination-icon-color: #000;
+    --mat-tab-header-inactive-label-text-color: rgba(0, 0, 0, 0.6);
+    --mat-tab-header-active-label-text-color: var(--green);
+    --mat-tab-header-active-ripple-color: var(--green);
+    --mat-tab-header-inactive-ripple-color: var(--green);
+    --mat-tab-header-inactive-focus-label-text-color: rgba(0, 0, 0, 0.6);
+    --mat-tab-header-inactive-hover-label-text-color: rgba(0, 0, 0, 0.6);
+    --mat-tab-header-active-focus-label-text-color: var(--green);
+    --mat-tab-header-active-hover-label-text-color: var(--green);
+    --mat-tab-header-active-focus-indicator-color: var(--green);
+    --mat-tab-header-active-hover-indicator-color: var(--green);
+}

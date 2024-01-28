@@ -77,28 +77,44 @@ export class BasketComponent {
   }
 
   public createOrder(): void {
-    if (this.currentAccount && this.currentAccount.accountDataModel) {
-      const orderProducts = this.currentAccount.accountDataModel.basket.filter(product => product.isChecked);
-      const orderPrice = orderProducts.reduce((total, product) => {
-        return total + product.finalPrice;
-      }, 0);
-      if(orderProducts.length > 0) {
-        const newOrder: IOrder = {
-          orderProducts: orderProducts,
-          orderPrice: orderPrice,
-          orderStatus: OrderStatus.performed
-        };
-        this.currentAccount.accountDataModel.orders.push(newOrder)
-        this.accountService.update(this.currentAccount).subscribe({
-          next: (account) => {
-            this.authState.setCurrentUser(account);
-          }
-        });
-        this.deleteFromBasket();
-        this.alertService.openSnackBar("Заказ успешно оформлен", 5000, "valid");
+    if(this.checkRequiredData()){
+      if (this.currentAccount && this.currentAccount.accountDataModel) {
+        const orderProducts = this.currentAccount.accountDataModel.basket.filter(product => product.isChecked);
+        const orderPrice = orderProducts.reduce((total, product) => {
+          return total + product.finalPrice;
+        }, 0);
+        if (orderProducts.length > 0) {
+          const newOrder: IOrder = {
+            orderProducts: orderProducts,
+            orderPrice: orderPrice,
+            orderStatus: OrderStatus.progress,
+            orderDate: new Date()
+          };
+          this.currentAccount.accountDataModel.orders.push(newOrder)
+          this.accountService.update(this.currentAccount).subscribe({
+            next: (account) => {
+              this.authState.setCurrentUser(account);
+            }
+          });
+          this.deleteFromBasket();
+          this.alertService.openSnackBar("Заказ успешно оформлен", 5000, "valid");
+          return;
+        }
+        this.alertService.openSnackBar("Ошибка! Товары не выбраны!", 5000, "invalid");
         return;
       }
-      this.alertService.openSnackBar("Ошибка! Товары не выбраны!", 5000, "invalid");
     }
+    this.alertService.openSnackBar("Ошибка! Чтобы сделать заказ заполните адрес доставки и номер телефона в профиле!", 10000, "invalid");
+  }
+
+  public checkRequiredData(): boolean {
+    if (
+      this.authState.currentAccount.value?.phone !== '' &&
+      this.authState.currentAccount.value?.adress?.city !== '' &&
+      this.authState.currentAccount.value?.adress?.street !== '' &&
+      this.authState.currentAccount.value?.adress?.house !== '') {
+      return true
+    }
+    return false;
   }
 }

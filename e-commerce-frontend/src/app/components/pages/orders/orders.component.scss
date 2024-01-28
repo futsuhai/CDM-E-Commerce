@@ -1,10 +1,84 @@
+@import "src/app/styles/mixins";
+
 .content-wrapper {
     display: flex;
     flex-direction: column;
     gap: 60px;
 
     &__title {
+        font-size: var(--text-size-xl);
         color: var(--surface);
         font-weight: 700;
+    }
+
+    &__nothing {
+        color: var(--surface);
+        font-size: var(--text-size-xm);
+    }
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.order-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &__date {
+        color: var(--surface);
+        font-size: var(--text-size-l);
+        font-weight: 700;
+    }
+}
+
+.order-info {
+    display: flex;
+    gap: 24px;
+
+    &__price {
+        color: var(--surface);
+        font-size: var(--text-size-l);
+    }
+
+    &__status {
+        width: 140px;
+
+        &_progress {
+            background: var(--grayscale-lightest);
+        }
+
+        &_complete {
+            background: var(--green);
+            color: var(--white);
+        }
+
+        &_canceled {
+            background: var(--error);
+            color: var(--white);
+        }
+    }
+}
+
+@include sm {
+    .order-title {
+        &__date {
+            font-size: var(--text-size-m);
+        }
+    }
+
+    .order-info {
+        gap: 16px;
+    
+        &__price {
+            font-size: var(--text-size-m);
+        }
+    
+        &__status {
+            width: 130px;
+        }
     }
 }

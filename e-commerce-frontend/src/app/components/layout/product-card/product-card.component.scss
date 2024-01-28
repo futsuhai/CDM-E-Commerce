@@ -21,6 +21,16 @@
         opacity: 0.5;
     }
 
+    &__product-count {
+        position: absolute;
+        padding: 8px;
+        background: var(--grayscale-lightest);
+        top: 8px;
+        left: 8px;
+        border-radius: 4px;
+        opacity: 0.5;
+    }
+
     &__sale {
         position: absolute;
         padding: 4px 8px;
@@ -34,6 +44,17 @@
     &__image {
         width: 100%;
         height: auto;
+    }
+}
+
+.product-count {
+    display: flex;
+    gap: 4px;
+
+    &__count {
+        color: var(--surface);
+        font-size: var(--text-size-m);
+        font-weight: 700;
     }
 }
 

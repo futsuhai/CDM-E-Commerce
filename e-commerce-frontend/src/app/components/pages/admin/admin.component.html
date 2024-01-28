@@ -1,24 +1,31 @@
 <div class="content-wrapper content-wrapper_desktop">
-    <div class="main">
-        <app-search-filter 
-            (filteredProducts)="onProductsChanged($event)">
-        </app-search-filter>
-        <ng-container *ngIf="products.length > 0; else noProductsFound">
-            <div class="products">
-                <button type="button" class="products__add button_base button_green" (click)="dialogService.openProductFormDialog('0ms', '0ms')">
-                    Добавить товар
-                </button>
-                <app-product-card-admin 
-                    *ngFor="let product of products" 
-                    [product]="product" 
-                    class="products__item product-card-admin_base">
-                </app-product-card-admin >
+    <mat-tab-group class="tabs">
+        <mat-tab label="Продукты">
+            <div class="main">
+                <app-search-filter 
+                    (filteredProducts)="onProductsChanged($event)">
+                </app-search-filter>
+                <ng-container *ngIf="products.length > 0; else noProductsFound">
+                    <div class="products">
+                        <button type="button" class="products__add button_base button_green" (click)="dialogService.openProductFormDialog('0ms', '0ms')">
+                            Добавить товар
+                        </button>
+                        <app-product-card-admin 
+                            *ngFor="let product of products" 
+                            [product]="product" 
+                            class="products__item product-card-admin_base">
+                        </app-product-card-admin >
+                    </div>
+                </ng-container>
+                <ng-template #noProductsFound>
+                    <p class="main__nothing">
+                        По вашему запросу ничего не найдено
+                    </p>
+                </ng-template>
             </div>
-        </ng-container>
-        <ng-template #noProductsFound>
-            <p class="main__nothing">
-                По вашему запросу ничего не найдено
-            </p>
-        </ng-template>
-    </div>
+        </mat-tab>
+        <mat-tab label="Заказы">
+             Content 2 
+        </mat-tab>
+    </mat-tab-group>
 </div>

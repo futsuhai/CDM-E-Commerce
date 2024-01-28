@@ -26,6 +26,11 @@
     flex-direction: column;
     gap: 24px;
     width: 100%;
+
+    &__nothing {
+        color: var(--surface);
+        font-size: var(--text-size-xm);
+    }
 }
 
 .controls {
