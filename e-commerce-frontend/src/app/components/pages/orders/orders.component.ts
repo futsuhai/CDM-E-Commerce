@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
-import { IOrder, IOrderStatus, OrderStatus, appOrderStatuses } from 'src/app/models/order.model';
+import { IOrder, IOrderDeliverTime, IOrderStatus, OrderDeliverTime, OrderStatus, appDeliverTimes, appOrderStatuses } from 'src/app/models/order.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { ProductListOrdersComponent } from '../../layout/product-list-orders/product-list-orders.component';
-import { Subject, takeUntil } from 'rxjs';
+import { OrderService } from 'src/app/services/order/order.service';
 
 @Component({
   selector: 'app-orders',
@@ -16,16 +16,16 @@ export class OrdersComponent implements OnDestroy {
 
   public orders?: IOrder[];
   public orderStatuses: IOrderStatus[] = appOrderStatuses;
-  private destroy$: Subject<void> = new Subject<void>();
+  public deliverTimes: IOrderDeliverTime[] = appDeliverTimes;
 
-  constructor(private authState: AuthState) {
-    this.authState.currentAccount.pipe(takeUntil(this.destroy$)).subscribe({
-      next: (account) => {
-        if (account && account.accountDataModel?.liked) {
-          this.orders = account.accountDataModel.orders.slice().reverse();
+  constructor(private authState: AuthState, private orderService: OrderService) {
+    if(this.authState.currentAccount.value?.id) {
+      this.orderService.GetOrdersWithId(this.authState.currentAccount.value?.id).subscribe({
+        next: (orders) => {
+          this.orders = orders.slice().reverse();
         }
-      }
-    });
+      })
+    }
   }
 
   public getOrderStatusText(status: string): string {
@@ -46,8 +46,12 @@ export class OrdersComponent implements OnDestroy {
     }
   }
 
+  public getDeliverTimeText(orderTime: OrderDeliverTime): string {
+    const deliverTime = this.deliverTimes.find(time => time.value === orderTime);
+    return deliverTime ? deliverTime.key : '';
+  }
+
   public ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
+    console.log()
   }
 }

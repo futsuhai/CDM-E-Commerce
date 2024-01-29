@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProductCardAdminComponent implements OnInit {
 
+  
   @Input() product!: IProduct;
   @Input() count: number = 0;
   @Input() finalPrice: number = 0;

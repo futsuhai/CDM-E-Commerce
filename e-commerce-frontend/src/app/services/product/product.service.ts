@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestService } from '../rest/rest.service';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
-import { IProduct } from 'src/app/models/product.model';
+import { IProduct, IRewiev } from 'src/app/models/product.model';
 import { IFilterProperties } from 'src/app/models/filterProperties.model';
 
 @Injectable({
@@ -88,6 +88,16 @@ export class ProductService {
         return throwError(error);
       })
     );
+  }
+
+  public addRewiev(productId: string, rewiev: IRewiev): Observable<IProduct> {
+    const endpoint: string = `${this.api}/AddRewiev/${productId}`;
+    return this.restService.restPUT<IProduct>(endpoint, rewiev).pipe(
+      catchError((error: unknown) => {
+        console.log("An error occurred while updating product with ID ${productId}:", error)
+        return throwError(error);
+      })
+    )
   }
 
   public filterSearchProducts(value: string, products: IProduct[]): IProduct[] {

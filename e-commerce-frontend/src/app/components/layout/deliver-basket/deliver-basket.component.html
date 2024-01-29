@@ -1,0 +1,84 @@
+<form class="deliver" [formGroup]="deliverForm">
+    <div class="deliver-property">
+        <p class="deliver-property__title">
+            Куда
+        </p>
+        <div class="deliver-property-row">
+            <div class="form-group">
+                <label for="deliverCity" class="form-group__label">Населенный пункт</label>
+                <input 
+                    type="text" 
+                    id="deliverCity" 
+                    formControlName="deliverCity"
+                    class="form-group__input input_search">
+            </div>
+            <div class="form-group">
+                <label for="deliverStreet" class="form-group__label">Улица</label>
+                <input 
+                    type="text" 
+                    id="deliverStreet" 
+                    formControlName="deliverStreet"
+                    class="form-group__input input_search">
+            </div>
+            <div class="form-group">
+                <label for="deliverHouse" class="form-group__label">Дом</label>
+                <input 
+                    type="text" 
+                    id="deliverHouse" 
+                    formControlName="deliverHouse"
+                    class="form-group__input form-group__input_small input_search">
+            </div>
+            <div class="form-group">
+                <label for="deliverFlat" class="form-group__label">Квартира</label>
+                <input 
+                    type="text" 
+                    id="deliverFlat" 
+                    formControlName="deliverFlat"
+                    class="form-group__input form-group__input_small input_search">
+            </div>
+        </div>
+    </div>
+    <div class="deliver-property">
+        <p class="deliver-property__title">
+            Когда
+        </p>
+        <div class="deliver-property-row">
+            <div class="form-group">
+                <label for="deliverDate" class="form-group__label">Дата</label>
+                <input 
+                    type="date"
+                    id="deliverDate"
+                    formControlName="deliverDate"
+                    class="form-group__input input_search">
+            </div>
+            <div class="deliver-times">
+                <button 
+                    *ngFor="let deliverTime of deliverTimes" 
+                    [ngClass]="{'button_orange': selectedDeliverTime === deliverTime.value}"
+                    class="deliver-time button_base button_green" 
+                    (click)="selectDeliverTime(deliverTime.value)">
+                    {{ deliverTime.key }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="deliver-property">
+        <p class="deliver-property__title">
+            Номер Телефона
+        </p>
+        <div class="deliver-property-row">
+            <div class="form-group">
+                <label for="deliverPhone" class="form-group__label">Номер телефона</label>
+                <input 
+                    type="text"
+                    id="deliverPhone"
+                    formControlName="deliverPhone"
+                    class="form-group__input input_search"
+                    placeholder="+7 (___) ___-__-__"
+                    pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
+                    maxlength="18"
+                    appPhoneNumber>
+            </div>
+        </div>
+    </div>
+</form>

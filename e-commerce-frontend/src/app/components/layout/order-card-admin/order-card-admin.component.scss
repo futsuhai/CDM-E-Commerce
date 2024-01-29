@@ -1,0 +1,56 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.side {
+    display: flex;
+    gap: 20px;
+
+    &__text {
+        color: var(--surface);
+
+        &_bold {
+            font-size: var(--text-size-l);
+            font-weight: 700;
+        }
+
+        &_id {
+            width: 80px;
+        }
+    }
+
+    &__select-status {
+        &_progress {
+            background: var(--grayscale-lightest);
+        }
+    
+        &_complete {
+            background: var(--green);
+            color: var(--white);
+        }
+    
+        &_canceled {
+            background: var(--error);
+            color: var(--white);
+        }
+    }
+
+    &__check {
+        background: var(--grayscale-lightest);
+        color: var(--grayscale-hardest);
+        font-size: var(--text-size-s);
+    }
+    
+}
+
+.phone {
+    display: flex;
+    align-items: center;
+
+    &__number {
+        color: var(--surface);
+        font-size: var(--text-size-s);
+    }
+}

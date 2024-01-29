@@ -48,20 +48,18 @@
                 </p>
             </div>
         </ng-template>
-        <div *ngIf="accessedToRewiev()" class="new-rewiev">
+        <div class="new-rewiev">
             <div class="new-rating">
                 <p class="new-rating__title">
                     Ваша оценка
                 </p>
-                <app-rating [rating]="0"></app-rating>
+                <app-rating [rating]="0" [readonly]="false" (ratingChange)="onRatingChange($event)"></app-rating>
             </div>
-            <textarea name="rewiev"
-                      class="new-rewiev__textarea input_rewiev"
-                      placeholder="Отзыв">
-            </textarea>
-            <button class="new-rewiev__submit button_base">
+            <textarea name="rewiev" class="new-rewiev__textarea input_rewiev" placeholder="Отзыв" [(ngModel)]="newReview.description"></textarea>
+            <button class="new-rewiev__submit button_base" (click)="submitReview()">
                 Отправить отзыв
             </button>
         </div>
+        
     </div>
 </div>

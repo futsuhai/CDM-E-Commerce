@@ -5,9 +5,14 @@
     <ng-container *ngIf="orders && orders.length > 0 || !orders; else noOrdersFound">
         <div *ngFor="let order of orders" class="order">
             <div class="order-title">
-                <p class="order-title__date">
-                    {{ order.orderDate | date: 'dd.MM.yyyy' }}
-                </p>
+                <div class="order-deliver">
+                    <p class="order-deliver__date">
+                        {{ order.orderInfo.orderDate| date: 'dd.MM.yyyy' }}
+                    </p>
+                    <p class="order-deliver__date">
+                        {{ getDeliverTimeText(order.orderInfo.orderTime) }}
+                    </p>
+                </div>
                 <div class="order-info">
                     <p class="order-info__price">
                        {{ order.orderPrice | currency:'₽':'symbol':'1.2-2' }}

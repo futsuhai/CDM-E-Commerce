@@ -1,0 +1,53 @@
+@import "src/app/styles/mixins";
+
+.deliver {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.deliver-property {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__title {
+        color: var(--surface);
+        font-size: var(--text-size-l);
+        font-weight: 700;
+    }
+}
+
+.deliver-property-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        &_small {
+            width: 75px;
+        }
+    }
+}
+
+.deliver-times {
+    display: flex;
+    gap: 12px;
+}
+
+@include xl {
+    .deliver-property-row {
+        gap: 20px;
+    }
+}
+
+@include md {
+    .deliver-property-row {
+        flex-wrap: wrap;
+    }
+}

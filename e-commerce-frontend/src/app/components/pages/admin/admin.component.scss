@@ -27,6 +27,32 @@
     }
 }
 
+.orders {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.settings {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        width: 140px;
+    }
+}
+
+.deliver-times {
+    display: flex;
+    gap: 12px;
+}
+
 @include xl {
     .main {
         flex-direction: column;

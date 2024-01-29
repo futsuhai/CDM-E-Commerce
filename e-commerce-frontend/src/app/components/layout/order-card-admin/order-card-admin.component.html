@@ -1,0 +1,31 @@
+<div class="content">
+    <div class="side">
+        <p class="side__text_bold side__text_id">
+            {{ order.id?.slice(0, 6) }}
+        </p>
+        <p class="side__text_bold">
+            {{ order.orderPrice | currency:'₽':'symbol':'1.2-2' }}
+        </p>
+    </div>
+    <div class="side">
+        <div class="phone">
+           <img src="assets/footer/footer-phone.svg" alt="phone" class="phone__icon"> 
+            <p class="phone__number">
+                {{ order.orderInfo.orderPhone }}
+            </p>
+        </div>
+        <select 
+            class="select-status side__select-status button_base" 
+            [(ngModel)]="order.orderStatus" 
+            [ngClass]="getStatusClass(order.orderStatus)"
+            (change)="onStatusChanged(order)">
+            <option *ngFor="let status of orderStatuses" [value]="status.value">
+                {{ status.key }}
+            </option>
+        </select>
+        <button class="check side__check button_base">
+            <img src="assets/auth/eye.svg" alt="eye" class="check__icon">
+            Посмотреть заказ
+        </button>
+    </div>
+</div>

@@ -19,37 +19,10 @@
     &__info {
         margin-top: 64px;
     }
-}
 
-.content {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 100%;
-
-    &__nothing {
-        color: var(--surface);
-        font-size: var(--text-size-xm);
+    &__view-basket {
+        width: 100%;
     }
-}
-
-.controls {
-    display: flex;
-    gap: 40px;
-
-    &__control {
-        color: var(--grayscale-hardest);
-
-        &_orange {
-            color: var(--main-orange);
-        }
-    }
-}
-
-.products {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
 }
 
 .info {

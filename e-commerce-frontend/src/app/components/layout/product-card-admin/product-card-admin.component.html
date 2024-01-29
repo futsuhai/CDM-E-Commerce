@@ -1,7 +1,7 @@
 <div class="main">
     <div class="product-image">
         <img [src]="product.productMain64Image" alt="product-image" class="product-image__image">
-        <label class="check product-image__check">
+        <label *ngIf="cardType" class="check product-image__check">
             <input class="check__input" type="checkbox" id="checkbox" [(ngModel)]="isChecked" (change)="toggleCheckbox()">
             <span class="check__box"></span>
         </label>

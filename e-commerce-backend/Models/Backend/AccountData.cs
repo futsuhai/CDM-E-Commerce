@@ -4,6 +4,6 @@ namespace e_commerce_backend.Models.Backend
     {
         public List<Product> Liked { get; set; } = new List<Product>();
         public List<ProductBasket> Basket { get; set; }= new List<ProductBasket>();
-        public List<Order> Orders { get; set; }= new List<Order>();
+        public List<string> Orders { get; set; }= new List<string>();
     }
 }

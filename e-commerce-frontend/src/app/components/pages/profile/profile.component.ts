@@ -83,7 +83,6 @@ export class ProfileComponent {
         accountDataModel: this.currentAccount?.accountDataModel,
         role: this.currentAccount?.role
       }
-      console.log(account);
       this.accountService.update(account).subscribe({
         next: account => {
           this.authState.setCurrentUser(account);

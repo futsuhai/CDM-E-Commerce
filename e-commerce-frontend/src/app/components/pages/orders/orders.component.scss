@@ -27,7 +27,12 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+}
 
+.order-deliver {
+    display: flex;
+    gap: 24px ;
+    
     &__date {
         color: var(--surface);
         font-size: var(--text-size-l);

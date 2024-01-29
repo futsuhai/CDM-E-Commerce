@@ -25,7 +25,31 @@
             </div>
         </mat-tab>
         <mat-tab label="Заказы">
-             Content 2 
+            <div class="orders">
+                <div class="settings">
+                    <div class="form-group">
+                        <label for="deliverDate" class="form-group__label">Дата</label>
+                        <input 
+                            type="date"
+                            id="deliverDate"
+                            [(ngModel)]="deliverDate"
+                            (change)="updateOrders()"
+                            class="form-group__input input_search">
+                    </div>
+                    <div class="deliver-times">
+                        <button 
+                            *ngFor="let deliverTime of deliverTimes" 
+                            [ngClass]="{'button_orange': selectedDeliverTime === deliverTime.value}"
+                            class="deliver-time button_base button_green" 
+                            (click)="selectDeliverTime(deliverTime.value)">
+                            {{ deliverTime.key }}
+                        </button>
+                    </div>
+                </div>
+                <app-order-card-admin *ngFor="let order of filteredOrders" [order]="order">
+                    
+                </app-order-card-admin>
+            </div>
         </mat-tab>
     </mat-tab-group>
 </div>

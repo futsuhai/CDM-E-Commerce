@@ -90,5 +90,15 @@ namespace e_commerce_backend.Controllers
             await _productService.DeleteAsync(productId);
             return Ok();
         }
+
+        [HttpPut("AddRewiev/{productId}")]
+        public async Task<IActionResult> AddRewiev([FromBody] RewievModel rewievModel, Guid productId)
+        {
+            var product = await _productService.GetAsync(productId);
+            var rewiev = _mapper.Map<Rewiev>(rewievModel);
+            product.Rewievs.Add(rewiev);
+            await _productService.UpdateAsync(productId, product);
+            return Ok(product);
+        }
     }
 }

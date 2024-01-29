@@ -16,6 +16,9 @@ namespace e_commerce_backend.Mappers
                 .ForMember(dest => dest.ProductTag, opt => opt.MapFrom(src => src.ProductTag.ToString()))
                 .ForMember(dest => dest.ProductCategory, opt => opt.MapFrom(src => src.ProductCategory.ToString()));
 
+            CreateMap<Rewiev, RewievModel>()
+                .ReverseMap();
+
             CreateMap<ArticleModel, Article>()
                 .ForMember(dest => dest.ImageBytes, opt => opt.MapFrom(src => ImageUtils.ConvertBase64ToBytes(src.Base64Image)))
                 .ReverseMap()
