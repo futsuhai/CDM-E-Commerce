@@ -5,11 +5,12 @@ import { ProductCardAdminComponent } from '../product-card-admin/product-card-ad
 import { IAccount } from 'src/app/models/account.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { AccountService } from 'src/app/services/account/account.service';
+import { EmptyComponent } from '../empty/empty.component';
 
 @Component({
   selector: 'app-products-view-basket',
   standalone: true,
-  imports: [CommonModule, ProductCardAdminComponent],
+  imports: [CommonModule, ProductCardAdminComponent, EmptyComponent],
   templateUrl: './products-view-basket.component.html',
   styleUrls: ['./products-view-basket.component.scss'],
   host: {

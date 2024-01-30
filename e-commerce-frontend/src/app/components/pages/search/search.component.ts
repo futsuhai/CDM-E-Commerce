@@ -4,11 +4,12 @@ import { SearchFilterComponent } from '../../layout/search-filter/search-filter.
 import { IProduct } from 'src/app/models/product.model';
 import { ProductCardComponent } from '../../layout/product-card/product-card.component';
 import { ActivatedRoute } from '@angular/router';
+import { EmptyComponent } from '../../layout/empty/empty.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, SearchFilterComponent, ProductCardComponent],
+  imports: [CommonModule, SearchFilterComponent, ProductCardComponent, EmptyComponent],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })

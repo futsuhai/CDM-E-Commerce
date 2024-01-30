@@ -3,11 +3,6 @@
     flex-direction: column;
     gap: 60px;
 
-    &__nothing {
-        color: var(--surface);
-        font-size: var(--text-size-xm);
-    }
-
     &__title {
         font-size: var(--text-size-xl);
         color: var(--surface);

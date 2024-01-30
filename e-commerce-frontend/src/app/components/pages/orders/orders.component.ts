@@ -4,11 +4,12 @@ import { IOrder, IOrderDeliverTime, IOrderStatus, OrderDeliverTime, OrderStatus,
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { ProductListOrdersComponent } from '../../layout/product-list-orders/product-list-orders.component';
 import { OrderService } from 'src/app/services/order/order.service';
+import { EmptyComponent } from '../../layout/empty/empty.component';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [CommonModule, ProductListOrdersComponent],
+  imports: [CommonModule, ProductListOrdersComponent, EmptyComponent],
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss']
 })

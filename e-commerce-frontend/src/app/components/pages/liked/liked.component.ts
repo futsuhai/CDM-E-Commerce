@@ -4,11 +4,12 @@ import { IProduct } from 'src/app/models/product.model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ProductCardComponent } from '../../layout/product-card/product-card.component';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
+import { EmptyComponent } from '../../layout/empty/empty.component';
 
 @Component({
   selector: 'app-liked',
   standalone: true,
-  imports: [CommonModule, MatGridListModule, ProductCardComponent],
+  imports: [CommonModule, MatGridListModule, ProductCardComponent, EmptyComponent],
   templateUrl: './liked.component.html',
   styleUrls: ['./liked.component.scss']
 })
