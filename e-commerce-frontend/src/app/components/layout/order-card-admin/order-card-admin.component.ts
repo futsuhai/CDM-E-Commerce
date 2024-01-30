@@ -25,11 +25,11 @@ export class OrderCardAdminComponent {
   public getStatusClass(status: OrderStatus): string {
     switch (status) {
       case OrderStatus.progress:
-        return 'order-info__status_progress';
+        return 'side__select-status_progress';
       case OrderStatus.complete:
-        return 'order-info__status_complete';
+        return 'side__select-status_complete';
       case OrderStatus.canceled:
-        return 'order-info__status_canceled';
+        return 'side__select-status_canceled';
       default:
         return '';
     }

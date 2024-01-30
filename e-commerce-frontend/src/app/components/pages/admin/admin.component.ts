@@ -34,11 +34,6 @@ export class AdminComponent implements OnInit {
         this.productService.productsSubject.next(products);
       }
     });
-    this.orderService.getOrders().subscribe({
-      next: (orders) => {
-        this.orders = orders;
-      }
-    });
   }
 
   public ngOnInit(): void {
@@ -47,12 +42,16 @@ export class AdminComponent implements OnInit {
         this.products = products;
       }
     });
+    this.orderService.getOrders().subscribe({
+      next: (orders) => {
+        this.orders = orders;
+      }
+    });
     this.updateOrders();
   }
 
   public onProductsChanged(filteredProducts: IProduct[]): void {
     this.products = filteredProducts;
-    this.updateOrders();
   }
 
   public selectDeliverTime(value: OrderDeliverTime) {
@@ -64,8 +63,7 @@ export class AdminComponent implements OnInit {
     const currentDate = new Date(this.deliverDate);
     const todayStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), 0, 0, 0);
     const todayEnd = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1, 0, 0, 0);
-    this.filteredOrders = [...this.orders];
-    this.filteredOrders = this.filteredOrders.filter(order => {
+    this.filteredOrders = this.orders.filter(order => {
       const orderDate = new Date(order.orderInfo.orderDate);
       return orderDate >= todayStart && orderDate < todayEnd && order.orderInfo.orderTime === this.selectedDeliverTime;
     });

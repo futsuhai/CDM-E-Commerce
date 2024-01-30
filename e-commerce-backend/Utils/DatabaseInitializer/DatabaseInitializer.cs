@@ -10,8 +10,9 @@ namespace e_commerce_backend.Init
         public static void InitializeDatabase()
         {
             var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("E-Commerce");
-
+            var databaseName = "E-Commerce";
+            var database = client.GetDatabase(databaseName);
+            client.DropDatabase(databaseName);
 
             if (!CollectionExists(database, "Images"))
             {
@@ -21,12 +22,10 @@ namespace e_commerce_backend.Init
             {
                 InitializeAccounts(database);
             }
-
             if (!CollectionExists(database, "Articles"))
             {
                 InitializeArticles(database);
             }
-
             if (!CollectionExists(database, "Products"))
             {
                 InitializeProducts(database);

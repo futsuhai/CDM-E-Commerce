@@ -46,8 +46,9 @@
                         </button>
                     </div>
                 </div>
-                <app-order-card-admin *ngFor="let order of filteredOrders" [order]="order">
-                    
+                <app-order-card-admin 
+                    *ngFor="let order of filteredOrders" 
+                    [order]="order">
                 </app-order-card-admin>
             </div>
         </mat-tab>

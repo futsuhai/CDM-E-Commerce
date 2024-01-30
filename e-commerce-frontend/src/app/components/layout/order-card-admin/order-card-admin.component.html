@@ -1,10 +1,13 @@
-<div class="content">
+<div class="content order-card-admin__content">
     <div class="side">
         <p class="side__text_bold side__text_id">
             {{ order.id?.slice(0, 6) }}
         </p>
         <p class="side__text_bold">
             {{ order.orderPrice | currency:'₽':'symbol':'1.2-2' }}
+        </p>
+        <p class="side__text">
+            {{ order.orderInfo.orderCity }}, {{ order.orderInfo.orderStreet }}, д. {{ order.orderInfo.orderHouse }}, кв. {{ order.orderInfo.orderFlat }}
         </p>
     </div>
     <div class="side">
@@ -23,9 +26,5 @@
                 {{ status.key }}
             </option>
         </select>
-        <button class="check side__check button_base">
-            <img src="assets/auth/eye.svg" alt="eye" class="check__icon">
-            Посмотреть заказ
-        </button>
     </div>
 </div>
