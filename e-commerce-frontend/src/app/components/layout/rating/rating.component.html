@@ -1,6 +1,8 @@
 <div class="stars">
-    <img *ngFor="let star of stars; let i = index" 
-    [src]="star ? 'assets/common/star-fill.svg' : 'assets/common/star-empty.svg'" 
-    alt="star" 
-    class="start__item">
+    <button *ngFor="let star of stars; let i = index" class="stars__btn button_star-wrapper" (click)="onStarClick(i)">
+        <img 
+            [src]="star ? 'assets/common/star-fill.svg' : 'assets/common/star-empty.svg'" 
+            alt="star" 
+            class="start__item">
+    </button>
 </div>

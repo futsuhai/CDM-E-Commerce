@@ -17,6 +17,12 @@
         background: inherit;
     }
 
+    &_star-wrapper {
+        border: none;
+        background: inherit;
+        padding: 0;
+     }
+
     &_green {
         background: var(--green);
         border: 1px solid var(--green);
