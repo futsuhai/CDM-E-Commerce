@@ -1,8 +1,6 @@
 @import "src/app/styles/mixins";
 
 .root {
-    position: relative;
-
     &__header-wrapper {
         width: 100vw;
         background: var(--white);
@@ -10,6 +8,7 @@
     }
 
     &__footer-wrapper {
+        margin-top: auto;
         width: 100vw;
         background-image: url('/assets/footer/footer-background.svg');
     }

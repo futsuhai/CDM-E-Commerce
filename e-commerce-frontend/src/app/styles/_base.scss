@@ -37,6 +37,13 @@ li {
     list-style: none;
 }
 
+.root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1;
+}
+
 .content-wrapper {
     &_desktop {
         margin: 60px 0px;
