@@ -29,5 +29,10 @@ Backend
 2. Перейти в терминал e-commerce-backend и выполнить dotnet run
 
 
+*Чтобы авторизоваться администратором 
+Admin
+Admin123!
+
+
 
 
