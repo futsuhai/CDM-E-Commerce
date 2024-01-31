@@ -16,7 +16,7 @@ import { PhoneNumberDirective } from 'src/app/directives/phone.directive';
 })
 export class DeliverBasketComponent {
 
-  public deliverForm!: FormGroup;
+  public deliverForm!: FormGroup; // Не забывай про типизацию формы, это важно
   public deliverTimes: IOrderDeliverTime[] = appDeliverTimes;
   public selectedDeliverTime: OrderDeliverTime = OrderDeliverTime.morning;
 
