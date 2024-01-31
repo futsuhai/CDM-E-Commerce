@@ -20,7 +20,9 @@ export class HeaderNavbarComponent {
   public currentAccount: Observable<IAccount | null>;
   public currentRout: string = '';
 
-  constructor(private router: Router, private authState: AuthState) { 
+  constructor(private router: Router, private authState: AuthState) {
+    // Будь аккуратнее с кодом в конструкторе, лучше переноси в ngOnInit.
+    // в констркуторе инпуты еще не инициализированы и это может привести к проблемам
     this.currentAccount = this.authState.currentAccount;
   }
 
