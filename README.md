@@ -30,8 +30,8 @@ Backend
 
 
 *Чтобы авторизоваться администратором 
-Admin
-Admin123!
+login: Admin |
+pass: Admin123!
 
 
 
