@@ -98,9 +98,11 @@ export class ProductDialogComponent {
           this.dialogRef.close();
         },
         error: () => {
-          this.alertService.openSnackBar("Ошибка при сохранении данных", 2000, "invalid");
+          this.alertService.openSnackBar("Ошибка при сохранении данных", 5000, "invalid");
         }
       });
+    } else {
+      this.alertService.openSnackBar("Ошибка! Все поля на форме должны быть заполнены.", 5000, "invalid");
     }
   }
 
@@ -133,6 +135,8 @@ export class ProductDialogComponent {
           this.alertService.openSnackBar("Ошибка при сохранении данных", 2000, "invalid");
         }
       });
+    } else {
+      this.alertService.openSnackBar("Ошибка! Все поля на форме должны быть заполнены.", 5000, "invalid");
     }
   }
 

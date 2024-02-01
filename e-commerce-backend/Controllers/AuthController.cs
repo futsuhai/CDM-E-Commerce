@@ -52,8 +52,15 @@ namespace e_commerce_backend.Controllers
             account.HashPassword = Convert.ToBase64String(hashPassword);
             account.Tokens = _jwtOptions.GetJwtTokens(account.Login);
             account.Avatar = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f");
+            account.AccountData = new AccountData
+            {
+                Liked = new List<Product>(),
+                Orders = new List<string>(),
+                Basket = new List<ProductBasket>()
+            };
             await _accountService.CreateAsync(account);
-            return Ok(new { message = "Регистрация прошла успешно" });
+            var loginedAccount = _mapper.Map<AccountModel>(account);
+            return Ok(loginedAccount);
         }
 
         [HttpPut("Auth")]

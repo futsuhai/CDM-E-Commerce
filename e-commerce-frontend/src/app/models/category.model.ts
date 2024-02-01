@@ -10,66 +10,66 @@ export const appCategories: ICategory[] = [
     {
         key: "Молоко, сыр, яйцо",
         value: ProductCategory.lactic,
-        image: "assets/catalog/category_1.svg"
+        image: "assets/catalog/lactic.jpg"
     },
     {
         key: "Хлеб",
         value: ProductCategory.bread,
-        image: "assets/catalog/category_2.svg"
+        image: "assets/catalog/bread.jpg"
     },
     {
         key: "Фрукты и овощи",
         value: ProductCategory.vegetables,
-        image: "assets/catalog/category_3.svg"
+        image: "assets/catalog/vegetables.jpg"
     },
     {
         key: "Замороженные продукты",
         value: ProductCategory.frozen,
-        image: "assets/catalog/category_4.svg"
+        image: "assets/catalog/frozen.jpg"
     },
     {
         key: "Напитки",
         value: ProductCategory.beverages,
-        image: "assets/catalog/category_5.svg"
+        image: "assets/catalog/beverages.jpg"
     },
     {
         key: "Кондитерские изделия",
         value: ProductCategory.cakes,
-        image: "assets/catalog/category_6.svg"
+        image: "assets/catalog/cakes.jpg"
     },
     {
         key: "Чай, кофе",
         value: ProductCategory.tea,
-        image: "assets/catalog/category_7.svg"
+        image: "assets/catalog/tea.jpg"
     },
     {
         key: "Бакалея",
         value: ProductCategory.grocery,
-        image: "assets/catalog/category_8.svg"
+        image: "assets/catalog/grocery.jpg"
     },
     {
         key: "Здоровое питание",
         value: ProductCategory.healthy,
-        image: "assets/catalog/category_9.svg"
+        image: "assets/catalog/healthy.jpg"
     },
     {
         key: "Зоотовары",
         value: ProductCategory.zoo,
-        image: "assets/catalog/category_10.svg"
+        image: "assets/catalog/zoo.jpg"
     },
     {
         key: "Детское питание",
         value: ProductCategory.childish,
-        image: "assets/catalog/category_11.svg"
+        image: "assets/catalog/childish.jpg"
     },
     {
         key: "Мясо, птица, колбаса",
         value: ProductCategory.meat,
-        image: "assets/catalog/category_12.svg"
+        image: "assets/catalog/meat.jpg"
     },
     {
         key: "Непродовольственные товары",
         value: ProductCategory.no_food,
-        image: "assets/catalog/category_13.svg"
+        image: "assets/catalog/no_food.jpg"
     }
 ]

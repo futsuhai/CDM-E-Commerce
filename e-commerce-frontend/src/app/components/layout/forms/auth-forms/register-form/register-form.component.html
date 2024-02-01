@@ -71,7 +71,7 @@
                         Поле обязательно
                     </ng-container>
                     <ng-container *ngIf="registerPassword?.hasError('pattern')">
-                        Некорректный пароль
+                        Пароль должен содержать хотя бы 1 Заглавную букву, цирфу и специальный символ
                     </ng-container>
             </span>
             <button class="password__toggle button_empty" (click)="hidePassword('password')">

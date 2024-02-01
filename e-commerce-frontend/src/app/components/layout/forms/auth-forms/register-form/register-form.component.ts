@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
@@ -6,6 +6,7 @@ import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { SiteConfigState } from 'src/app/services/siteConfigState/app.siteConfigState';
 import { IAccount } from 'src/app/models/account.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -15,8 +16,6 @@ import { IAccount } from 'src/app/models/account.model';
   styleUrls: ['../auth-forms-styles.scss']
 })
 export class RegisterFormComponent {
-
-  @Output() formEntered: EventEmitter<void> = new EventEmitter<void>();
 
   public hiddenPassword: boolean = true;
   public hiddenPasswordConfirm: boolean = true;
@@ -28,6 +27,7 @@ export class RegisterFormComponent {
     private authService: AuthService,
     private authState: AuthState,
     private alertService: AlertService,
+    private router: Router,
     private siteConfigState: SiteConfigState) {
       this.registerForm = this.initRegisterForm();
   }
@@ -78,10 +78,11 @@ export class RegisterFormComponent {
         }
       }
       this.authService.register(account).subscribe({
-        next: (response: any) => {
-          this.alertService.openSnackBar(response.message, 2000, "valid");
+        next: (account) => {
+          this.alertService.openSnackBar("Аккаунт успешно зарегистрирован", 5000, "valid");
           this.registerForm.reset();
-          this.formEntered.emit();
+          this.authState.setCurrentUser(account);
+          this.router.navigate(['/home']);
         },
         error: (error) => {
           if (error.error.detail) {

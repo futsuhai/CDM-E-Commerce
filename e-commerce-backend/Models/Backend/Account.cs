@@ -16,6 +16,6 @@ namespace e_commerce_backend.Models.Backend
         public required Guid Avatar { get; set; }
         public required Tokens Tokens { get; set; }
         public required Role Role { get; set; }
-        public required AccountData AccountData { get; set; }
+        public required AccountData AccountData { get; set; } = new AccountData();
     }
 }

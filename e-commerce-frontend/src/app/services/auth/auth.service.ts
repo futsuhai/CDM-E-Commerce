@@ -14,9 +14,9 @@ export class AuthService {
 
   constructor(private restService: RestService) { }
 
-  public register(account: IAccount): Observable<unknown> {
+  public register(account: IAccount): Observable<IAccount> {
     const endpoint: string = `${this.api}/Register`;
-    return this.restService.restPOST<unknown>(endpoint, account);
+    return this.restService.restPOST<IAccount>(endpoint, account);
   }
 
   public login(account: IAccount): Observable<IAccount> {
