@@ -10,8 +10,8 @@
                     type="text" 
                     id="deliverCity" 
                     formControlName="deliverCity"
-                    class="form-group__input input_search"
-                    [ngClass]="{'input_invalid': (deliverCity?.touched && deliverCity?.invalid)}">
+                    [ngClass]="{'input_invalid': (deliverCity?.touched && deliverCity?.invalid)}"
+                    class="form-group__input input_search">
                 <span [hidden]="deliverCity?.valid || deliverCity?.untouched" 
                       class="form-group__alert validation_alert">
                     <ng-container *ngIf="deliverCity?.hasError('required')">
@@ -26,7 +26,7 @@
                     id="deliverStreet" 
                     formControlName="deliverStreet"
                     class="form-group__input input_search"
-                    [ngClass]="{'input_auth_invalid': (deliverStreet?.touched && deliverStreet?.invalid)}">
+                    [ngClass]="{'input_invalid': (deliverStreet?.touched && deliverStreet?.invalid)}">
                 <span [hidden]="deliverStreet?.valid || deliverStreet?.untouched" 
                       class="form-group__alert validation_alert">
                     <ng-container *ngIf="deliverStreet?.hasError('required')">
@@ -41,7 +41,7 @@
                     id="deliverHouse" 
                     formControlName="deliverHouse"
                     class="form-group__input form-group__input_small input_search"
-                    [ngClass]="{'input_auth_invalid': (deliverHouse?.touched && deliverHouse?.invalid)}">
+                    [ngClass]="{'input_invalid': (deliverHouse?.touched && deliverHouse?.invalid)}">
                 <span [hidden]="deliverHouse?.valid || deliverHouse?.untouched" 
                       class="form-group__alert validation_alert">
                     <ng-container *ngIf="deliverHouse?.hasError('required')">
@@ -56,7 +56,7 @@
                     id="deliverFlat" 
                     formControlName="deliverFlat"
                     class="form-group__input form-group__input_small input_search"
-                    [ngClass]="{'input_auth_invalid': (deliverFlat?.touched && deliverFlat?.invalid)}">
+                    [ngClass]="{'input_invalid': (deliverFlat?.touched && deliverFlat?.invalid)}">
                 <span [hidden]="deliverFlat?.valid || deliverFlat?.untouched" 
                       class="form-group__alert validation_alert">
                     <ng-container *ngIf="deliverFlat?.hasError('required')">
@@ -78,7 +78,7 @@
                     id="deliverDate"
                     formControlName="deliverDate"
                     class="form-group__input input_search"
-                    [ngClass]="{'input_auth_invalid': (deliverDate?.touched && deliverDate?.invalid)}">
+                    [ngClass]="{'input_invalid': (deliverDate?.touched && deliverDate?.invalid)}">
                 <span [hidden]="deliverDate?.valid || deliverDate?.untouched" 
                       class="form-group__alert validation_alert">
                     <ng-container *ngIf="deliverDate?.hasError('required')">
@@ -113,7 +113,7 @@
                     pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}"
                     maxlength="18"
                     appPhoneNumber
-                    [ngClass]="{'input_auth_invalid': (deliverPhone?.touched && deliverPhone?.invalid)}">
+                    [ngClass]="{'input_invalid': (deliverPhone?.touched && deliverPhone?.invalid)}">
                 <span [hidden]="deliverPhone?.valid || deliverPhone?.untouched" 
                       class="form-group__alert validation_alert">
                     <ng-container *ngIf="deliverPhone?.hasError('required')">

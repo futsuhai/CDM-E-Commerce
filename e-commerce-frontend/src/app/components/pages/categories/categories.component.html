@@ -3,8 +3,8 @@
         Каталог
     </h2>
     <div class="categories">
-        <div *ngFor="let category of categories" class="category categories__category" [routerLink]="['/search']" [queryParams]="{ category: category.value}">
-            <img [src]="category.image" alt="category-image" class="category__image">
+        <div *ngFor="let category of categories; let i = index" class="category categories__category" [routerLink]="['/search']" [queryParams]="{ category: category.value}">
+            <img [hidden]="i === 0 || i === 9 || i === 11" [src]="category.image" alt="category-image" class="category__image">
             <h3 class="category__title">
                 {{ category.key }}
             </h3>

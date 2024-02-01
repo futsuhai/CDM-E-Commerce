@@ -17,6 +17,12 @@
     gap: 40px;
 }
 
+.products-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .products {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

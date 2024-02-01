@@ -41,16 +41,22 @@
     &__category:nth-child(1) {
         grid-column-start: 1;
         grid-column-end: 3;
+        background-image: url('/assets/catalog/lactic.jpg');
+        background-size: cover;
     }
 
     &__category:nth-child(10) {
         grid-column-start: 3;
         grid-column-end: 5;
+        background-image: url('/assets/catalog/zoo.jpg');
+        background-size: cover;
     }
 
     &__category:nth-child(12) {
         grid-column-start: 2;
         grid-column-end: 4;
+        background-image: url('/assets/catalog/meat.jpg');
+        background-size: cover;
     }
 }
 
