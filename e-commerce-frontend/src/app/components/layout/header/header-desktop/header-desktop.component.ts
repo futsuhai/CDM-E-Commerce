@@ -23,7 +23,7 @@ export class HeaderDesktopComponent implements OnInit {
 
   @Output() public toggledMenu = new EventEmitter<void>();
 
-  public searchInput: FormControl = new FormControl('');
+  public searchInput: FormControl = new FormControl<string | null>('');
   public currentAccount: Observable<IAccount | null>;
   public currentAvatar: Observable<string | null>;
   private hoverTimer: any;

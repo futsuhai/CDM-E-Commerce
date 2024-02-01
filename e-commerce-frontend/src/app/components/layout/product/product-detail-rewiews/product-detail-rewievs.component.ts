@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { IProduct, IRewiev } from 'src/app/models/product.model';
-import { RatingComponent } from '../rating/rating.component';
+import { RatingComponent } from '../../rating/rating.component';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from 'src/app/services/product/product.service';

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { SearchFilterComponent } from '../../layout/search-filter/search-filter.component';
 import { IProduct } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
-import { ProductCardAdminComponent } from '../../layout/product-card-admin/product-card-admin.component';
+import { ProductCardAdminComponent } from '../../layout/product/product-card-admin/product-card-admin.component';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import {MatTabsModule} from '@angular/material/tabs';
 import { IOrder, IOrderDeliverTime, OrderDeliverTime, appDeliverTimes } from 'src/app/models/order.model';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchFilterComponent } from '../../layout/search-filter/search-filter.component';
 import { IProduct } from 'src/app/models/product.model';
-import { ProductCardComponent } from '../../layout/product-card/product-card.component';
+import { ProductCardComponent } from '../../layout/product/product-card/product-card.component';
 import { ActivatedRoute } from '@angular/router';
 import { EmptyComponent } from '../../layout/empty/empty.component';
 

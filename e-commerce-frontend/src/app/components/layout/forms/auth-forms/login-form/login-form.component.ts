@@ -30,12 +30,12 @@ export class LoginFormComponent {
 
   private initAuthForm(): FormGroup {
     return new FormGroup({
-      authLogin: new FormControl(
+      authLogin: new FormControl<string | null>(
         "",
         [Validators.required,
         Validators.minLength(this.siteConfigState.MIN_LENGHT_LOGIN),
         Validators.maxLength(this.siteConfigState.MAX_LENGHT_LOGIN)]),
-      authPassword: new FormControl(
+      authPassword: new FormControl<string | null>(
         "",
         [Validators.required,
         Validators.pattern(this.siteConfigState.REGEXP)],

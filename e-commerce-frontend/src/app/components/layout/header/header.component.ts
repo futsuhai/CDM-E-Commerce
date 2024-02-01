@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() public toggledMenu = new EventEmitter<void>();
   public currentAccount: Observable<IAccount | null>;
-  public searchInput: FormControl = new FormControl('');
+  public searchInput: FormControl = new FormControl<string | null>('');
   public filteredProducts!: Observable<IProduct[]>;
   
   constructor(private authState: AuthState, private router: Router, private productService: ProductService) {

@@ -44,6 +44,12 @@ li {
     flex: 1;
 }
 
+.base-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .content-wrapper {
     &_desktop {
         margin: 60px 0px;

@@ -34,26 +34,26 @@ export class RegisterFormComponent {
 
   private initRegisterForm(): FormGroup {
     const form = new FormGroup({
-      registerLogin: new FormControl(
+      registerLogin: new FormControl<string | null>(
         "",
         [Validators.required,
         Validators.minLength(this.siteConfigState.MIN_LENGHT_LOGIN),
         Validators.maxLength(this.siteConfigState.MAX_LENGHT_LOGIN)]),
-      registerName: new FormControl(
+      registerName: new FormControl<string | null>(
         "",
         [Validators.required]
       ),
-      registerEmail: new FormControl(
+      registerEmail: new FormControl<string | null>(
         "",
         [Validators.required,
         Validators.email]
       ),
-      registerPassword: new FormControl(
+      registerPassword: new FormControl<string | null>(
         "",
         [Validators.required,
         Validators.pattern(this.siteConfigState.REGEXP)],
       ),
-      registerPasswordConfirm: new FormControl(
+      registerPasswordConfirm: new FormControl<string | null>(
         "",
         [Validators.required,
         Validators.pattern(this.siteConfigState.REGEXP)],

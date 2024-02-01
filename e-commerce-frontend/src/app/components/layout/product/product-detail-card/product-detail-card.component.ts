@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { IProduct } from 'src/app/models/product.model';
-import { RatingComponent } from '../rating/rating.component';
+import { RatingComponent } from '../../rating/rating.component';
 import { PluralizePipe } from 'src/app/pipes/pluralize/pluralize.pipe';
 import { IBasketProduct } from 'src/app/models/basketProduct.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';

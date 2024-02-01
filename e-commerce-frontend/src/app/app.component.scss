@@ -33,13 +33,6 @@
     }
 }
 
-// Это относится к header'у так что лучше перенести непосредственно в header.component.scss
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .footer-wrapper {
     &__footer {
         max-width: var(--content-width);
@@ -48,12 +41,6 @@
         margin-right: auto;
         padding: 16px 16px;
     }
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .menu-wrapper {

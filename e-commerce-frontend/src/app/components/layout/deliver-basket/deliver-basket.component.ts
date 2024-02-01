@@ -16,7 +16,7 @@ import { PhoneNumberDirective } from 'src/app/directives/phone.directive';
 })
 export class DeliverBasketComponent {
 
-  public deliverForm!: FormGroup; // Не забывай про типизацию формы, это важно
+  public deliverForm!: FormGroup;
   public deliverTimes: IOrderDeliverTime[] = appDeliverTimes;
   public selectedDeliverTime: OrderDeliverTime = OrderDeliverTime.morning;
 
@@ -26,13 +26,13 @@ export class DeliverBasketComponent {
 
   public initDeliverForm(): FormGroup {
     return new FormGroup({
-      deliverCity: new FormControl("", [Validators.required]),
-      deliverStreet: new FormControl("", [Validators.required]),
-      deliverHouse: new FormControl("", [Validators.required]),
-      deliverFlat: new FormControl("", [Validators.required]),
-      deliverDate: new FormControl(Date.now(), [Validators.required]),
-      deliverPhone: new FormControl("", [Validators.required]),
-      deliverTime: new FormControl(OrderDeliverTime.morning, [Validators.required]),
+      deliverCity: new FormControl<string | null>("", [Validators.required]),
+      deliverStreet: new FormControl<string | null>("", [Validators.required]),
+      deliverHouse: new FormControl<string | null>("", [Validators.required]),
+      deliverFlat: new FormControl<string | null>("", [Validators.required]),
+      deliverDate: new FormControl<string | null>("", [Validators.required]),
+      deliverPhone: new FormControl<string | null>("", [Validators.required]),
+      deliverTime: new FormControl<OrderDeliverTime | null>(OrderDeliverTime.morning, [Validators.required]),
     })
   }
 

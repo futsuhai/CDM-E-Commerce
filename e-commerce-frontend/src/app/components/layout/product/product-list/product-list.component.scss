@@ -1,0 +1,11 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    grid-gap: 27px;
+
+    &__item {
+        width: 100%;
+        height: auto;
+        background: var(--white);
+    }
+}

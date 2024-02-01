@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/product.model';
-import { RatingComponent } from '../rating/rating.component';
+import { RatingComponent } from '../../rating/rating.component';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { AuthState } from 'src/app/services/auth/auth-state.module';

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { IOrder, IOrderDeliverTime, IOrderStatus, OrderDeliverTime, OrderStatus, appDeliverTimes, appOrderStatuses } from 'src/app/models/order.model';
 import { AuthState } from 'src/app/services/auth/auth-state.module';
-import { ProductListOrdersComponent } from '../../layout/product-list-orders/product-list-orders.component';
+import { ProductListOrdersComponent } from '../../layout/product/product-list-orders/product-list-orders.component';
 import { OrderService } from 'src/app/services/order/order.service';
 import { EmptyComponent } from '../../layout/empty/empty.component';
 

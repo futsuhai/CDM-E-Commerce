@@ -25,6 +25,14 @@
         }
     }
 
+    &_invalid {
+        border: 1px solid var(--error);
+
+        &:hover, &:focus {
+            border: 1px solid var(--error);
+        }
+    }
+
     &_rewiev {
         height: 100px;
         padding: 8px 16px;

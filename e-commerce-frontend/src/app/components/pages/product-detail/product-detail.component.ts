@@ -5,8 +5,8 @@ import { Observable, Subscription, of } from 'rxjs';
 import { switchMap, catchError, tap } from 'rxjs/operators';
 import { IProduct, ProductTag } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product/product.service';
-import { ProductDetailCardComponent } from '../../layout/product-detail-card/product-detail-card.component';
-import { ProductDetailRewievsComponent } from '../../layout/product-detail-rewiews/product-detail-rewievs.component';
+import { ProductDetailCardComponent } from '../../layout/product/product-detail-card/product-detail-card.component';
+import { ProductDetailRewievsComponent } from '../../layout/product/product-detail-rewiews/product-detail-rewievs.component';
 import { ListLayoutComponent } from '../../layout/list-layout/list-layout.component';
 import { ITag } from 'src/app/models/tag.model';
 

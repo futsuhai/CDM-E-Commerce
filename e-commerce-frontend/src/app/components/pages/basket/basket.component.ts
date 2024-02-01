@@ -9,7 +9,7 @@ import { IOrder, OrderStatus } from 'src/app/models/order.model';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { OrderService } from 'src/app/services/order/order.service';
 import { EMPTY, switchMap } from 'rxjs';
-import { ProductsViewBasketComponent } from '../../layout/products-view-basket/products-view-basket.component';
+import { ProductsViewBasketComponent } from '../../layout/product/products-view-basket/products-view-basket.component';
 import { DeliverBasketComponent } from '../../layout/deliver-basket/deliver-basket.component';
 
 @Component({
@@ -58,7 +58,7 @@ export class BasketComponent {
 
   public switchContent(): void {
     if (this.currentAccount && this.currentAccount.accountDataModel) {
-      if(this.currentAccount.accountDataModel.basket.filter(product => product.isChecked).length > 0) {
+      if (this.currentAccount.accountDataModel.basket.filter(product => product.isChecked).length > 0) {
         this.deliver = !this.deliver;
         return;
       }
@@ -67,50 +67,54 @@ export class BasketComponent {
   }
 
   public createOrder(): void {
-    if (this.currentAccount && this.currentAccount.accountDataModel) {
-      const orderProducts = this.currentAccount.accountDataModel.basket.filter(product => product.isChecked);
-      const orderPrice = orderProducts.reduce((total, product) => {
-        return total + product.finalPrice;
-      }, 0);
-      if (orderProducts.length > 0) {
-        const formValue = this.deliverBasketComponent.deliverForm.value
-        const newOrder: IOrder = {
-          orderProducts: orderProducts,
-          orderPrice: orderPrice,
-          orderStatus: OrderStatus.progress,
-          orderInfo: {
-            orderCity: formValue.deliverCity,
-            orderStreet: formValue.deliverStreet,
-            orderHouse: formValue.deliverHouse,
-            orderFlat: formValue.deliverFlat,
-            orderDate: formValue.deliverDate,
-            orderPhone: formValue.deliverPhone,
-            orderTime: formValue.deliverTime,
-          }
-        };
-        this.orderService.addOrder(newOrder).pipe(
-          switchMap((order) => {
-            if (order.id && this.currentAccount) {
-              this.currentAccount?.accountDataModel?.orders.push(order.id);
-              return this.accountService.update(this.currentAccount);
-            } else {
-              return EMPTY;
+    this.deliverBasketComponent.deliverForm.markAllAsTouched();
+    if (this.deliverBasketComponent.deliverForm.valid) {
+      if (this.currentAccount && this.currentAccount.accountDataModel) {
+        const orderProducts = this.currentAccount.accountDataModel.basket.filter(product => product.isChecked);
+        const orderPrice = orderProducts.reduce((total, product) => {
+          return total + product.finalPrice;
+        }, 0);
+        if (orderProducts.length > 0) {
+          const formValue = this.deliverBasketComponent.deliverForm.value
+          const newOrder: IOrder = {
+            orderProducts: orderProducts,
+            orderPrice: orderPrice,
+            orderStatus: OrderStatus.progress,
+            orderInfo: {
+              orderCity: formValue.deliverCity,
+              orderStreet: formValue.deliverStreet,
+              orderHouse: formValue.deliverHouse,
+              orderFlat: formValue.deliverFlat,
+              orderDate: formValue.deliverDate,
+              orderPhone: formValue.deliverPhone,
+              orderTime: formValue.deliverTime,
             }
-          })
-        ).subscribe({
-          next: (account) => {
-            this.authState.setCurrentUser(account);
-          },
-        });
-        this.deleteFromBasket();
-        this.deliver = !this.deliver;
-        this.alertService.openSnackBar("Заказ успешно оформлен", 5000, "valid");
+          };
+          this.orderService.addOrder(newOrder).pipe(
+            switchMap((order) => {
+              if (order.id && this.currentAccount) {
+                this.currentAccount?.accountDataModel?.orders.push(order.id);
+                return this.accountService.update(this.currentAccount);
+              } else {
+                return EMPTY;
+              }
+            })
+          ).subscribe({
+            next: (account) => {
+              this.authState.setCurrentUser(account);
+            },
+          });
+          this.deleteFromBasket();
+          this.deliver = !this.deliver;
+          this.alertService.openSnackBar("Заказ успешно оформлен", 5000, "valid");
+          return;
+        }
+        this.alertService.openSnackBar("Ошибка! Товары не выбраны!", 5000, "invalid");
         return;
       }
-      this.alertService.openSnackBar("Ошибка! Товары не выбраны!", 5000, "invalid");
-      return;
+    } else {
+      console.log("Not valid")
     }
-    this.alertService.openSnackBar("Ошибка! Чтобы сделать заказ заполните адрес доставки и номер телефона в профиле!", 10000, "invalid");
   }
 
   public deleteFromBasket(): void {
