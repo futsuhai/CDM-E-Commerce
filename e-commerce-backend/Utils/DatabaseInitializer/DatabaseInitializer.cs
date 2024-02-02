@@ -40,7 +40,7 @@ namespace e_commerce_backend.Init
                 new()
                 {
                     Id = Guid.Parse("75d7e7ed-d015-4da5-b855-d3d89a43e60f"),
-                    Img = ImageUtils.SetImageFromFile("InitAssets/Avatar.jpg"),
+                    Img = ImageUtils.SetImageFromFile("InitAssets/NewAvatar.jpg"),
                 }
             };
             collection.InsertMany(images);

@@ -62,6 +62,15 @@
         }
     }
 }
+@include md {
+    .order-deliver {
+        flex-direction: column;
+    }
+
+    .order-info {
+        flex-direction: column;
+    }
+}
 
 @include sm {
     .order-title {

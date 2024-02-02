@@ -21,6 +21,7 @@ export class ProductDetailRewievsComponent {
   @Input() product!: IProduct | null;
   public accessed: boolean = false;
   public newReview!: IRewiev;
+  public canreview: boolean = false;
 
   constructor(private authState: AuthState, private productService: ProductService) {
     if(this.authState.isAuth()) {
@@ -35,7 +36,7 @@ export class ProductDetailRewievsComponent {
       }
     }
   }
-
+  
   public getCountByRating(rating: number): number {
     if (this.product && this.product.rewievs) {
       return this.product?.rewievs.filter(review => review.rating === rating).length;
