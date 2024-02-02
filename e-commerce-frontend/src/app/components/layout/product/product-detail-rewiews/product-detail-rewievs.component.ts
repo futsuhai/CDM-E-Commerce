@@ -23,13 +23,16 @@ export class ProductDetailRewievsComponent {
   public newReview!: IRewiev;
 
   constructor(private authState: AuthState, private productService: ProductService) {
-    if (this.authState.currentAccount.value?.name) {
-      this.newReview = {
-        username: this.authState.currentAccount.value?.name,
-        date: new Date(),
-        rating: 0,
-        description: ''
-      };
+    if(this.authState.isAuth()) {
+      this.accessed = true;
+      if (this.authState.currentAccount.value?.name) {
+        this.newReview = {
+          username: this.authState.currentAccount.value?.name,
+          date: new Date(),
+          rating: 0,
+          description: ''
+        };
+      }
     }
   }
 
